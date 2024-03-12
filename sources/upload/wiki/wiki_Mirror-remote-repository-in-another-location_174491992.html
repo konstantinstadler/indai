@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : Mirror remote repository in another location</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="174491614.html">Digital Tools for IndEcol Research/Teaching</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Git-Version-Control_174491954.html">Git Version Control</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : Mirror remote repository in another location
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Unknown User (radekl)</span>, last modified on 11.11.2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>Sometimes you want to be able to mirror a remote repository. For example, in the case you want to preserve work on a common (remote) repository in your own remote repository. Here is how to do it:</p><p>Create locally a bare mirrored clone of the repository to mirror:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight"> git clone --mirror https://github.com/exampleuser/repository-to-mirror.git </pre>
+</div></div><p>cd to the just cloned repo and set the push location to your mirror. NB. This often requires to create this empty repo to push to in github, bitbucket, or gitlab.</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">cd repository-to-mirror.git 
+git remote set-url --push origin https://exampleuser@bitbucket.org/exampleuser/mirrored.git </pre>
+</div></div><p>Now you have to periodically monitor for changes in the original repository and push them to your mirror.</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">git fetch -p origin 
+git push --mirror </pre>
+</div></div><p>Adapted from <a class="external-link" href="https://help.github.com/articles/duplicating-a-repository/" rel="nofollow" title="https://help.github.com/articles/duplicating-a-repository/"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/174491992/176850014.png" data-image-src="attachments/174491992/176850014.png" data-unresolved-comment-count="0" data-linked-resource-id="176850014" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="174491992" data-linked-resource-container-version="4" alt=""></span>https://help.github.com/articles/duplicating-a-repository/</a></p><p>—Evert</p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/174491992/176850014.png">browser-web-icon.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

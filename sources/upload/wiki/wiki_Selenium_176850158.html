@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : Selenium</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Development-tools_176849952.html">Development tools</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : Selenium
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Unknown User (radekl)</span>, last modified on 11.11.2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="contentLayout2">
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<p style="margin-left: 30.0px;"><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1709817187784 {padding: 0px;}
+div.rbtoc1709817187784 ul {list-style: square !important;margin-left: 0px;}
+div.rbtoc1709817187784 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1709817187784'>
+<ul class='toc-indentation'>
+<li><a href='#Selenium-Minorhurdles'>Minor hurdles</a></li>
+<li><a href='#Selenium-Codeexample'>Code example</a></li>
+</ul>
+</div></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<p>This library is fairly straight-forward, and <a class="external-link" href="http://selenium-python.readthedocs.io/" rel="nofollow" title="http://selenium-python.readthedocs.io/"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176850158/176850159.png" data-image-src="attachments/176850158/176850159.png" data-unresolved-comment-count="0" data-linked-resource-id="176850159" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176850158" data-linked-resource-container-version="5" alt=""></span>the documentation</a> is clear. Install selenium with</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">pip install selenium</pre>
+</div></div><p>.</p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit2" id="Selenium-Minorhurdles">Minor hurdles</h1><hr/><ol><li class="level1"><p>Selenium utilises the open-source tool WebDriver to interface with a browser. For WebDriver to be able to work with a particular browser, it needs a driver installed. <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176850158/176850159.png" data-image-src="attachments/176850158/176850159.png" data-unresolved-comment-count="0" data-linked-resource-id="176850159" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176850158" data-linked-resource-container-version="5" alt=""></span><a class="external-link" href="http://selenium-python.readthedocs.io/installation.html#drivers" rel="nofollow">Here's a list of drivers for common browser choices</a>. For Linux users, this driver file needs to be in path, e.g. in /usr/local/bin/.</p></li><li class="level1"><p>When you have selenium click buttons and follow links etc., changes won't be instantaneous, so selenium has to wait an appropriate amount of time before checking for, say, the existance of another page element. This can be done on a case-by-case basis, but luckily there's a much simpler way: configuring selenium to implicitly wait for everything, making it check and recheck a few times per second until a maximum number of seconds you specify:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">driver.implicitly_wait(100)</pre>
+</div></div><p>.</p></li></ol></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit3" id="Selenium-Codeexample">Code example</h1><hr/><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">from selenium import webdriver 
+from selenium.webdriver.common.keys import Keys    
+
+driver = webdriver.Chrome() 
+driver.implicitly_wait(100)
+ 
+driver.get(&quot;http://www.google.com&quot;)   
+
+search_field = driver.find_element_by_id(&quot;lst-ib&quot;) 
+search_field.send_keys(&quot;selenium python documentation&quot;, Keys.ENTER)   
+
+search_results = {header.text: header.get_attribute(&quot;href&quot;) 
+                  for header
+                  in driver.find_elements_by_css_selector(&quot;div.rc &gt; h3.r &gt; a&quot;)}  
+
+link_text_for_selenium_docs = &quot;Selenium with Python — Selenium Python Bindings 2 documentation&quot; 
+assert link_text_for_selenium_docs in search_results  
+
+selenium_docs_link = search_results[link_text_for_selenium_docs] 
+driver.get(selenium_docs_link) 
+  
+driver.close()</pre>
+</div></div><p>This basically demonstrates how to get to the documentation. It opens a new Chrome window, goes to google.com, enters “selenium python documentation” in the search field, and presses enter. Then it looks for a search result with the link text “Selenium with Python — Selenium Python Bindings 2 documentation”. If it's not found, an</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">AssertionError</pre>
+</div></div><p>is raised. If it is found, the link is visited, the browser is closed, and the program is terminated.</p></div>
+</div>
+</div>
+</div>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/176850158/176850159.png">browser-web-icon.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

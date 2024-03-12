@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : Git cloud code repositories</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="174491614.html">Digital Tools for IndEcol Research/Teaching</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Git-Version-Control_174491954.html">Git Version Control</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : Git cloud code repositories
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Konstantin Stadler</span>, last modified by <span class='editor'> Ruslan Zhuravchak</span> on 05.12.2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h1 id="Gitcloudcoderepositories-Wheretohostyourgitrepository">Where to host your git repository</h1><p><br/></p><p><strong>tl,dr:</strong> Github, either on <a class="external-link" href="https://github.com/NTNU-IndEcol" rel="nofollow">https://github.com/NTNU-IndEcol</a> (NTNU IndEcol specific and teaching ) or <a class="external-link" href="https://github.com/IndEcol/" rel="nofollow">https://github.com/IndEcol/</a> (IndEcol scientific community). Ask the Digital Lab for a repo.<br/><br/></p><p>For infos/tutorials/links to git specific see <a href="Git-Version-Control_174491954.html">Git Version Control</a>.</p><h3 id="Gitcloudcoderepositories-Whataregitrepositoryservers?">What are git repository servers?</h3><h4 id="Gitcloudcoderepositories-Thebasics-gitbare">The basics - git bare</h4><p>Besides working on a local git repository, in most cases you would like to have a remote repository as a central place for retrieving/storing code. </p><p>This should be something you can push code into. Git allows for that without any other fancy tools via <a class="external-link" href="https://www.geeksforgeeks.org/bare-repositories-in-git/" rel="nofollow">git bare repos</a>. These are git repos without working files, which allow other repositories to push code into. You can try this yourself with</p><pre><br/># Create a regular Git repository<br/>mkdir my_project<br/>cd my_project<br/>git init<br/># Add some files and make initial commit<br/>echo &quot;IndEcol&quot; &gt; <a class="external-link" href="http://README.md" rel="nofollow">README.md</a><br/>git add <a class="external-link" href="http://README.md" rel="nofollow">README.md</a><br/>git commit -m &quot;Initial commit&quot;<br/><br/># Create a bare repository wherever<br/>cd ..<br/>mkdir my_bare_repo<br/>cd my_bare_repo<br/>git init --bare<br/><br/># Set up remote for the regular repository<br/>cd ../my_project<br/>git remote add origin ../my_bare_repo<br/><br/># Push changes from the regular repository to the bare repository<br/>git push -u origin master<br/><br/># Clone the bare repository to create a local repository<br/>cd ..<br/>git clone my_bare_repo my_local_repo<br/><br/># Make changes in the local repository<br/>cd my_local_repo<br/>echo &quot;Another IndEcol&quot; &gt;&gt; <a class="external-link" href="http://README.md" rel="nofollow">README.md</a><br/>git commit -am &quot;Add new content&quot;<br/><br/># Push changes from the local repository to the bare repository<br/>git push origin master<br/><br/># Pull changes from the bare repository to the regular repository<br/>cd ../my_project<br/>git pull origin master</pre><p><br/></p><p><br/><br/>At IndEcol we started with these and still have some lying around at Xdrive/indecol/Software/git_bare_repositories. You can add your own there as well if you want a central place for your code, but don't want to use any of the commercial cloud based solutions.</p><h4 id="Gitcloudcoderepositories-Cloudbasegitrepositoryservers">Cloud base git repository servers</h4><p>There are services like GitHub or Gitlab, which essentially host git bare repositories with some convenient decorations:</p><p>- Cloud access: Access your repositories from anywhere with an internet connection.<br/>- Easier collaboration: Enable multiple users to work on the same project simultaneously.<br/>- Issue tracker: Keep track of bugs, feature requests, and other issues within your repositories.<br/>- Wiki: Create and maintain documentation for your projects.<br/>- CI/CD: Automate the build, testing, and deployment processes for your code.</p><h3 id="Gitcloudcoderepositories-GithubanditsAlternatives">Github and its Alternatives</h3><p><strong>Github is currently our recommended platform for hosting all git repositories</strong>. It offers unlimited public/private repositories, 500 MB per package, and 2000 CI minutes per month under its free plans.</p><p>Gitlab is another popular option, but it recently changed its policy to allow only 5 users per private group. This restriction has made it impractical for our use. However, there are still many IndEcol groups using Gitlab, and we will continue to keep these repositories there for now.</p><p>Bitbucket is another platform that we have explored, but we have not received a response regarding an academic account. It is connected to Jira, which may be beneficial for some projects.</p><p>There are also several other alternatives available, such as Gitolite, Gitea, Gogs, GitBucket, Codeberg, GNU Savannah, and Fossil (which is based on another version control system).</p><h3 id="Gitcloudcoderepositories-SetupandRecommendations">Setup and Recommendations</h3><p>It is recommended to move away from Gitlab for new projects, although legacy repositories can still be kept there. Git repositories are easy to move, so if you decide to switch to another organization, it can be done without much hassle. Even moving between Gitlab and Github is relatively straightforward, although some adjustments may be required for CI/CD configurations. To migrate your project from Gitlab to Github, you may adapt the following code snippet: </p><div class="code panel pdl" style="border-width: 1px;"><div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>gl2gh migration</b></div><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: true; theme: Eclipse" data-theme="Eclipse">git clone git@gitlab.com:project_name/project_name.git # clone or pull from old origin
+cd ./project_name # go to the repository
+git remote show origin # check out the old origin (says Gitlab)
+git remote remove origin # clear the old origin
+git remote add origin git@github.com:project_name/project_name.git:... # add new origin (assuming that you have an empty Github project called `project_name`)
+git remote show origin # check out the new origin (says Github)
+git push --mirror origin # push into the new origin
+git branch --set-upstream-to=origin/master master # setup tracking for the master (or main, or other) branch if needed</pre>
+</div></div><p><br/></p><p>Git repositories and organizations are lightweight and can be set up quickly. Therefore, do not hesitate to create and delete them as needed.</p><h4 id="Gitcloudcoderepositories-GithubOrganizations">Github Organizations</h4><p>Within Github, you have several possibilities to place your repository:</p><p>- Personal Space: This is your personal space on Github, which you get when you register. It can be used as a testing ground and for &quot;true&quot; open-source workflows, such as forking other projects, making changes, submitting pull requests, and removing the fork once the changes are implemented. However, it is important to note that PhD code should not reside in this space for an extended period. By the end of your PhD, the code and data you develop during your employment at NTNU should be (co)owned by NTNU.</p><p>- NTNU-IndEcol: This is the &quot;internal&quot; organization for NTNU IndEcol. It is managed by us (IEDL) and open to all IndEcol members. You can have any number of repositories within this organization by simply requesting access. For research repositories, you are free to choose any name, while teaching-related repositories should follow the &quot;teach_COURSENUMBER&quot; naming scheme. The organization is organized into teams, which are used for access control, including teaching teams for each course and administrators.</p><p>- IndEcol: This is the global IndEcol community repository. It contains a dashboard of open IndEcol source projects, which can be found at <a class="external-link" href="https://github.com/IndEcol/Dashboard" rel="nofollow">https://github.com/IndEcol/Dashboard</a>. This repository should be used for open-source projects with a community interest. For example, we have moved the country_converter and pymrio projects there to emphasize that they are not one-person projects.</p><p>- NTNU's enterprise github/lab: This is in the planning phase since half a decade. Having a NTNU wide git server would make things much easier (e.g. user name, available resources). NTNU is planning to do that since over half a decade and it looked very promising to get that by autumn 2023. However, again it was delayed. So don't hold your breath, we go forward without that. When/If it becomes available, we will test it and then decide on new recommedations.</p><p><br/></p><h3 id="Gitcloudcoderepositories-Caveats">Caveats</h3><p>It is important to note that Git and GitXXX platforms are not intended for long-term archival purposes. However, it is relatively easy to link Github repositories to Zenodo for archiving purposes. More information on how to do this can be found here: <a class="external-link" href="https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content" rel="nofollow">Github Repository Archiving</a> and <a href="https://www.ntnu.no/wiki/](https:/emilio-berti.github.io/idiv-git-introduction/21-github_zenodo/index.html" rel="nofollow">Github-Zenodo Integration</a>.</p>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

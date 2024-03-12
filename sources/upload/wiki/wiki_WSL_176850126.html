@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : WSL</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Development-tools_176849952.html">Development tools</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : WSL
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Unknown User (radekl)</span>, last modified on 11.11.2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h1 class="sectionedit1" id="WSL-EnablingWindowsSubsystemforLinux">Enabling Windows Subsystem for Linux</h1><p>The <a class="external-link" href="https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux" rel="nofollow" title="https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176850126/176850127.png" data-image-src="attachments/176850126/176850127.png" data-unresolved-comment-count="0" data-linked-resource-id="176850127" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176850126" data-linked-resource-container-version="2" alt=""></span>Windows Subsystem for Linux</a> (short: WSL) allows to run a Linux Kernel on a Windows 10 / Server.</p><p>WSL is available since build 14393 on 64 bit architecture (to check open the windows menu, type about and click “about your pc” - scroll down until you find the build information “OS build” and check also “System type”).</p><p>To enable WSL:</p><ol><li class="level1"><p>Open the start menu (win) and search for “Turn Windows features on or off”</p></li><li class="level1"><p>Check the “Windows Subsystem for Linux” option</p></li><li class="level1"><p>Ok, wait and restart</p></li><li class="level1"><p>Open the microsoft store (search in the start menu for it)</p></li><li class="level1"><p>Search for “Ubuntu 18.04 LTS” (there are other Linux Distributions available, but this is the one we recommend as it is close to the version we use on our server and b/c we have some experience with this one- of course you can install others as well) and press “get”, then “install”</p></li><li class="level1"><p>Ubuntu Linux is now available from the start menu</p></li><li class="level1"><p>Start it for the first time to initiate the Linux installation, choose a username as password</p></li></ol><p>You can install linux apps with the standard ubuntu apt-get. The first thing you should do is:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">sudo apt-get update</pre>
+</div></div><p>followed by</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">sudo apt-get install build-essential</pre>
+</div></div><p>to install developer tools.</p><p>After installation your disks are available at /mnt/c (or any other disk letter you have available).</p><p>Note: You can work with the files on these drives from Windows and Linux, but you must not change the files from the rest of the linux system with any windows app (the whole directory structure is hidden anyway in windows).</p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/176850126/176850127.png">browser-web-icon.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

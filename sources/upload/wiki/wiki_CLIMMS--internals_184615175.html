@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : CLIMMS  internals</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Projects_176849778.html">Projects</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : CLIMMS  internals
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Unknown User (radekl)</span>, last modified on 08.12.2020
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="CLIMMSinternals-Storage">Storage</h3><p>There is 5TB of storage (as for January/2020) mounted to<a href="https://www.ntnu.no/wiki/display/skyhigh" rel="nofollow"> NTNU OpenStack</a> instance on project <a class="external-link" href="https://stack.it.ntnu.no/horizon/project/instances/" rel="nofollow">ntnu00009</a> . Instance name CLIMS storage on IP 10.212.27.123</p><p>The storage can be accessed only from the specific IP. In case of migration the IT has to change the settings to new</p><p>IP address.</p><p>It is used for storing data for databases (MongoDB/Postgres/etc)</p><p>The storage is managed by NTNU-IT, price is 2000NOK/1TB/year</p><p>mount point: <a class="external-link" href="http://forskning.it.ntnu.no" rel="nofollow">forskning.it.ntnu.no</a>:/svm_forskning_iv_ept_climms</p><p><strong>IT support Contact</strong></p><p>Arild Johansen <a class="external-link" href="mailto:arild.johansen@ntnu.no" rel="nofollow">arild.johansen@</a><a class="external-link" href="http://ntnu.no" rel="nofollow">ntnu.no</a></p><p>Arne Dag Fidjestøl <a class="external-link" href="mailto:adf@ntnu.no" rel="nofollow">adf@</a><a class="external-link" href="http://ntnu.no" rel="nofollow">ntnu.no</a></p><p><strong>Availability</strong><br/> This fileserver is in a HA-cluster with disaster failover to another HA cluster so it will be very good availability<br/> We do regular maintenance once a month at the most frequent, and in this hours you will see som NFS-stale but traffic will go back to normal in a few minutes.</p><p><strong>Backup</strong><br/> As for backup, we will keep snapshots for 6 month at weekly schedule, daily for last 32 days and hourly for the past 36 hours</p><p><br/></p><h2 id="CLIMMSinternals-Databases">Databases</h2><p><br/></p><h3 id="CLIMMSinternals-AISharvesting(Notinuseanymore)">AIS harvesting (Not in use anymore)</h3><p><a class="external-link" href="https://www.influxdata.com/" rel="nofollow">InfluxDB</a> for storing data from ksyverket and ais-hub</p><p>admin/monitoring using <a class="external-link" href="https://docs.influxdata.com/chronograf/v1.7/" rel="nofollow">Chronograf</a> on address:</p><p><a class="external-link" href="http://10.212.27.123:8888" rel="nofollow"> http://10.212.27.123:8888</a></p><p>username admin, password aWVGcgfAeWp6cznrRwpg</p><p><br/></p><p>telegraf plugin:</p><p>username: telegraf, password rAP4oWEfwc7CedHurQun</p><p><br/></p><h3 id="CLIMMSinternals-General">General</h3><p>MongoDB</p><h4 id="CLIMMSinternals-AISHarvesting">AIS Harvesting</h4><p>Running on NTNU OpenStack: CLIMMS DB 10.212.25.86:27017</p><p>administrator credentials: admin, DCzMk4KJ2CWARpk5MW8m</p><p>The DB is used by kystverket and asihub collecto for this the credentials are:</p><p>user: collector</p><p>passw: oaBgJJ8wg5N2J8n3Jeyx</p><p><br/></p><h4 id="CLIMMSinternals-MariDATA">MariDATA</h4><p>Running on NTNU OpenStack: CLIMMS Storage 10.212.27.70:27017</p><p>administrator credentials: admin, DCzMk4KJ2CWARpk5MW8m</p><p>Mariane Reader: mariane,  M8qxi2ztzfpTFKD4tXaR</p><p><strong>maridata2017</strong> - completed operational profiles (readwrite user:  poseidon 4jYwngrEv9etPo )</p><p><strong>ais</strong> - data collections from kustverket and aishub - AIS Harvesting DB (readwrite user:  poseidon 4jYwngrEv9etPo)</p><p><strong>mariteam-web</strong> - data which belongs to mariteam web app; RW user: neptun   jsHVsehC6yn7gVtPM6Rb</p><p><br/></p><h4 id="CLIMMSinternals-Postgres">Postgres</h4><p>Running on NTNU OpenStack: CLIMMS Storage 10.212.27.70:5432</p><p>     POSTGRES_DB: postgres</p><p>     POSTGRES_USER: admin</p><p>     POSTGRES_PASSWORD: v8nY6mnSMuBFMiyFR6eym2cT</p><p>PGAdmin 10.212.27.70:8080</p><p>   PGADMIN_DEFAULT_EMAIL: <a class="external-link" href="mailto:admin@iedl.no" rel="nofollow">admin@iedl.no</a><br/>   PGADMIN_DEFAULT_PASSWORD: FUoEqnF23SQTtuLYdW9PQLmf<br/><br/><br/></p><p><br/></p><h3 id="CLIMMSinternals-CLIMMSDATA">CLIMMS DATA</h3><p>The seaweb and messages completed are located at indecol server at MOngoDB and PostgreSQL.</p><p>MongoDB is used for testing and experimental purpose, the Postgres is used to work with MariAne</p><p>webservice.</p><p>After cleaning data and being satisfied the data from MongoDB are migrated to Postgres.</p><p>Data location is at /home/db directory.</p><p><br/></p><p>Access to Postgres:</p><p>there is docker-compose file running on indecol server:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>docker-compose.yml</b></div><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: yml; gutter: false; theme: Confluence" data-theme="Confluence">
+# Use postgres/example user/password credentials
+version: &#39;3.1&#39;
+
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_SERVER: db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: c1f3f1a5db1d4cafcc6bec33ffbbaf3749cafa99f59f49858bd36a31be8f59c3
+      POSTGRES_DB: climms
+      PGDATA: /home/db/postgres
+
+  pgadmin:
+    image: dpage/pgadmin4
+    depends_on:
+      - db
+    restart: always
+    environment:
+      PGADMIN_LISTEN_PORT: 5050
+      PGADMIN_DEFAULT_EMAIL: admin@indecol.no
+      PGADMIN_DEFAULT_PASSWORD: c57956aa90b97eafcb3618721c9df8d6dc064d3689871df430a15f29ead1511c
+
+    ports:
+      - 5050:5050
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8089:8080
+
+
+</pre>
+</div></div><p>Adminer is accessible via</p><p><br/></p><h3 id="CLIMMSinternals-BWDATAharvesting">BW DATA harvesting</h3><p>email to harvest data: <a class="external-link" href="mailto:bw-data@indecol.no" rel="nofollow">bw-data@indecol.no</a></p><p>set at Webfaction. The Mail box name: bw_data, password  CayP7Hx2b93Mzv57rDiM</p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p>Running on NTNU OpenStack: CLIMMS Storage 129.241.152.19:27017</p><p>administrator credentials: admin, DCzMk4KJ2CWARpk5MW8m</p>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

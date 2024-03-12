@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : Uninstalling (conda): Anaconda, Miniconda</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="174491614.html">Digital Tools for IndEcol Research/Teaching</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="174491824.html">Anaconda (conda)</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : Uninstalling (conda): Anaconda, Miniconda
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Peter Esmé Maxwell</span>, last modified on 31.01.2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="contentLayout2">
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit1" id="Uninstalling(conda):Anaconda,Miniconda-General">General</h1><p>The uninstall process is mostly straightforward but a little care needs to be taken in relation to Anaconda's shell or environment integration.  Typically, problems in this respect are easier to resolve on Linux than Windows.  The uninstall instructions assume basic familiarity with using a command line / shell.</p><p>The official instructions are available in the <a class="external-link" href="https://docs.anaconda.com/anaconda/install/uninstall/" rel="nofollow">Anaconda documentation</a> but it appears to omit step(s) required to remove conda from the shell or environment.</p><p>The uninstall instructions assume a working conda installation.  Without that, more manual effort is required.</p><p><u>These instructions are for single user installs</u>.  If you've installed multiuser then you should know what you're doing anyway.</p><p><br/></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit1" id="Uninstalling(conda):Anaconda,Miniconda-UninstallWindows(singleuserinstall)">Uninstall Windows (single user install)</h1><ol><li>Run <code>conda install anaconda-clean</code>.</li><li>Run <code>anaconda-clean</code>  (warning, this will remove all Anaconda related configuration!).</li><li>You will likely need to undo the changes that <code>conda init</code>  made to your shell config during the installation process.  If you see the conda environment indicated in your prompt, e.g. <code>(base)</code>, then this is the case.  Run <code>conda init --reverse</code>.</li><li>If you requested alteration of the Window environment variables such as PATH when installing then you may need to edit this manually.<ol><li>In the window search on the taskbar, start typing &quot;environment&quot; until you see &quot;Edit the system environment variables&quot; (click to open).</li><li>You should have a modal window titled &quot;System Properties&quot;. Now, clock the &quot;Environment Variables&quot; button near the bottom of that window.</li><li>You should now have a window titled &quot;Environment Variables&quot;.  Under &quot;User variables for&quot;, select &quot;Path&quot; and click the &quot;Edit&quot; button.  Remove any entries pertaining to Anaconda (carefully).</li><li>Under &quot;System variables&quot;, check that the &quot;Path&quot; variable is also clear of all references to Anaconda.</li><li>Hit &quot;Ok&quot;, etc, to confirm your changes.</li></ol></li><li>You can now remove the original install directory, i.e. the appropriate A<code>naconda3</code> directory.</li><li>Any open terminals, etc, will have to be closed and reopened to effect the changes from step 3.</li><li>You may have to manually clean-up Anaconda entries from your Start Menu.</li></ol><p><br/></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit1" id="Uninstalling(conda):Anaconda,Miniconda-UninstallLinux(singleuserinstall)">Uninstall Linux (single user install)</h1><ol><li>Run <code>conda install anaconda-clean</code>.</li><li>Run <code>anaconda-clean</code>  (warning, this will remove all Anaconda related configuration!).</li><li>You will likely need to undo the changes that <code>conda init</code>  made to your shell config during the installation process.  If you see the conda environment indicated in your prompt, e.g. <code>(base)</code>, then this is the case.  Run <code>conda init --reverse</code>.</li><li>You can now remove the original install directory, i.e. the <code>~/anaconda3</code>  directory.</li><li>Any open terminals, etc, will have to be closed and reopened to effect the changes from step 3.</li></ol><p><br/></p></div>
+</div>
+</div>
+</div>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/275909639/275909640.png">browser-web-icon.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

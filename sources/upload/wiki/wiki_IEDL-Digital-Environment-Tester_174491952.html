@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : IEDL Digital Environment Tester</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="174491614.html">Digital Tools for IndEcol Research/Teaching</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Indecol-digital-work-environment_176848929.html">Indecol digital work environment</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : IEDL Digital Environment Tester
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Unknown User (radekl)</span>, last modified by <span class='editor'> Konstantin Stadler</span> on 13.01.2020
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="contentLayout2">
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit1" id="IEDLDigitalEnvironmentTester-Testingthedigitalworkenvironment">Testing the digital work environment</h1><hr/><p>After you have installed<a href="Git-Version-Control_174491954.html"> <span class="wikilink1">git</span></a>, <a href="Python_174491827.html"><span class="wikilink1">python</span></a> and <span class="wikilink1"><a href="Matlab_176848917.html">matlab</a></span> as <a href="Indecol-digital-work-environment_176848929.html"><span class="wikilink1">described here</span></a>, verify if all things work together:</p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit2" id="IEDLDigitalEnvironmentTester-WindowsPC">Windows PC</h1><hr/><p>If you are on a MS Windows machine, run the file</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">X:\indecol\Software\iedl_checks\software_check\iedl_checks.exe</pre>
+</div></div><p>If the last line of the test output says “OK”, you are good to go. If it says “WARNING - NOT ALL EXPECTED PROGRAMS FOUND”, please double check if you <a href="Indecol-digital-work-environment_176848929.html">followed the installation guide exactly</a>. When you still encounter problems, please open a <span><span><a href="Windows-Command-line_174491958.html">command line</a></span>(Windows)</span>, change the directory by typing these two lines:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: python; gutter: false; theme: Midnight" data-theme="Midnight">X: 
+cd indecol\Software\iedl_checks\software_check</pre>
+</div></div><p>and run</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">iedl_checks -f</pre>
+</div></div><p>and email the output of the extended tests to the Digital Lab.</p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit3" id="IEDLDigitalEnvironmentTester-OtherOS-installingthesystemchecksprogrammanually">Other OS - installing the system checks program manually</h1><hr/><p>If you are using a Mac or Linux system, you need to install the system checks program:</p><ol><li class="level1"><p>Open a <a href="Windows-Command-line_174491958.html">command line (Windows)</a> or <a href="Linux-Command-line_174491960.html">terminal (Linux)</a>.</p></li><li class="level1"><p class="auto-cursor-target">Install the <a class="external-link" href="https://gitlab.com/dlab-indecol/iedl_checks" rel="nofollow" title="https://gitlab.com/dlab-indecol/iedl_checks"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/174491952/176849347.png" data-image-src="attachments/174491952/176849347.png" data-unresolved-comment-count="0" data-linked-resource-id="176849347" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="174491952" data-linked-resource-container-version="21" alt=""></span>IndEcol Digital Environment Tester</a> by copy-pasting the following line into the command prompt window:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">pip install git+https://gitlab.com/dlab-indecol/iedl_checks.git --upgrade</pre>
+</div></div><p>Press enter.</p></li><li class="level1"><p>Close the command line window and open another one.</p></li><li class="level1"><p class="auto-cursor-target">Copy - paste</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">iedl_checks</pre>
+</div></div><p>into the command line and start the tests with enter (the tests might take a couple of seconds).</p></li><li class="level1"><p class="auto-cursor-target">If the last line of the test output says “OK”, you are good to go. If it says “WARNING - NOT ALL EXPECTED PROGRAMS FOUND”, please double check if you <a href="Indecol-digital-work-environment_176848929.html">followed the installation guide exactly</a>. When you still encounter problems, please run</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">iedl_checks -f</pre>
+</div></div><p>and email the output of the extended tests to the Digital Lab.</p></li></ol></div>
+</div>
+</div>
+</div>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/174491952/176849347.png">browser-web-icon.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

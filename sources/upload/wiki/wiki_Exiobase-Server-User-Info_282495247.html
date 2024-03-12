@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : Exiobase Server User Info</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab_174491605.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Infrastructure_267029429.html">Infrastructure</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : Exiobase Server User Info
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Peter Esmé Maxwell</span>, last modified on 21.04.2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="contentLayout2">
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h2 id="ExiobaseServerUserInfo-Summary">Summary</h2><p>There is a virtual server, provisioned on NTNU's Openstack, solely for the purpose of EXIOBase. Actually, there are two servers.</p><ul><li>EXIOSVR (exiosvr.iedl.no) : the main server for running EXIOBase pipelines, etc.</li><li>SECSVR (secsvr.iedl.no) : a smaller ancilliary server that handles various security functions and such like.</li></ul><p><br/></p><p>There are two types of access: unprivileged and administrator. This guide deals only with the former.</p><p><strong>Warning</strong>: the files on EXIOSVR and SECSR are <strong>not</strong> backed-up, you must do this yourself!</p><p><br/></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h2 id="ExiobaseServerUserInfo-AccessandLogin(non-adminaccounts)">Access and Login (non-admin accounts)</h2><p>If you're been told you should have access then it'll have to be enabled. In other words, your access will need approved by Konstantin, and then either he or I (Peter) can actually enable it.</p><p>There is some background info on <a href="279380176.html">public keys for ssh here</a> and <a href="279380222.html">general usage here</a>.</p><h3 id="ExiobaseServerUserInfo-SSHtoEXIOSVR">SSH to EXIOSVR</h3><p>This is fairly easy. You can use your NTNU username and password for this.</p><pre><code>ssh username@exiobase.iedl.no
+</code></pre><p>When prompted for your password, enter it, and you should have access. This may occasionally seem to pause for 10-20 seconds; this is when there hasn't been much activity and the cache is cold, nothing to worry about.</p><h3 id="ExiobaseServerUserInfo-SSHtoEXIOSVRusingpublickeyauthentication">SSH to EXIOSVR using public key authentication</h3><p>You can also ssh using public key authentication.</p><p>If public key authentication this is new to you, it means you generate a key pair on your local computer. The keypair has a private and a public part. You arrange to have the public part put on the systems you want to access, and only the matching private part of your key can then login against that public key. You can send your public key to anyone you like but <strong>NEVER</strong> send your private key.</p><p><span style="letter-spacing: 0.0px;">So. You'll need to generate a public key and then use ssh with the password authentication to copy that into </span><code style="letter-spacing: 0.0px;">~/.ssh/authorized_keys</code><span style="letter-spacing: 0.0px;">. It'll also need to have the correct permissions. This will then allow you to login using public key authentication, which if used with <code>ssh-agent</code> can make matters easier if you're copying files, etc.</span></p><p>Thankfully, this has been explained in our <a href="279380176.html">handy guide on ssh public keys here</a>.</p><p><br/></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h2 id="ExiobaseServerUserInfo-Accessing&#39;M&#39;and&#39;X&#39;">Accessing 'M' and 'X'</h2><p>There are two standard shares setup that you can mount easily.</p><ul><li>'M' : //home.ansatt.ntnu.no/<em>username</em> (gets mounted to /home/adusers/<em>username</em>/mnt/M)</li><li>'X' : //forskning.it.ntnu.no/ntnu/iv/ept/eksperimentell (gets mounted on /home/adusers/<em>username</em>/mnt/X)</li></ul><p>To do this, there are some handy shell scripts in your home directory: <code>mount_M.sh</code>, <code>mount_X.sh</code>, <code>umount_M.sh</code>, and <code>umount_X.sh</code>.</p><p>If you want to mount the M share, just run <code>./mount_M.sh</code> and it will mount it for you in <code>~/mnt/M.</code> To unmount the share, just run <code>umount_M.sh</code>. Easy, huh?</p><p>Just remember to umount the shares before you finish your work as too many sessions hanging about can cause problems (if we see too many long-lived connections, your benevolent sysadmin may begin forcibly umounting).</p><p><br/></p></div>
+</div>
+</div>
+</div>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

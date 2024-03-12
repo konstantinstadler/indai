@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : Public Keys (ssh)</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="174491614.html">Digital Tools for IndEcol Research/Teaching</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="SSH_267029689.html">SSH</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : Public Keys (ssh)
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Peter Esmé Maxwell</span>, last modified on 16.03.2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="contentLayout2">
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h2 id="PublicKeys(ssh)-Background:LetMeTellYouASecret">Background: Let Me Tell You A Secret</h2><p>Lets imagine Alice wants to send a secret message to Bob but everything that is sent between them can be seen by Eve. Neither Alice or Bob want Eve to read their messages.</p><p>In principle, Alice could encrypt her message with some secret key (e.g. a password) and then Bob could decrypt it using the same secret key; this is called &quot;symmetric encryption&quot; because they key used to encrypt is the same as is used to decrypt. But, then, Alice would need some way to get the secret key to Bob without Eve also discovering the contents, which isn't possible in our hypothetical scenario.</p><p>Instead we can use &quot;asymmetric encryption&quot; or &quot;public key encryption&quot;. Bob generates what is called a key pair: one part is private and he must keep that secret from everyone else (including Alice); the other part is public and Bob can share that with everyone. If Alice wants to send a message to Bob, she encrypts it with Bob's public key. This is a one-way process: after it's encrypted with the public key, it can only be decrypted with Bob's private key. So anyone can encrypt messages to Bob with his public key but only Bob can decrypt them, using his private key.</p><p>Public key cryptography also allows one to &quot;cryptographically sign&quot; a message and is roughly the reverse of the encryption. Bob can use his private key to sign a message, and everyone else can verify that signature with the public key. This means another character, Mallory, cannot modify any of Bob's messages without the recipient knowing.</p><p>If you're interested in this, the most popular algorithm for this is <a class="external-link" href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)" rel="nofollow">RSA (Rivest-Shamir-Adleman)</a>; newer algorithms based on elliptic curves have since been developed but RSA is still commonly used. Wikipedia has an article about what roles characters like <a class="external-link" href="https://en.wikipedia.org/wiki/Alice_and_Bob" rel="nofollow">Alice, Bob, Eve, and Mallory</a> have in these cryptographic plays.</p><p>Anyway, this is the general idea behind using public key authentication with SSH: you generate a keypair and the public key goes on the hosts you want to access, you then login using your corresponding private key. The details on how it actually works are more complicated but this is the general idea: the private key stays on the user's computer/device, and is also itsefl encrypted with a passphrase for extra security (the private key were stolen).</p><p><br/></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h2 id="PublicKeys(ssh)-OverviewofSSHandPublicKeys">Overview of SSH and Public Keys</h2><p><span style="letter-spacing: 0.0px;">Ok, so why bother with public key for SSH when passwords seem to work? Firstly, it requires the remote server to either store some representation of your password or be able to check your username+password in some way; this can sometimes be a complication for systems adminsitration. Also, users sometimes pick really bad passwords whereas to compromise public key authentication, the private key needs to be stolen from the user's device and also the password for that guessed. Some tasks like moving files about require repeated authentication and entering your password so many times can quickly get tiresome. Finally, sometimes we want to do automated tasks and this can be done using public key authentication.</span></p><p><br/></p><p><span style="color: rgb(0,153,255);"><span style="font-size: 16.0px;letter-spacing: -0.096px;"><strong>Explanation of how this works in practice</strong></span></span></p><p><span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image" draggable="false" src="attachments/279380176/282495343.png" data-image-src="attachments/279380176/282495343.png" data-unresolved-comment-count="0" data-linked-resource-id="282495343" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2022-10-26_11-15-57.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="279380176" data-linked-resource-container-version="17" alt=""></span></p><p>To setup public key authentication, you need to generate a keypair. There are several different types of key possible depending on the algorithm used but <code>rsa</code> (older) and <code>ed25519</code> are the most common.</p><p>You can choose the name for your key files but the default is for new keys to be creaeted as follows: for the private part either <code>~/.ssh/id_rsa</code> or <code>~/.ssh/id_ed25519</code>; for the public part <code>~/.ssh/id_ed25519.pub</code> or <code>~/.ssh/id_rsa.pub</code>. Remember: the tilde, ~, means your home directory on unix system (Powershell on Windows has adopted this convention). On a Windows system, the new keys are usually stored in <code>C:\Users\yourusername\.ssh\id_rsa</code> (private part) and <code>C:\Users\yourusername\.ssh\id_rsa.pub</code> (public part), and similarly if you choose ed25519.</p><p>What has to happen now, is that your public key part (<code>id_rsa.pub</code> or <code>id_ed25519.pub</code>) needs to end up in the correct place on the host your want to access. This place is almost always <code>~/.ssh/authorized_keys</code> on the remote host (not your computer, but the server you want to access).</p><p>You can actually have several different key pairs, e.g. you might have one key pair on your laptop and another on a desktop, or you can maintain several different keypairs on the same computer. The public part for all of these can be put in <code>authorized_keys</code> on the remote system so taht you can use any of the corresponding private keys to login.</p><p><br/></p><p><span style="color: rgb(0,153,255);font-size: 16.0px;font-weight: bold;letter-spacing: -0.006em;">Concrete example</span></p><p>So summarise with an example assuming using the Powershell CLI on Windows 10 on the user's computer, and Linux on the server the user wants to access.</p><p><u style="letter-spacing: 0.0px;">1. We create a keypair</u></p><p><span style="letter-spacing: 0.0px;">To make things easier later, the keys should go into </span><code style="letter-spacing: 0.0px;">C:\Users\yourusername\.ssh\</code><span style="letter-spacing: 0.0px;">  If that directory doesn't exist, create it. Then </span><code style="letter-spacing: 0.0px;">cd C:\Users\yourusername\.ssh\</code><span style="letter-spacing: 0.0px;">.</span></p><p>We'll create an ED25519 key with default options.</p><pre><code>C:\Users\peterma\.ssh&gt; ssh-keygen -t ed25519
+</code></pre><p><br/></p><p><br/>You'll then get a response that looks like:</p><pre><code>Generating public/private ed25519 key pair.
+Enter file in which to save the key (C:\Users\peterma/.ssh/id_ed25519):
+</code></pre><p><br/></p><p>In this example, you can just hit return to choose the default that is suggested in the brackets but you could choose a different name.</p><p>You'll then be asked to choose a passphrase. This is used to encrypt your private key. If you forget the passphrase, you'll not be able to decrypt or recover the private key.</p><pre><code>Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+</code></pre><p><br/></p><p>Then you'll get a response that'll look something like</p><pre><code>Your identification has been saved in C:\Users\peterma/.ssh/id_ed25519.
+Your public key has been saved in C:\Users\peterma/.ssh/id_ed25519.pub.
+The key fingerprint is:
+SHA256:QFZejnijxDplHjvons/vvPTTXDMswkkkbvOEAWuD0+s win-ntnu-no\peterma@NTNU17558
+The key's randomart image is:
++--[ED25519 256]--+
+|      +o. .      |
+|     * +o+.      |
+|    o &amp;.==.      |
+|     X O=.o      |
+|    + *.S* . .   |
+|   . o .  = . =  |
+|    . E .  + o o |
+|   . o o .. o    |
+|    o.oo=...     |
++----[SHA256]-----+
+</code></pre><p><br/></p><p>This tells you where the keys are stored. It also shows the key fingerprint which is unique and based on your public key; this allows you and systems adminsitrators to identify which key is which out of a large collection. There's also some ASCII-art which does the same as the fingerprint but this isn't used so often.</p><p>We can examine the contents of the new public key part.</p><pre><code>C:\Users\peterma\.ssh&gt; cat id_ed25519.pub
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKpZjBOG4B6n7oNmJOz+AJ5PyoFlBGLMOo8AVbC3gK3T win-ntnu-no\peterma@NTNU17558
+</code></pre><p><br/></p><p>So the first field identifies the type of key, in this case it's an ed25519 key. If it were RSA then you'd see ssh-rsa, so on and so forth.</p><p>The middle field is the actual key.</p><p>The third and last field is a comment that can be used to identify the key. Typically, one would want their username in that comment.  xxxxxxxxxxxxx</p><p><br/></p><p><u>2. Putting the public key into the remote <code>~/.ssh/authorized_keys</code> file</u></p><p><br/></p><p>As a reminder: on Linux systems the tilde ~ means the user's home directory. The <code>.ssh</code> part is a directory, the dot prefix on Linux systems says that it contains configuration files (you can also have 'dot-files' that are just plain files and not a directory); the dot prefix means that it won't be shown in a normal <code>ls</code> output, see the <a class="external-link" href="https://en.wikipedia.org/wiki/Hidden_file_and_hidden_directory" rel="nofollow">article here for more information</a>.</p><p>Here is an example showing the contents of my authorized_keys on the EXIOSVR.</p><div class="table-wrap"><table class="wrapped confluenceTable"><colgroup><col/></colgroup><tbody><tr><td class="confluenceTd"><pre><code>admin_peterma@instance-exio-svr:~/.ssh$ cat authorized_keys
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDFggsyXZHqhd4BKePW9TNWYp7rkegxuPve4Gw2RQv8kbTMXPH7Es+pzT3Ni7Pf+ANu3psJDuHgTdHByKn+6YdsA656DsShW7Us4NA43a31aG2hlT5ce+k3HhOKyuLVjqxmFuK6cBGM8GwKzeR+85E2ohc79yvIDsm2DHEPVIAd0KHO0SUCkqYKHJmKWnsq0LNCz3bBRk6ivNQLw7uf6dwwXPJLJ6vb92YFi67F8+eC1nnJbVayft+WbGOSY3cJqEnwlQVZ2PDtmmfwVr0Jo1k/CKTABwptFT3A4qye+XlnmwV/5DXrtHVv6xVXUJiG7SU/0VQ5JzfnpH40ECdGnLGwtwVDSV6JMXFh9avYz9eccaoY9u3Fx/4jE4/36n8ap2vAx30I1vBmiq3PGW/1w6XqqaD0JH1HhgfXRT+ARPDhvJyoskCbvsbCyJhTcFnAH1saX7zwMiqgkkdILAGecfcznK4UwRmYS7Gmm0OSvvXL3fs3hZ2rRKi0vgGy7VD3JXk= peterma-laptopwindows-20230306
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDwbqs1kL1wgQUnNxf33SN6AZlzGBHezXqmIiiri5G/4tTnpXjKam8PE5RisR7S3dQPMzBnB7zbtFXn/9c09WwKZpBsLp87La4efVOxww2dMXM4Z/mjItRdOgoUqwcsYtUR5xIHqihLyq92ft6HVuLSQPdi2jnud81a+0rZMUcaI3XHiaLCphZjm3mWeCesu3S+AWcze5+a/IHn63LP5XHmYRu2Z2pOVeN0xVynFo4f5OjACqbjTGyVyZV6zG3pWYNKProJx1Po+E7H7Yo1yYZNYarhvdIDbhj4pHp3f+J0RTVmKlc5HyMWDzwmCv/9+TbvOuM3Ff8rN/p8Lren+9J5 peterma-laptopwsl-20230306
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCWC71pBy+kwIzJ5UhpA9UWRFwdPuFtSURd2ZGbSWEqRigzv7ZIiFnCvxOBE2iARY9wH/MRUT48jocLGPWlHdQpXu3J2sqS1kK0M+1I44wtNfXeWHrNKtkP/SaqPzaybbUHTLL+EDWU7pbw7SWJgFq3hvf/UGMSyH/9Yzn2zNMuG5CjVSFbF+MosmvCN47fg6DRxjuDVqIUtNC7MdH5458nBwsh+kguKe9La9WZlKHMDLcBx2rwl/oThU0+0czFzC7TkmweBYv3PE+rirXm9xwSlQA+u7UxhV51Y31pSqq2z4R+PBXue8Bvi676A9plNmyi6RkmIuG5DFGP6S9l3J/kXlrt5n7Fj8Mg8+Sc6qCNSWzeRd8dArkvusV6sPUtaQjJHkJ07eqwqwTDm3IaUJMKJGxUqHJvnjFop5m3GeWCv+XmGNezroUqQOHryDA6HidQ4dt2+3FQQKyMNuPEPOWwPKvut3aRVrpdMmU1laNOMQ1+Tp+Ta49XPird4woDZPc= peterma-laptophelsinki-20230306</code></pre></td></tr></tbody></table></div><p>You can see that there are three RSA keys. It's also immediately obvious that RSA keys are typically much longer. The ed25519 keys are much shorter for the same security level.</p><p>Often a systems adminsitrator will put your public key into the authorized_keys so you can login. However, for hosts that acccept password authentication as well as public key then you can do this step yourself.</p><p><span style="letter-spacing: 0.0px;">Continuing the example from immediately above, if we take a look at the directory we can see the <code>authorized_keys</code> file:</span></p><pre><code>admin_peterma@instance-exio-svr:~/.ssh$ ls -l
+total 16
+-rw------- 1 admin_peterma admin_peterma 1577 Mar  6 14:15 authorized_keys
+-rw-r--r-- 1 admin_peterma admin_peterma 1110 Mar  9 09:39 known_hosts
+</code></pre><p><br/></p><p>It's important that the authorized_keys file has user and group owners as your user, and that the permissions are at most u+rw (0600). If you don't know what this means, see one of the many guides on the internet, e.g. <a class="external-link" href="https://kb.iu.edu/d/abdb" rel="nofollow">this one</a>.</p><p>If the file permissions are not correct you can do</p><pre><code>chmod 600 ./authorized_keys
+</code></pre><p><br/></p><p>Going to the home directory, we also should check the permissions on the .ssh directory (the output has been edited to shorten):</p><pre><code>admin_peterma@instance-exio-svr:~$ ls -al
+14:15 .ssh
+-rw-r--r--  1 admin_peterma admin_peterma     0 Mar  1 ```
+</code></pre><p><br/></p><p>Note that the .ssh directory only has write permissions for the user owner.</p><p>Right, so how do you actually get your public key into the remote authorized_keys? Below are two fairly easy ways.</p><p>Using a Powershell CLI on Windows: <code>type name_of_the_key.pub | ssh username@server &quot;cat &gt;&gt; .ssh/authorized_keys&quot;.</code> Or you can do it manually by editing the remote file and pasting.</p><p>On a Linux system: <code>cat name_of_the_key.pub | ssh username@server &quot;cat &gt;&gt; .ssh/authorized_keys&quot;.</code> Or use the <code>ssh-copy-id</code> utility. Or do it manually by editing the remote file and pasting.</p><p><br/></p><p>You may need to ssh to the remote server and manually correct the permissions.</p><p><br/></p><p><u>3. Testing</u></p><p>If your private key is in ~/.ssh/id_rsa or ~/.ssh/id_ed255519 then you can simply do</p><p><code>ssh username@server</code></p><p>If not, then you have to specify the location of the private key</p><p><code>ssh -i location_of_private_key username@server</code> </p><p><br/></p><p>If, for some reason, it doesn't work, e.g. it stalls for a long period of time or times out, then you can get a better idea of what's happening by adding one or more verbose switches:</p><p><code>ssh username@server -v</code>  or <code>ssh username@server -vv</code> </p><p><br/></p><p><br/></p><p><br/></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<p><br/></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<p><em>(Moved from other pages, in edit...)</em></p><h3 id="PublicKeys(ssh)-Keypairs"><s><span>Keypairs</span></s></h3><p><br/></p><p><br/></p><p><s>SSH keys allows password-less or 2-factor authentication login.</s></p><p><s>SSH keys are a kind of asymmetric encryption, thus consisting of a &quot;private&quot; and a &quot;public&quot; part (like a key and a lock).</s></p><p><s>To use them, you need to generate such a pair of private and public files.</s></p><blockquote><p><s><span class="hljs-pscommand" style="color: rgb(1,1,253);">ssh-keygen</span><span class="hljs-parameter" style="color: rgb(0,104,129);"> -t</span><span style="color: rgb(23,23,23);"> ed25519</span></s></p></blockquote><p><s>ssh-keygen is the command</s></p><p><s>-t specifies the algorithm</s></p><ul><li><s>default <a class="external-link" href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)" rel="nofollow">RSA</a>. Should be at least <span style="color: rgb(10,10,35);">2046 bits (-b 2046)</span></s></li><li><s><span style="color: rgb(10,10,35);">ed25519 is the current recommedation, faster and even more secure</span></s></li><li><s><span style="color: rgb(10,10,35);">others are available (man ssh-keygen</span></s></li></ul><p><s>The command then asks</s></p><ul><li><s>name of the key (e.g. ntnu_login)</s></li><li><s>passphrase (a password for the key - see below</s></li></ul><p><s>This generates two files:</s></p><ul><li><s>name_of_the_key</s></li><li><s>name_of_the_key.pub</s></li></ul><p><s>Make a directory .ssh in your home directory (C:\Users\username) and move both files there.</s></p><p><s>Now we need to get the .pub key to the server. In linux/mac? you can use ssh-copy-id but this does not work in windows.</s></p><p><s>Instead we have to simulate the functionality manually:</s></p><blockquote><p><s>type name_of_the_key.pub | ssh username@server &quot;cat &gt;&gt; .ssh/authorized_keys&quot;</s></p></blockquote><p><s>This appends the public(!) key to the authorized keys on the server.</s></p><p><s>We can try to login now with</s></p><blockquote><p><s>ssh username@server -i keyfile</s></p></blockquote><p><s>where the keyfile is the private key.</s></p><p><s>Of course, now we have to specify the key every time. To solve that we can use the ssh config file</s></p><p><br/></p><h2 id="PublicKeys(ssh)-ThePassphrase"><s>The Passphrase</s></h2><p><s>Protects your private key. You should use one if there is the possibility that someone can get hold of your private key file (e.g. if you have it on your laptop on an unencrypted harddisk, on an usb, if you upload it to some cloud infrastructure).</s></p><p><s>But it removes the convenience of having a password-less login.</s></p><p><br/></p><p><s>Solution: add the key to your key-ring / ssh-key agent.</s></p><blockquote><p><s>ssh-add keyname</s></p></blockquote><p><s>Not enable on ntnu windows system - we will investigate.</s></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p></div>
+</div>
+</div>
+</div>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/279380176/282495343.png">image2022-10-26_11-15-57.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

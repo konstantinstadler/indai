@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : Clone branches other than master from remote repository</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="174491614.html">Digital Tools for IndEcol Research/Teaching</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Git-Version-Control_174491954.html">Git Version Control</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : Clone branches other than master from remote repository
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Unknown User (radekl)</span>, last modified on 11.11.2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>Often you would like to work on different branches other than the master branch locally. For instance, in the event that you decide to work together on a development branch of a remote repository.</p><p>After cloning the remote repository to your pc, the local branche in your repository will probably only be the master branch. You can double check this with the command git branch. To list all branches on the remote repository type:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight"> git branch -a </pre>
+</div></div><p>If you want to work on a branch other than the master branch, e.g. dev_branch, you will need to make a local copy of this branch. Assuming your remote branch can be referred to as origin, you can do this by typing:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight"> git co -b dev_branch origin/dev_branch </pre>
+</div></div><p>Original example from <a class="external-link" href="http://stackoverflow.com/questions/67699/how-to-clone-all-remote-branches-in-git" rel="nofollow" title="http://stackoverflow.com/questions/67699/how-to-clone-all-remote-branches-in-git"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/174491989/176850012.png" data-image-src="attachments/174491989/176850012.png" data-unresolved-comment-count="0" data-linked-resource-id="176850012" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="174491989" data-linked-resource-container-version="5" alt=""></span>http://stackoverflow.com/questions/67699/how-to-clone-all-remote-branches-in-git</a></p><p>—Evert</p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/174491989/176850012.png">browser-web-icon.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

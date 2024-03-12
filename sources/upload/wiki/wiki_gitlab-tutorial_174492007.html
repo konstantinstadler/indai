@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : gitlab tutorial</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="174491614.html">Digital Tools for IndEcol Research/Teaching</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Git-Version-Control_174491954.html">Git Version Control</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : gitlab tutorial
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Unknown User (radekl)</span>, last modified on 11.11.2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="contentLayout2">
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<p style="margin-left: 30.0px;"><span style="color: rgb(255,255,0);"><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1709817188815 {padding: 0px;}
+div.rbtoc1709817188815 ul {list-style: square !important;margin-left: 0px;}
+div.rbtoc1709817188815 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1709817188815'>
+<ul class='toc-indentation'>
+<li><a href='#gitlabtutorial-BasicstepstocontributetoprojectshostedontheindecolGitlabrepository'>Basic steps to contribute to projects hosted on the indecol Gitlab repository</a></li>
+<li><a href='#gitlabtutorial-CopyremoteprojecttoyourlocalPC(thisstepisdoneonlyonceforproject)'>Copy remote project to your local PC (this step is done only once for project)</a></li>
+<li><a href='#gitlabtutorial-Contributingtoproject(thisisdoneeverytimeyouwanttoadd/chage/fixanythinginproject)'>Contributing to project (this is done every time you want to add/chage/fix anything in project)</a></li>
+<li><a href='#gitlabtutorial-Mergerequest'>Merge request</a></li>
+</ul>
+</div></span></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit1" id="gitlabtutorial-BasicstepstocontributetoprojectshostedontheindecolGitlabrepository">Basic steps to contribute to projects hosted on the indecol Gitlab repository</h1><hr/><p>We are using <a class="external-link" href="https://gitlab.com/" rel="nofollow" title="https://gitlab.com/"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/174492007/176850027.png" data-image-src="attachments/174492007/176850027.png" data-unresolved-comment-count="0" data-linked-resource-id="176850027" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="174492007" data-linked-resource-container-version="13" alt=""></span>https://gitlab.com/</a> for all Indecol projects.</p><p>If you do not yet have account on gitlab please create one and contact anyone from IEDL personaly or by email: <a class="external-link" href="mailto:contact@iedl.no" rel="nofollow">contact@iedl.no</a> to add you to Indecol pojects. Make sure to <span><span class="urlextern"><a href="Generate-ssh-key-for-windows-computers_174491974.html"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/174492007/176850027.png" data-image-src="attachments/174492007/176850027.png" data-unresolved-comment-count="0" data-linked-resource-id="176850027" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="174492007" data-linked-resource-container-version="13" alt=""></span></a></span> and add this ssh key to your gitlab <span class="urlextern"><a class="external-link" href="https://gitlab.com/profile/keys" rel="nofollow"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/174492007/176850027.png" data-image-src="attachments/174492007/176850027.png" data-unresolved-comment-count="0" data-linked-resource-id="176850027" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="174492007" data-linked-resource-container-version="13" alt=""></span></a></span><a class="external-link" href="https://gitlab.com/profile/keys" rel="nofollow"><span class="urlextern">https://gitlab.com/profile/keys</span></a> .</span></p><p>Once you are in you can start to contribute to projects. In case you have created the project and you are owner then you probably know what to do. Here we talk about situation when you want to contribute to indecol project.</p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit2" id="gitlabtutorial-CopyremoteprojecttoyourlocalPC(thisstepisdoneonlyonceforproject)">Copy remote project to your local PC (this step is done only once for project)</h1><hr/><ol><li class="level1"><p>Go to web browser, login to <a class="external-link" href="https://gitlab.com/" rel="nofollow" title="https://gitlab.com/"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/174492007/176850027.png" data-image-src="attachments/174492007/176850027.png" data-unresolved-comment-count="0" data-linked-resource-id="176850027" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="174492007" data-linked-resource-container-version="13" alt=""></span>https://gitlab.com/</a>, find the name of the project and open it</p></li><li class="level1"><p>On the top there is button <strong>Fork</strong> and just next to it is box where you can see either <strong>https</strong> or <strong>ssh</strong>. Please make sure there is <strong>ssh</strong></p></li><li class="level1"><p>Copy the url next to the ssh box</p></li><li class="level1"><p>On your PC open the <a href="Windows-Command-line_174491958.html"><span class="wikilink1">command line</span></a> or the Anaconda prompt (click <span class="urlextern"><a href="174491824.html"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/174492007/176850027.png" data-image-src="attachments/174492007/176850027.png" data-unresolved-comment-count="0" data-linked-resource-id="176850027" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="174492007" data-linked-resource-container-version="13" alt=""></span></a></span> for help)</p></li><li class="level1"><p>In the prompt navigate to folder where you want your local copy of the project (click <span class="urlextern"><a href="Windows-Command-line_174491958.html"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/174492007/176850027.png" data-image-src="attachments/174492007/176850027.png" data-unresolved-comment-count="0" data-linked-resource-id="176850027" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="174492007" data-linked-resource-container-version="13" alt=""></span></a></span> for help)</p></li><li class="level1"><p class="auto-cursor-target">Run command:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">git clone url_copy</pre>
+</div></div><p>where the url_copy is the copy from step #3. This will create your local copy of the project. Here you can do your changes and they keep on your local PC.</p></li><li class="level1"><p class="auto-cursor-target">Navigate to you local copy (step #6) of the project</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">cd project</pre>
+</div></div></li></ol><p>Once you are done with cloning the project to your local PC you do not need to do the steps again for this project.</p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit3" id="gitlabtutorial-Contributingtoproject(thisisdoneeverytimeyouwanttoadd/chage/fixanythinginproject)">Contributing to project (this is done every time you want to add/chage/fix anything in project)</h1><hr/><ol><li class="level1"><p>Open Anaconda promt and navigate to you local copy of project (last step from previous section)</p></li><li class="level1"><p class="auto-cursor-target">Navigate to <em>master</em> branch</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">git checkout master</pre>
+</div></div></li><li class="level1"><p class="auto-cursor-target">Make sure you are up to date with remote repository (the one from <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/174492007/176850027.png" data-image-src="attachments/174492007/176850027.png" data-unresolved-comment-count="0" data-linked-resource-id="176850027" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="174492007" data-linked-resource-container-version="13" alt=""></span><a class="external-link" href="https://gitlab.com" rel="nofollow" title="https://gitlab.com">https://gitlab.com</a>)</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">git pull</pre>
+</div></div></li><li class="level1"><p class="auto-cursor-target">Create branch where you will make changes or add new files</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">git branch name_of_the_branch</pre>
+</div></div></li><li class="level1"><p class="auto-cursor-target">Switch to newly created branch</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">git checkout name_of_the_branch</pre>
+</div></div></li><li class="level1"><p>Modify code, add new file[s], just develop whatever, the modified and/or new file[s] are on you local area</p></li><li class="level1"><p class="auto-cursor-target">Add file[s] from previous steps to git staging area</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">git add file_name</pre>
+</div></div><p>Repeat this for every modified and/or new file</p></li><li class="level1"><p class="auto-cursor-target">Once you are happy and you want to commit your changes run</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">git commit -m &#39;short explanation of what you have done&#39;</pre>
+</div></div></li><li class="level1"><p class="auto-cursor-target">Push your commited stuff to <a class="external-link" href="https://gitlab.com" rel="nofollow" title="https://gitlab.com"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/174492007/176850027.png" data-image-src="attachments/174492007/176850027.png" data-unresolved-comment-count="0" data-linked-resource-id="176850027" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="174492007" data-linked-resource-container-version="13" alt=""></span>https://gitlab.com</a> remote repository</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">git push -u origin name_of_the_branch</pre>
+</div></div></li></ol><p>After last step there is your branch where you have developed your stuff on the indecol gitlab repository. If you want this changes to be added to the main branch (master) to be visible by all other users of the project you have to create Merge request.</p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit4" id="gitlabtutorial-Mergerequest">Merge request</h1><hr/><ol><li class="level1"><p>Open <a class="external-link" href="https://gitlab.com" rel="nofollow" title="https://gitlab.com"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/174492007/176850027.png" data-image-src="attachments/174492007/176850027.png" data-unresolved-comment-count="0" data-linked-resource-id="176850027" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="174492007" data-linked-resource-container-version="13" alt=""></span>https://gitlab.com</a> in web browser and navigate to the project.</p></li><li class="level1"><p>On the left navigation bar click <strong>Merge request</strong> and find green button (right side) <strong>New merge request</strong> and click on it.</p></li><li class="level1"><p>In the <strong>Source branch</strong> in <em>Select source branch</em> box select your branch (the one you have created in previous section).</p></li><li class="level1"><p><strong>Target branch</strong> should be <em>master</em></p></li><li class="level1"><p>Click on green button <strong>Compare branches and continue</strong></p></li><li class="level1"><p>You can write some description of what and why you have done the changes. Select <strong>Assignee</strong> and/or <strong>Approvers</strong> if relevant.</p></li><li class="level1"><p>you can clik on <strong><em>Remove source branch when merge request is accepted.</em></strong> checkbox if you want to remove the branch automatically from the gitlab remote repository.</p></li><li class="level1"><p>Click on green button <strong>Submit merge request</strong></p></li></ol><p>That's it. The project maintainer[s] will review your request and accept it (or reject if it cause problems). Either way you will be notified.</p><p>Thank you for contributing!</p></div>
+</div>
+</div>
+</div>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/174492007/176850027.png">browser-web-icon.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

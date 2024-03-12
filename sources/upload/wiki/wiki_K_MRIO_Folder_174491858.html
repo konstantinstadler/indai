@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : K_MRIO_Folder</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="174491614.html">Digital Tools for IndEcol Research/Teaching</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : K_MRIO_Folder
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Unknown User (radekl)</span>, last modified on 11.11.2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="contentLayout2">
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<p style="margin-left: 30.0px;"><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1709817189095 {padding: 0px;}
+div.rbtoc1709817189095 ul {list-style: square !important;margin-left: 0px;}
+div.rbtoc1709817189095 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1709817189095'>
+<ul class='toc-indentation'>
+<li><a href='#K_MRIO_Folder-README'>README</a></li>
+<li><a href='#K_MRIO_Folder-ClassificationsandConcordances'>Classifications and Concordances</a></li>
+<li><a href='#K_MRIO_Folder-Notesforadvancedusers&amp;contributors'>Notes for advanced users &amp; contributors</a></li>
+</ul>
+</div></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<p>A number of MRIOs with data, metadata, and concordance matrices (aka bridging matrices) are stored in convenient processed format here:</p><p>\\felles.ansatt.ntnu.no\ivt\indecol\Projects\MRIOs</p><p>It is also highly recommended you add this folder of utility functions to your MATLAB path:</p><p>You can use the addpath() command in your matlab scripts, or add the folder to your saved Path environment in MATLAB.</p><p>We have saved a number of MRIOs in a “MATPack” format. This means they are in .mat files, one per year, where each file contains an 'IO' and a 'meta' struct variable. The IO struct contains a number of standard fields like IO.Z, IO.L, IO.A, etc.</p><p>To load the MRIOs in MATPack format we have a nice utility function. This function abstracts away the file and folder name details so it can be easier to write one script that runs on any computer (remote computers, personal laptop, NTNU supercomputer, etc):</p><p>so to give two examples:</p><h1 class="sectionedit1" id="K_MRIO_Folder-README">README</h1><p>In this folder we have gathered together several of the MRIOs in use today. Each folder contains the original data as received from the data provider, a .mat file that contains the data and metadata in a standardized format, and a processing script to convert from the original to standardized format.</p><p>Each .mat file contains two struct's: one called 'IO' with all the IO table data, and another called 'meta' with all the metadata.</p><p>Here's what is in the IO struct. Note: in some cases these have been spread into several files to reduce the filesize.</p><p>Each of these blocks may also have a “sd” prefix containing estimated standard deviation for the values.</p><p>The filenames are approximately similar for each MRIO but are not identical.</p><p>The 'meta' struct contains all the metadata. It should mostly be self-explanatory but there is also documentation available. The fieldnames in the 'meta' struct are the same as those in the 'mriotree' object, so read the next paragraph (“Bonus”) to see how to add the mriotree.m to your matlab path and open the doc page for the mriotree object. There you can find documentation about all the metadata fields.</p><p>Bonus: We have a metadata helper object called “mriotree”. This is a matlab object that adds some extra functions to the metadata data structure. To use it:</p><p>The mriotree object adds some functions so you can easily find particular countries, locate rows in the stressors matrix, perform common operations like country-wise aggregation, et cetera.</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">addpath(&#39;\\felles.ansatt.ntnu.no\ivt\indecol\Software\GeneralMatlabUtilities&#39;);</pre>
+</div></div><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">[IO, meta] = load_mrio(mrioname, year, versionString, hint); % Loads the specified MRIO from MATPACK files on k:</pre>
+</div></div><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">[IO, meta] = load_mrio(&#39;TESTING&#39;,2000,&#39;v1.0); % A 3 region, 3 product (9x9) testing MRIO [IO, meta] = load_mrio(&#39;EXIOBASE3&#39;,2004,&#39;3.2&#39;, &#39;pxp&#39;);</pre>
+</div></div><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">IO.A - Inter-industry coefficients (direct requirements matrix) IO.S - Stressor coefficients (primary and environmental inputs - direct requirements) IO.Y - final demand, in block-diagonal layout. Use &quot;sum(IO.Y,2)&quot; to convert to vector. IO.V - value add vector (note that some MRIOs have disaggregated VA) IO.L - Leontief inverse (total requirements matrix) IO.x - gross output IO.Z - transactions matrix (IO.A*diag(IO.x)) IO.C - characterisation matrix IO.F - Absolute stressor requiremnts (IO.S*diag(IO.x)) IO.Fhh - A final-demand width x IO.S height block with direct emission</pre>
+</div></div><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">addpath(&quot;K:\indecol\Software\GeneralMatlabUtilities\&quot;) tr = mriotree(meta); % This creates an MRIOTREE object from a metadata struct doc mriotre</pre>
+</div></div></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit2" id="K_MRIO_Folder-ClassificationsandConcordances">Classifications and Concordances</h1><hr/><p>Each MRIO contains its sector labels in the “meta” datastructure inside metadata.mat. In addition, we have created a ./Classifications folder that contains various classifications in TXT file format. Note that there is no hard link between the classifications in ./Classifications folder and the various MRIOs, however, we hope that folks will try and keep the ./Classifications folder up to date. The meta struct tells you which classification(s) are used in the various blocks, and the classification code names correspond to the classifications/concordance file names.</p><p>Based on the classifications in ./Classifications, we also keep a folder called ./Concordances that contains – wait for it – concordances between various classifications.</p><p>For these files the suffix “r” means the file deals with Regions, the “i” suffix means industries, “p” means products and “f” means stressors.</p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit3" id="K_MRIO_Folder-Notesforadvancedusers&amp;contributors">Notes for advanced users &amp; contributors</h1><hr/><p>As a general rule use the most recent version number. Keep track the version number you are using for your analysis. It's a bummer if you start your analysis for v1.0 then unwittingly switch to v1.1 and all your results change. It is up to you as the user to keep track of which version number you want to use. If you are introducing a new version or updating the data please create a new version number.</p><p>Each MRIO has one or more versions.</p><p>When you make a new version folder please create a copy of the “rebuild_XXX” script in the new version folder and modify that new version. That way you won’t accidentally break anything for others who still rely on older versions. Also, since the details of the raw data files may change (e.g. filenames, layout, country coverage, etc.), you may need to modify the “rebuild” script so that it correctly processes the newer data. This should all be done in the new version folder.</p><p>The following are *not* included in the .mat files:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">% IO.B - Sales co-efficients % IO.G - Ghosh model % IO.P - Price model % IO.T - full transactions matrix incl va and fdo) % IO.y1- vectorised final demand % IO.ym- marginal demand % IO.K - Capital requirements % IO.price - price vector of goods % IO.y_price - cost of goods (according to consumption of y) under new price conditions</pre>
+</div></div></div>
+</div>
+</div>
+</div>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

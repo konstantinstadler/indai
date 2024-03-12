@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : JupyterHub for teaching</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="174491614.html">Digital Tools for IndEcol Research/Teaching</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : JupyterHub for teaching
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Konstantin Stadler</span>, last modified by <span class='editor'> Unknown User (radekl)</span> on 15.10.2021
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>Related project: <a href="Diku_239502039.html">DIKU</a></p><h1 id="JupyterHubforteaching-Deployment/Setup">Deployment/Setup</h1><ol><li>Obtaining the infrastructure at <a href="https://www.ntnu.no/wiki/display/skyhigh/Openstack+at+NTNU" rel="nofollow">Openstack</a> through <a class="external-link" href="https://hjelp.ntnu.no/tas/public/ssp/content/detail/service?unid=503e8974f90944d1aaf0e4fb2c0d44cc&amp;from=97a703e3-52ee-4c28-b665-80ced77d8e91" rel="nofollow">NTNU hjelp</a>. The (rough) estimate of the hardware specs depends on the number of users and the intended use.</li><li>Setting up a standard instance using the <a href="https://www.ntnu.no/wiki/display/skyhigh/Using+the+webinterface" rel="nofollow">guidelines</a> (preferably ubuntu server, 18.04 or above and at least 2 GiB RAM). The <a href="https://www.ntnu.no/wiki/display/skyhigh/Flavors+of+instances" rel="nofollow">flavor</a> of  the VM must be at least m1.tiny to enable the installation of TLJH. </li><li><a class="external-link" href="https://tljh.jupyter.org/en/latest/install/custom-server.html" rel="nofollow">Installing TLJH on the (custom) server</a>, customizing the users and the necessary permission.</li><li><a class="external-link" href="https://nbgrader.readthedocs.io/en/stable/user_guide/installation.html" rel="nofollow">Installing the nbgrader and its extensions</a> and the other packages if necessary. <strong>sudo -E</strong> does this for all the users.</li><li>Getting a domain (either <a class="external-link" href="http://indecol.no/" rel="nofollow">http://indecol.no/</a> or <a class="external-link" href="http://iedl.no/" rel="nofollow">http://iedl.no/</a>). We are uing Opalstack webapp provider where Digital Lab crew has access and can setup domain with DNS pointing to public IP address of Openstack instance</li><li><a class="external-link" href="https://tljh.jupyter.org/en/latest/howto/admin/https.html#manual-https-with-existing-key-and-certificate" rel="nofollow" style="letter-spacing: 0.0px;">Setting up https with Lets Encrypt</a> (with the associated email <a class="external-link" href="mailto:admin@iedl.no" rel="nofollow" style="letter-spacing: 0.0px;">admin@iedl.no</a>).</li></ol><h1 id="JupyterHubforteaching-Workflow">Workflow</h1><p>The &quot;formgrader&quot; tab enables to manage the courses, assignments, students and submissions. For more information on nbgrader workflow - refer to the <a class="external-link" href="https://nbgrader.readthedocs.io/en/stable/" rel="nofollow">documentation page</a>.</p><p>The existing course repository can be cloned from e.g. Gitlab (Ubunttu server comes with git). Alternatively - transfer the materials from local machine using the &quot;upload&quot; in jupyterhub interface or through ssh. </p><h1 id="JupyterHubforteaching-Workingexamples">Working examples</h1><p>TEP 4295: <a class="external-link" href="https://tep4295.apps.stack.it.ntnu.no/" rel="nofollow">https://tep4295.apps.stack.it.ntnu.no/</a> (a gitlab repo at <a class="external-link" href="https://gitlab.com/rus.zhuravchak/tep4295.git" rel="nofollow">https://gitlab.com/rus.zhuravchak/tep4295.git</a>)</p><p>IO course: <a class="external-link" href="https://iotestground.indecol.no/" rel="nofollow">https://iotestground.indecol.no/</a></p><h1 id="JupyterHubforteaching-Writingnotebooks">Writing notebooks</h1><p>Generally like classical notebooks. NBgrader adds some more cell types.</p><p>Use diagrams.net for flowcharts and diagrams, save them to /figures</p><p><br/></p><p>For the student answers</p><p>### BEGIN SOLUTION</p><p>write example</p><p>### END SOLUTION</p><p><br/></p><p>Feedback (delete afterwards):</p><p>format strings with f&quot;(</p><p>get_assignment(chapter_number ==  .. instead of get_assignment(101)</p><p><br/></p><p><br/></p>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

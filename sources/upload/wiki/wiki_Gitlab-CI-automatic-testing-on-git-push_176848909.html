@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : Gitlab CI automatic testing on git push</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="174491614.html">Digital Tools for IndEcol Research/Teaching</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Git-Version-Control_174491954.html">Git Version Control</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="gitlab_174492003.html">gitlab</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : Gitlab CI automatic testing on git push
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Unknown User (radekl)</span>, last modified on 11.11.2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h1 class="sectionedit1" id="GitlabCIautomatictestingongitpush-GitlabCI">Gitlab CI</h1><p>The well known CI service <a class="external-link" href="https://travis-ci.org" rel="nofollow" title="https://travis-ci.org"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176848909/176850022.png" data-image-src="attachments/176848909/176850022.png" data-unresolved-comment-count="0" data-linked-resource-id="176850022" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176848909" data-linked-resource-container-version="9" alt=""></span>Travis</a> only works with GitHub. But GitLab has its own CI service, GitLab CI. GitLab provides <a class="external-link" href="https://docs.gitlab.com/ce/ci/README.html" rel="nofollow" title="https://docs.gitlab.com/ce/ci/README.html"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176848909/176850022.png" data-image-src="attachments/176848909/176850022.png" data-unresolved-comment-count="0" data-linked-resource-id="176850022" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176848909" data-linked-resource-container-version="9" alt=""></span>plenty of documentation</a>, and a decent <a class="external-link" href="https://docs.gitlab.com/ce/ci/quick_start/README.html" rel="nofollow" title="https://docs.gitlab.com/ce/ci/quick_start/README.html"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176848909/176850022.png" data-image-src="attachments/176848909/176850022.png" data-unresolved-comment-count="0" data-linked-resource-id="176850022" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176848909" data-linked-resource-container-version="9" alt=""></span>beginner's guide</a>.</p><p>GitLab CI is enabled by default on all GitLab project hosted on <a class="external-link" href="http://gitlab.com" rel="nofollow"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176848909/176850022.png" data-image-src="attachments/176848909/176850022.png" data-unresolved-comment-count="0" data-linked-resource-id="176850022" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176848909" data-linked-resource-container-version="9" alt=""></span>gitlab.com</a>, with Runners preconfigured and ready to take on jobs. Jobs are defined in a file “.gitlab-ci.yml” in your project's root directory. Here's a minimal yml to run tests with pytest:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: yml; gutter: false; theme: Midnight" data-theme="Midnight">before_script: 
+	- apt-get update -qy 
+	- apt-get install -y python3 python3-pip 
+test: 
+	script: 
+		- python3 -m pip install pytest 
+		- python3 -m pytest tests/tests.py</pre>
+</div></div><p>The commands in the “before_script” section runs before every job. The only job defined above is called “test” (name is arbitrary). The commands to be run in a job is listed in the subsection “script”.</p><p>Git push the addition of a .gitlab-ci.yml file, and GitLab should within minutes start running the jobs defined. On your repository page, go to Pipelines to see the status of all commits since the yml was uploaded. Click a badge on a commit line that says “passed” or “failed” or “running” to see details. On the detail page, click the button for a job to see the command line output for a virtual machine running that job. Here's what that looks like (click to see full size):</p><p><a class="external-link" href="https://wiki.indecol.no/lib/exe/fetch.php/gitlabci.png" rel="nofollow"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="250" src="attachments/176848909/176848911.png" data-image-src="attachments/176848909/176848911.png" data-unresolved-comment-count="0" data-linked-resource-id="176848911" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="gitlabci.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176848909" data-linked-resource-container-version="9" alt=""></span></a></p><p><a class="external-link" href="https://docs.gitlab.com/ce/ci/yaml/README.html" rel="nofollow" title="https://docs.gitlab.com/ce/ci/yaml/README.html"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176848909/176850022.png" data-image-src="attachments/176848909/176850022.png" data-unresolved-comment-count="0" data-linked-resource-id="176850022" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176848909" data-linked-resource-container-version="9" alt=""></span>There is a lot more to job configuration</a>. But to start with, it could be more helpful to have a look at <a class="external-link" href="https://docs.gitlab.com/ce/ci/examples/README.html" rel="nofollow" title="https://docs.gitlab.com/ce/ci/examples/README.html"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176848909/176850022.png" data-image-src="attachments/176848909/176850022.png" data-unresolved-comment-count="0" data-linked-resource-id="176850022" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176848909" data-linked-resource-container-version="9" alt=""></span>examples for different kinds of projects</a>.</p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/176848909/176848911.png">gitlabci.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/176848909/176850022.png">browser-web-icon.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : ArdaPy</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="174491614.html">Digital Tools for IndEcol Research/Teaching</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : ArdaPy
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Unknown User (radekl)</span>, last modified on 11.11.2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>The next steps are based on assumption that either you already know how to work with python or you went through <span class="wikilink1"> <a href="174491824.html">anaconda (all you need for python)</a></span></p><ol><li class="level1"><p>Download <span class="media mediafile mf_gz"><a href="attachments/128681672/176849237.gz" data-linked-resource-id="176849237" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="ardapy-0.0.2.tar.gz" data-linked-resource-content-type="application/x-gzip" data-linked-resource-container-id="128681672" data-linked-resource-container-version="35"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" width="16" src="attachments/174491821/176849174.png" data-image-src="attachments/174491821/176849174.png" data-unresolved-comment-count="0" data-linked-resource-id="176849174" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="GZ.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="174491821" data-linked-resource-container-version="12" alt=""></span></a><a href="attachments/128681672/176849237.gz" data-linked-resource-id="176849237" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="ardapy-0.0.2.tar.gz" data-linked-resource-content-type="application/x-gzip" data-linked-resource-container-id="128681672" data-linked-resource-container-version="35">ardapy-0.0.2.tar.gz</a></span></p></li><li class="level1"><p class="auto-cursor-target">open <span class="wikilink1"><a href="174491824.html">anaconda</a></span> prompt (if you use anaconda otherwise feel free to use whatever you want), navigate to the file you have downloaded and run:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">pip install ardapy-0.0.2.tar.gz</pre>
+</div></div></li><li class="level1"><p class="auto-cursor-target">to create output for <strong>sankey diagram</strong> run script ardamat2json_sankey</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">ardamat2json_sankey input.mat</pre>
+</div></div><p>It might take few minutes to finish the script. The input.mat is the file created by arda matlab script.<br/> After the process is done the name_of_input_file.json file is created. You can then use this file at <a class="external-link" href="https://datavis.indecol.no/sankey" rel="nofollow" title="https://datavis.indecol.no/sankey"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/174491821/176849175.png" data-image-src="attachments/174491821/176849175.png" data-unresolved-comment-count="0" data-linked-resource-id="176849175" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="174491821" data-linked-resource-container-version="12" alt=""></span>https://datavis.indecol.no/sankey</a>, click on “choose file” (left upper corner) and select the created json file.<br/> On the web page use “Edit configuration” to style the sankey diagram.<br/> You can also specify output file name running script like</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">ardamat2json_sankey input.mat -o my-output</pre>
+</div></div><p>The my-ouptut.json file will be created then.<br/> Consider using verbose script if you want to see what is going on during running the script, the verbosity is use with -v or –verbose switch</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">ardamat2json_sankey input.mat -v</pre>
+</div></div></li><li class="level1"><p class="auto-cursor-target">to create output for <strong>rosegraph diagram</strong> run script ardamat2json_rosegraph</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">ardamat2json_rosegraph input.mat</pre>
+</div></div><p>It might take few minutes to finish the script. The input.mat is the file created by arda matlab script.<br/> After the process is done the name_of_input_file.json file is created. You can then use this file at <a class="external-link" href="https://datavis.indecol.no/nestedpie" rel="nofollow" title="https://datavis.indecol.no/nestedpie"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/174491821/176849175.png" data-image-src="attachments/174491821/176849175.png" data-unresolved-comment-count="0" data-linked-resource-id="176849175" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="174491821" data-linked-resource-container-version="12" alt=""></span>https://datavis.indecol.no/nestedpie</a>, click on “upload data” (left upper corner) and select the created json file.<br/> You can also specify output file name running script like</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">ardamat2json_rosegraph input.mat -o my-output</pre>
+</div></div><p>The my-ouptut.json file will be created then.<br/> Consider using verbose script if you want to see what is going on during running the script, the verbosity is use with -v or –verbose switch</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">ardamat2json_rosegraph input.mat -v</pre>
+</div></div></li></ol><p>You can use -h (or –help) to see help doc for both script:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">ardamat2json_sankey -h</pre>
+</div></div><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">ardamat2json_rosegraph --help</pre>
+</div></div>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/174491821/176849174.png">GZ.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/174491821/176849175.png">browser-web-icon.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

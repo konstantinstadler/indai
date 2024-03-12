@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : Python on Vilje</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Development-tools_176849952.html">Development tools</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : Python on Vilje
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Unknown User (radekl)</span>, last modified on 11.11.2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176850461/176850462.png" data-image-src="attachments/176850461/176850462.png" data-unresolved-comment-count="0" data-linked-resource-id="176850462" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176850461" data-linked-resource-container-version="3" alt=""></span><a class="external-link" href="https://www.hpc.ntnu.no/display/hpc/Software#Software-PythonandPackages" rel="nofollow">Available Python packages on Vilje</a></p><p>It can be possible to install packages in your home directory. The <a class="external-link" href="http://docs.python-guide.org/en/latest/dev/virtualenvs/" rel="nofollow" title="http://docs.python-guide.org/en/latest/dev/virtualenvs/"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176850461/176850462.png" data-image-src="attachments/176850461/176850462.png" data-unresolved-comment-count="0" data-linked-resource-id="176850462" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176850461" data-linked-resource-container-version="3" alt=""></span>virtualenv</a> package is installed as site-package of the python modules</p><ul><li class="level1"><p>python/2.7.3</p></li><li class="level1"><p>python/2.7.6</p></li><li class="level1"><p>python/2.7.9</p></li><li class="level1"><p>python/2.7.11</p></li><li class="level1"><p>python/2.7.12</p></li><li class="level1"><p>python/2.7.13</p></li></ul><p>Load one of these modules:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: py; gutter: false; theme: Midnight" data-theme="Midnight">$ module load python/2.7.13</pre>
+</div></div><p>To see all available modules:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: py; gutter: false; theme: Midnight" data-theme="Midnight">$ module avail</pre>
+</div></div><h4 id="PythononVilje-virtualenv">virtualenv</h4><p>After the python 2x is loaded the virtualenv can be used as this:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: py; gutter: false; theme: Midnight" data-theme="Midnight">$ cd my_project_folder 
+$ virtualenv my_project</pre>
+</div></div><p>To begin using the virtual environment, it needs to be activated:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: py; gutter: false; theme: Midnight" data-theme="Midnight">$ source my_project/bin/activate</pre>
+</div></div><p>Install packages as usual, for example:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">$ pip install requests</pre>
+</div></div><p>If you are done working in the virtual environment for the moment, you can deactivate it:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">$ deactivate</pre>
+</div></div><p>To delete a virtual environment, just delete its folder:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">$ rm -rf my_project</pre>
+</div></div><h4 id="PythononVilje-MPIPython">MPI Python</h4><p>the <a class="external-link" href="http://pythonhosted.org/mpi4py/mpi4py" rel="nofollow" title="http://pythonhosted.org/mpi4py/mpi4py"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176850461/176850462.png" data-image-src="attachments/176850461/176850462.png" data-unresolved-comment-count="0" data-linked-resource-id="176850462" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176850461" data-linked-resource-container-version="3" alt=""></span>http://pythonhosted.org/mpi4py/mpi4py</a> is available on Vilje system, if using virtualenv it must be installed.</p><p>Nice examples are here: <a class="external-link" href="https://github.com/jbornschein/mpi4py-examples" rel="nofollow" title="https://github.com/jbornschein/mpi4py-examples"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176850461/176850462.png" data-image-src="attachments/176850461/176850462.png" data-unresolved-comment-count="0" data-linked-resource-id="176850462" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176850461" data-linked-resource-container-version="3" alt=""></span>https://github.com/jbornschein/mpi4py-examples</a></p><p>To run python script make the scrip executable (use hasbang and chmod x script) and run:</p><p>To run multiprocessing use PBS <a class="external-link" href="https://www.hpc.ntnu.no/display/hpc/Job+Execution#JobExecution-OpenMPJob" rel="nofollow"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176850461/176850462.png" data-image-src="attachments/176850461/176850462.png" data-unresolved-comment-count="0" data-linked-resource-id="176850462" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176850461" data-linked-resource-container-version="3" alt=""></span>https://www.hpc.ntnu.no/display/hpc/Job+Execution#JobExecution-OpenMPJob</a></p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/176850461/176850462.png">browser-web-icon.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

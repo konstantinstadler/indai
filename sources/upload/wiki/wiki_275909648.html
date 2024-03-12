@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : Installation (conda): Anaconda, MiniConda, Mamba</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="174491614.html">Digital Tools for IndEcol Research/Teaching</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="174491824.html">Anaconda (conda)</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : Installation (conda): Anaconda, MiniConda, Mamba
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Peter Esmé Maxwell</span>, last modified on 31.01.2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="contentLayout2">
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit2" id="Installation(conda):Anaconda,MiniConda,Mamba-InstallAnacondaSingleUser(Windows)"><span style="letter-spacing: -0.01em;">Install Anaconda Single User (Windows)</span></h1><ol><li class="level1"><p>Download the Windows Installer from the relevant link on the <a class="external-link" href="https://www.anaconda.com/download/" rel="nofollow">download page</a>.</p></li><li class="level1"><p>Once the file has downloaded, run it.</p></li><li class="level1"><p>Accept the license.</p></li><li class="level1"><p>Install as “Just me” (recommended).</p></li><li class="level1"><p>Select the path to install to. Usually, you can leave the suggested path, which should default to &quot;<code>C:\Users\<em>username</em>&quot;</code> where <em>username </em>is your username on the NTNU Windows computers; an alternative is something like &quot;<code>C:\Anaconda3&quot;</code> but it is more desirable for a single-user install to be under your own user directory. <u>Check, however, that the path does not contain spaces or any special Unicode characters:</u> any spaces of Unicode characters will typically cause the installation to fail, and you'd be likely to get problems later.</p></li><li class="level1">On the next screen there are two check boxes.<ol><li class="level1">The &quot;Add Anaconda3 to my PATH environment variable&quot; should typically be left unticked because it can often cause problems/conflicts. Normally, if one runs the <code>conda init</code> command in step 9 below, then conda should integrate properly with other software (it will actually add entries into PATH anyway). There may be occasions when this doesn't work but they are unusual now.</li><li>Ensure the &quot;Register Anaconda3 as my default Python&quot; is left ticked.</li></ol></li><li class="level1"><p><span style="letter-spacing: 0.0px;">Start the installation process.</span></p></li><li class="level1"><p>You don't need to install the additional packages suggested after the installation.</p></li><li class="level1">In relation to item 6, you typically also want to let conda add itself to your shell.  Go to &quot;Start Menu&quot; → &quot;Anaconda ... &quot; → &quot;Anaconda Powershell&quot; and then run <code>conda init.</code>This will setup Anaconda into your shell and certain environment variables. This <em>appears</em> to be the preference for <a href="213779229.html">Visual Studio Code</a>. If you open a standard Powershell after this step then you should see <code>(base)</code> in your command prompt, and you'll be able to call <code>conda</code>.</li></ol><p><span style="letter-spacing: 0.0px;">The official documentation is </span><a class="external-link" href="https://docs.anaconda.com/anaconda/install/windows/" rel="nofollow" style="letter-spacing: 0.0px;">available here</a><span style="letter-spacing: 0.0px;">, which has screencaps that may be helpful.</span></p><p>Instructions on how to integrate the conda installed Python with Matlab can be found <a href="Matlab-with-Conda-Python_275909836.html">here</a>.</p><p><br/></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit2" id="Installation(conda):Anaconda,MiniConda,Mamba-InstallAnacondaSingleUser(Linux)"><span>Install Anaconda Single User (Linux)</span></h1><ol><li class="level1"><p>Download the latest installer from the <a class="external-link" href="https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh" rel="nofollow">page here</a>, e.g. <code>wget <span class="nolink">https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh</span></code></p></li><li class="level1">Run the installed, e.g. <code>sh ./<span class="nolink">Anaconda3-2022.10-Linux-x86_64.sh</span></code> </li><li class="level1">Accept the license. The suggested install location is usually $HOME/anaconda3 which is fine. Let the installer run.</li><li class="level1">If the installer asks, let it run the conda init. If it doesn't ask, you will need to run <code>$HOME/anaconda3/bin/conda init</code> to add conda into your shell (it appends some lines into <code>.bashrc</code>), You'll have to close and restart your terminal session.</li></ol><p><br/></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit2" id="Installation(conda):Anaconda,MiniConda,Mamba-InstallMinicondaSingleUser(Windows)"><span>Install Miniconda Single User (Windows)</span></h1><ol><li class="level1"><p>Download the latest installer from the page <a class="external-link" href="https://docs.conda.io/en/latest/miniconda.html" rel="nofollow">here</a>.</p></li><li class="level1">The remaining instructions are pretty much the same as for the Anaconda Single User Windows install above. Ensure that conda is added to your shell: go to &quot;Start Menu&quot; → &quot;Miniconda3&quot; → &quot;Anaconda Powershell Prompt&quot;, and then run <code>conda init.</code> Now when you open a shell, conda will be accessible.</li></ol><p><br/></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit2" id="Installation(conda):Anaconda,MiniConda,Mamba-InstallMinicondaSingleUser(Linux)"><span>Install Miniconda Single User (Linux)</span></h1><ol><li class="level1"><p>Download the latest installer from the <a class="external-link" href="https://docs.conda.io/en/latest/miniconda.html" rel="nofollow">page here</a>, e.g. <code>wget <span class="nolink"><span class="nolink">https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe</span></span></code></p></li><li class="level1">At time of writing, there is a bug in the installer (the &quot;shebang&quot; specifies <code>sh</code> but the script contains <code>bash</code> syntax).  So, one has to force execution with the correct shell, e.g. with the command <code>bash ./Miniconda3-latest-Linux-x86_64.sh</code> </li><li class="level1">Accept the license. The suggested install location is usually $HOME/miniconda3 which is fine. Let the installer run.</li><li>If the installer asks, let it run the conda init. If it doesn't ask, you will need to run <code>$HOME/anaconda3/bin/conda init</code> to add conda into your shell (it appends some lines into <code>.bashrc</code>), You'll have to close and restart your terminal session.</li></ol><p><br/></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit2" id="Installation(conda):Anaconda,MiniConda,Mamba-InstallMambaSingleUser(Windows&amp;Linux)"><span>Install Mamba Single User (Windows &amp; Linux)</span></h1><p>The recommended way to install Mamba is to to use their dedicated installer, which configures a Mamba install to use conda-forge as standard. The alternative way, which is detailed here, is to install Mamba as a package in an existing conda installation.</p><p><u>Don't bother trying this with the full Anaconda</u>: without a lot of hinting, it'll spend hours trying to resolve the package dependences and still usually fail. It's really best to run this with a <u>clean</u> Miniconda install.</p><p>Also, <u>at time of writing (Jan 2023), you cannot use the latest Linux Miniconda</u> as it fails to resolve package conflicts: you must use the Python 3.9 Miniconda.  </p><ol><li>Run <code>conda install mamba -n base -c conda-forge</code> </li><li>Run <code>mamba init</code> then restart your shell session.</li><li>Use <code>mamba</code> instead of <code>conda</code><code>.</code></li></ol><p>For one of the several Github issues on the Mamba project about conflict issues between different mamba and conda versions, see <a class="external-link" href="https://github.com/mamba-org/mamba/issues/1735" rel="nofollow">https://github.com/mamba-org/mamba/issues/1735</a>.</p><p><br/></p></div>
+</div>
+</div>
+</div>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/275909648/275909821.png">browser-web-icon.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

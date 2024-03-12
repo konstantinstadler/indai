@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : Tutorial on how to set up a Sankey diagram with sankey_truthstudio</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Development-tools_176849952.html">Development tools</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : Tutorial on how to set up a Sankey diagram with sankey_truthstudio
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Unknown User (radekl)</span>, last modified on 11.11.2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="contentLayout2">
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<p style="margin-left: 30.0px;"><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1709817187891 {padding: 0px;}
+div.rbtoc1709817187891 ul {list-style: square !important;margin-left: 0px;}
+div.rbtoc1709817187891 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1709817187891'>
+<ul class='toc-indentation'>
+<li><a href='#TutorialonhowtosetupaSankeydiagramwithsankey_truthstudio-Sankeydiagramtutorial(WIP)'>Sankey diagram tutorial (WIP)</a></li>
+<li><a href='#TutorialonhowtosetupaSankeydiagramwithsankey_truthstudio-Settingup'>Setting up</a></li>
+<li><a href='#TutorialonhowtosetupaSankeydiagramwithsankey_truthstudio-Step-by-stepwalkthrough'>Step-by-step walkthrough</a></li>
+<li><a href='#TutorialonhowtosetupaSankeydiagramwithsankey_truthstudio-Optional:Addsortingdimensions'>Optional: Add sorting dimensions</a></li>
+<li><a href='#TutorialonhowtosetupaSankeydiagramwithsankey_truthstudio-Optional:Addtooltipinformationforprocesses'>Optional: Add tooltip information for processes</a></li>
+</ul>
+</div></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit1" id="TutorialonhowtosetupaSankeydiagramwithsankey_truthstudio-Sankeydiagramtutorial(WIP)">Sankey diagram tutorial (WIP)</h1><hr/><p>This tutorial assumes you have python3 and git installed.</p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit2" id="TutorialonhowtosetupaSankeydiagramwithsankey_truthstudio-Settingup">Setting up</h1><hr/><p>To get started, clone the <a class="external-link" href="https://gitlab.com/dlab-indecol/sankey_truthstudio" rel="nofollow" title="https://gitlab.com/dlab-indecol/sankey_truthstudio"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176850519/176850520.png" data-image-src="attachments/176850519/176850520.png" data-unresolved-comment-count="0" data-linked-resource-id="176850520" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176850519" data-linked-resource-container-version="7" alt=""></span>sankey_truthstudio repository</a> to your local computer:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">$ git clone git@gitlab.com:dlab-indecol/sankey_truthstudio.git</pre>
+</div></div><p>It comes with an example data set. To view the Sankey diagram generated based on this example data set, navigate into the sankey_truthstudio directory and set up a simple web server with the command:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">$ python -m http.server 8000</pre>
+</div></div><p>Now you can open a web browser and visit <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176850519/176850520.png" data-image-src="attachments/176850519/176850520.png" data-unresolved-comment-count="0" data-linked-resource-id="176850520" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176850519" data-linked-resource-container-version="7" alt=""></span><a class="external-link" href="http://localhost:8000" rel="nofollow" title="http://localhost:8000">http://localhost:8000</a> to see the rendered diagram.<sup><a class="external-link" href="https://wiki.indecol.no/doku.php/tutorial_on_how_to_set_up_a_sankey_diagram_with_sankey_truthstudio#fn__1" rel="nofollow">1)</a></sup> This example diagram is full-featured, which makes it a little overwhelming when you're trying to learn, and <a class="external-link" href="https://gitlab.com/dlab-indecol/sankey_truthstudio/blob/master/README.md" rel="nofollow" title="https://gitlab.com/dlab-indecol/sankey_truthstudio/blob/master/README.md"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176850519/176850520.png" data-image-src="attachments/176850519/176850520.png" data-unresolved-comment-count="0" data-linked-resource-id="176850520" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176850519" data-linked-resource-container-version="7" alt=""></span>the readme</a>, although helpful, is a little brief.</p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit3" id="TutorialonhowtosetupaSankeydiagramwithsankey_truthstudio-Step-by-stepwalkthrough">Step-by-step walkthrough</h1><hr/><p>Use Excel to open the CSV files. The spreadsheet view makes them a lot more readable than a jumbled plaintext view. CSV files you have opened can be edited in Excel as well. If you want to create CSVs from Excel, you have to “Save As”, and select one of the “comma delimited” varieties of CSVs, or else it won't work with the visualisation web application.</p><p>Open node.csv and flow.csv (you find them in ./data). These are the only essential data files. Here is what node.csv looks like:</p><p><a href="attachments/128681672/176849226.png" data-linked-resource-id="176849226" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="node_google_sheets.png" data-nice-type="Image" data-linked-resource-content-type="image/png" data-linked-resource-container-id="128681672" data-linked-resource-container-version="35"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="250" src="attachments/128681672/176849226.png" data-image-src="attachments/128681672/176849226.png" data-unresolved-comment-count="0" data-linked-resource-id="176849226" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="node_google_sheets.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="128681672" data-linked-resource-container-version="35" alt=""></span></a></p><p><br/></p><p>This file is both the simplest and most important one. It defines the names of the processes and their placement relative to each other. The column numbers are all relative, so if you like, you can have the processes unevenly spaced. For the row numbers, 0 has significance for alignment. The 0th row in each column is top-aligned with each other. Rows with negative or positive row numbers are placed relative to this baseline.</p><p>Change the column and row of the highlighted process, Disposal and Incineration, to 5 and -1, respectively, and reload the page in your web browser to see the effect of this change.</p><p><strong>Note</strong>: You may have to do a hard reload (normally ctrl-shift-R) or even empty the cache to see your changes displayed correctly, depending on the kind of change. In Chrome, you can right click the refresh button and select “Empty Cache and Hard Reload”.</p><p>The flow.csv data looks a little more complex than node.csv:</p><p><a href="attachments/128681672/176849217.png" data-linked-resource-id="176849217" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="flow_google_sheets.png" data-nice-type="Image" data-linked-resource-content-type="image/png" data-linked-resource-container-id="128681672" data-linked-resource-container-version="35"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="150" src="attachments/128681672/176849217.png" data-image-src="attachments/128681672/176849217.png" data-unresolved-comment-count="0" data-linked-resource-id="176849217" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="flow_google_sheets.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="128681672" data-linked-resource-container-version="35" alt=""></span></a></p><p><br/></p><p>The three-row headers, like the one highlighted, aren't self-explanatory. The first two rows signify which process the flow comes from and goes to. The third row is the name given to this flow (as displayed in the tooltip when you hover over a particular flow segment). The effect becomes clear when the flow CSV is compared with the visualised result:</p><p><a href="attachments/128681672/176849219.png" data-linked-resource-id="176849219" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="global_aluminum_flow.png" data-nice-type="Image" data-linked-resource-content-type="image/png" data-linked-resource-container-id="128681672" data-linked-resource-container-version="35"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" width="368" src="attachments/128681672/176849219.png" data-image-src="attachments/128681672/176849219.png" data-unresolved-comment-count="0" data-linked-resource-id="176849219" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="global_aluminum_flow.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="128681672" data-linked-resource-container-version="35" alt=""></span></a></p><p>Note that this shows the flow for 2015. The flow data value found for this year is 21776.18776.</p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit4" id="TutorialonhowtosetupaSankeydiagramwithsankey_truthstudio-Optional:Addsortingdimensions">Optional: Add sorting dimensions</h1><hr/><p>In the lower left of the web application, there is a dropdown for sorting, with alphabetical order being built-in, and a large number of data-based orderings having been generated by the application. Custom orderings can be specified with the sort.csv file. In the example, rough population estimates have been added as such a custom ordering. The data structure is straight-forward. Values have to be specified for each country for each year.</p><p><a href="attachments/128681672/176849228.png" data-linked-resource-id="176849228" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="sort_google_sheets.png" data-nice-type="Image" data-linked-resource-content-type="image/png" data-linked-resource-container-id="128681672" data-linked-resource-container-version="35"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" width="368" src="attachments/128681672/176849228.png" data-image-src="attachments/128681672/176849228.png" data-unresolved-comment-count="0" data-linked-resource-id="176849228" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="sort_google_sheets.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="128681672" data-linked-resource-container-version="35" alt=""></span></a></p><p>To add the possibility to sort countries by something else, like GDP, one would have to add GDP as a header, and provide GDP estimates for each country for each year.</p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit5" id="TutorialonhowtosetupaSankeydiagramwithsankey_truthstudio-Optional:Addtooltipinformationforprocesses">Optional: Add tooltip information for processes</h1><hr/><p>By default, process tooltips show the name of the country, and the exact amount for the total input to the process. To add more information, create a tooltip.csv. Here's the file from the example data:</p><p><a href="attachments/128681672/176849230.png" data-linked-resource-id="176849230" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="tooltip_google_sheets.png" data-nice-type="Image" data-linked-resource-content-type="image/png" data-linked-resource-container-id="128681672" data-linked-resource-container-version="35"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" width="586" src="attachments/128681672/176849230.png" data-image-src="attachments/128681672/176849230.png" data-unresolved-comment-count="0" data-linked-resource-id="176849230" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="tooltip_google_sheets.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="128681672" data-linked-resource-container-version="35" alt=""></span></a></p><p>The first row in the two-row header specifies which process the tooltip should be appended to. The second row gives the name of the field to be used in the tooltip. Here's what the augmented tooltip looks like (for 2015):</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" width="368" src="attachments/128681672/176849220.png" data-image-src="attachments/128681672/176849220.png" data-unresolved-comment-count="0" data-linked-resource-id="176849220" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="global_aluminum_flow_1_.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="128681672" data-linked-resource-container-version="35" alt=""></span></p><p><br/></p><p><a class="external-link" href="https://gitlab.com/dlab-indecol/sankey_truthstudio" rel="nofollow"><span><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image gitlab confluence-external-resource" draggable="false" width="30" src="https://wiki.indecol.no/lib/plugins/gitlabproject/images/gitlab.png" data-image-src="https://wiki.indecol.no/lib/plugins/gitlabproject/images/gitlab.png"></span></span><strong class="gitlab">Gitlab Project</strong></a></p></div>
+</div>
+</div>
+</div>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/176850519/176850520.png">browser-web-icon.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

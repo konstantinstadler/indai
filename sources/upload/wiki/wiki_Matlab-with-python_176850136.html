@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : Matlab with python</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Development-tools_176849952.html">Development tools</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : Matlab with python
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Unknown User (radekl)</span>, last modified on 11.11.2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="contentLayout2">
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<p style="margin-left: 30.0px;"><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1709817187385 {padding: 0px;}
+div.rbtoc1709817187385 ul {list-style: square !important;margin-left: 0px;}
+div.rbtoc1709817187385 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1709817187385'>
+<ul class='toc-indentation'>
+<li><a href='#Matlabwithpython-UsingmatlabfromPython'>Using matlab from Python</a></li>
+<li><a href='#Matlabwithpython-Windows'>Windows</a></li>
+<li><a href='#Matlabwithpython-MacorLinux'>Mac or Linux</a></li>
+<li><a href='#Matlabwithpython-Testing'>Testing</a></li>
+</ul>
+</div></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit1" id="Matlabwithpython-UsingmatlabfromPython">Using matlab from Python</h1><hr/><p>based on<span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176850136/176850137.png" data-image-src="attachments/176850136/176850137.png" data-unresolved-comment-count="0" data-linked-resource-id="176850137" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176850136" data-linked-resource-container-version="3" alt=""></span> <a class="external-link" href="https://se.mathworks.com/help/matlab/matlab_external/install-matlab-engine-api-for-python-in-nondefault-locations.html" rel="nofollow" title="https://se.mathworks.com/help/matlab/matlab_external/install-matlab-engine-api-for-python-in-nondefault-locations.html">https://se.mathworks.com/help/matlab/matlab_external/install-matlab-engine-api-for-python-in-nondefault-locations.html</a></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit2" id="Matlabwithpython-Windows">Windows</h1><hr/><p>Open <a href="174491824.html">Anaconda</a> promt and<br/> If you do not have write permission to build the engine (which probably you don't) in the MATLAB folder, use a nondefault folder, builddir.</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">cd &quot;matlabroot\extern\engines\python&quot;
+python setup.py build --build-base=&quot;builddir&quot; install</pre>
+</div></div><p>Most probably the matlabroot will be something like: C:\Program Files\MATLAB\R201xx</p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit3" id="Matlabwithpython-MacorLinux">Mac or Linux</h1><hr/><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">cd &quot;matlabroot/extern/engines/python&quot;
+python setup.py install</pre>
+</div></div></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit4" id="Matlabwithpython-Testing">Testing</h1><hr/><p>To test if the installation of Matlab API was successful open python interpreter and run:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">import matlab.engine 
+eng = matlab.engine.start_matlab() 
+t = eng.gcd(100.0,80.0,nargout=3) 
+print(t)</pre>
+</div></div><p>This should print: (20.0, 1.0, -1.0)</p><p>you can see more at: <a class="external-link" href="https://se.mathworks.com/help/matlab/matlab_external/call-matlab-functions-from-python.html" rel="nofollow" title="https://se.mathworks.com/help/matlab/matlab_external/call-matlab-functions-from-python.html"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176850136/176850137.png" data-image-src="attachments/176850136/176850137.png" data-unresolved-comment-count="0" data-linked-resource-id="176850137" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176850136" data-linked-resource-container-version="3" alt=""></span>https://se.mathworks.com/help/matlab/matlab_external/call-matlab-functions-from-python.html</a></p></div>
+</div>
+</div>
+</div>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/176850136/176850137.png">browser-web-icon.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

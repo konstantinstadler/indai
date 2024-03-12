@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : ais_query</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="174491614.html">Digital Tools for IndEcol Research/Teaching</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : ais_query
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Unknown User (radekl)</span>, last modified on 11.11.2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>Python helper function to query maritime MongoDB AIS database</p><p>The next steps are based on assumption that you have read the installation instructions in the <a class="external-link" href="https://gitlab.com/SmartMaritime/maridata/blob/master/README.rst" rel="nofollow" title="https://gitlab.com/SmartMaritime/maridata/blob/master/README.rst"> <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/174491864/176849298.png" data-image-src="attachments/174491864/176849298.png" data-unresolved-comment-count="0" data-linked-resource-id="176849298" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="174491864" data-linked-resource-container-version="42" alt=""></span>MariData GitLab readme</a>.</p><ol><li class="level1"><p> <span>Download</span> <span><a href="attachments/174491864/176849300.gz" data-linked-resource-id="176849300" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="ais_query-0.0.15.tar.gz" data-linked-resource-content-type="application/gzip" data-linked-resource-container-id="174491864" data-linked-resource-container-version="42"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" width="16" src="attachments/174491864/176849299.png" data-image-src="attachments/174491864/176849299.png" data-unresolved-comment-count="0" data-linked-resource-id="176849299" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="GZ.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="174491864" data-linked-resource-container-version="42" alt=""></span></a></span> <a href="attachments/174491864/176849300.gz" data-linked-resource-id="176849300" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="ais_query-0.0.15.tar.gz" data-linked-resource-content-type="application/gzip" data-linked-resource-container-id="174491864" data-linked-resource-container-version="42">ais_query-0.0.15.tar.gz</a></p></li><li class="level1">open <span class="wikilink1"><span><a href="174491824.html">anaconda</a></span></span> prompt (if you use anaconda otherwise feel free to use whatever you want), navigate to the file you have downloaded and run:</li><li class="level1"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">pip install ais_query-x.x.x.tar.gz</pre>
+</div></div></li><li class="level1"><p class="auto-cursor-target">Usage example:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: py; gutter: false; theme: Midnight" data-theme="Midnight">import ais_query.query as aisq 
+# assuming the credentials to connect to db are stored in config.py in current dir
+# the config.py has: credentials = {&#39;host&#39;: &#39;129.241.62.30&#39;, &#39;port&#39;: 27017, &#39;db&#39;: &#39;maritime&#39;, 
+                                    &#39;user&#39;: &#39;db_username&#39;, &#39;password&#39;: &#39;pass&#39;, &#39;ssh_user&#39;: 
+                                    &#39;host_username&#39;, &#39;ssh_password&#39;: &#39;host_passw&#39;}
+from config import credentials
+
+ships = aisq.ships(credentials=credentials)
+
+# ships[0] output -&gt; {&#39;mmsi&#39;: 372967000, &#39;beam&#39;: None, &#39;length&#39;: None, &#39;draught&#39;: 10.5, &#39;dwt&#39;: None, &#39;ldt&#39;: None, &#39;main_engine_size&#39;: None}
+
+messages = aisq.messages(mmsi=372967000, credentials=credentials) # messages is pandas dataframe
+
+# if you want to use simple plot routine:
+import ais_query.plot as aisplot
+aisplot.plot_positions_map(df=messages, title=&#39;MMSI: 372967000&#39;) # it will pop-up plot</pre>
+</div></div><br/><p><span class="media"><a href="attachments/174491864/174491884.png" data-linked-resource-id="174491884" data-linked-resource-version="3" data-linked-resource-type="attachment" data-linked-resource-default-alias="map.png" data-nice-type="Image" data-linked-resource-content-type="image/png" data-linked-resource-container-id="174491864" data-linked-resource-container-version="42"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="250" src="attachments/174491864/174491884.png" data-image-src="attachments/174491864/174491884.png" data-unresolved-comment-count="0" data-linked-resource-id="174491884" data-linked-resource-version="3" data-linked-resource-type="attachment" data-linked-resource-default-alias="map.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="174491864" data-linked-resource-container-version="42" alt=""></span></a></span></p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: py; gutter: false; theme: Midnight" data-theme="Midnight">aisplot.plot_positions_timeline(df=messages, title=&#39;MMSI: 372967000&#39;) # it will pop-up plot</pre>
+</div></div><p><span class="media"><br/></span></p><p><a href="attachments/174491864/174491885.png" data-linked-resource-id="174491885" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="timeline.png" data-nice-type="Image" data-linked-resource-content-type="image/png" data-linked-resource-container-id="174491864" data-linked-resource-container-version="42"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" width="388" src="attachments/174491864/174491885.png" data-image-src="attachments/174491864/174491885.png" data-unresolved-comment-count="0" data-linked-resource-id="174491885" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="timeline.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="174491864" data-linked-resource-container-version="42" alt=""></span></a></p></li><li class="level1"><p class="auto-cursor-target">Plotting messages density:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: py; gutter: false; theme: Midnight" data-theme="Midnight">import ais_query.query as aisq 
+# assuming the credentials to connect to db are stored in config.py in current dir
+# the config.py has: credentials = {&#39;host&#39;: &#39;129.241.62.30&#39;, &#39;port&#39;: 27017, &#39;db&#39;: &#39;maritime&#39;, 
+									&#39;user&#39;: &#39;db_username&#39;, &#39;password&#39;: &#39;pass&#39;, &#39;ssh_user&#39;: 
+									&#39;host_username&#39;, &#39;ssh_password&#39;: &#39;host_passw&#39;}
+from config import credentials
+# get the density of messages for ships 636016425 and 355705000 with density resolution 0.1 degree (resolution=1)
+df_density = aisq.messages_density(mmsi=[636016425, 355705000], credentials=credentials, resolution=1) 
+aisplot.plot_messages_density(df=df_density) # it will pop-up plot. See docstring for more options</pre>
+</div></div></li></ol><p><a href="attachments/174491864/174491886.png" data-linked-resource-id="174491886" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="figure_1-1.png" data-nice-type="Image" data-linked-resource-content-type="image/png" data-linked-resource-container-id="174491864" data-linked-resource-container-version="42"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" width="388" src="attachments/174491864/174491886.png" data-image-src="attachments/174491864/174491886.png" data-unresolved-comment-count="0" data-linked-resource-id="174491886" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="figure_1-1.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="174491864" data-linked-resource-container-version="42" alt=""></span></a></p><ol><li class="level1"><p class="auto-cursor-target">Query ships with ports filter (the ships must passed at least one port within each country (use iso-2 code)):</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: py; gutter: false; theme: Midnight" data-theme="Midnight">import ais_query.query as aisq 
+# assuming the credentials to connect to db are stored in config.py in current dir
+# the config.py has: credentials = {&#39;host&#39;: &#39;129.241.62.30&#39;, &#39;port&#39;: 27017, &#39;db&#39;: &#39;maritime&#39;, 
+                                    &#39;user&#39;: &#39;db_username&#39;, &#39;password&#39;: &#39;pass&#39;, &#39;ssh_user&#39;: 
+                                    &#39;host_username&#39;, &#39;ssh_password&#39;: &#39;host_passw&#39;}
+
+# get the ships which has passed any German and any Norwegian port
+from config import credentials
+
+de_no_traffic = aq.query.ships(credentials=credentials, ports=(&#39;de&#39;, &#39;no&#39;))
+# return is list of dict per ship
+# de_no_traffic[0] -&gt; {&#39;_id&#39;: ObjectId(&#39;590bfbe864bae0f8058e37ff&#39;), &#39;draught&#39;: 6.599999904632568, &#39;mmsi&#39;: 249753000}
+# by default the range of ships to center of port is 20km (20000m), it can be changed as last parameter of tuple
+de_no_traffic = aq.query.ships(credentials=credentials, ports=(&#39;de&#39;, &#39;no&#39;, 10000))</pre>
+</div></div></li></ol>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/174491864/174491888.png">map.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/174491864/176849322.png">timeline.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/174491864/176849328.png">figure_1-1.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/174491864/176849316.png">map.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/174491864/176849298.png">browser-web-icon.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/174491864/176849299.png">GZ.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/174491864/176849300.gz">ais_query-0.0.15.tar.gz</a> (application/gzip)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/174491864/174491884.png">map.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/174491864/174491885.png">timeline.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/174491864/174491886.png">figure_1-1.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

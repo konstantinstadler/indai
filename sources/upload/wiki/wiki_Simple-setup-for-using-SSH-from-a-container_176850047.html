@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : Simple setup for using SSH from a container</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Development-tools_176849952.html">Development tools</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : Simple setup for using SSH from a container
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Unknown User (radekl)</span>, last modified on 11.11.2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="contentLayout2">
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<p style="margin-left: 30.0px;"><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1709817187837 {padding: 0px;}
+div.rbtoc1709817187837 ul {list-style: square !important;margin-left: 0px;}
+div.rbtoc1709817187837 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1709817187837'>
+<ul class='toc-indentation'>
+<li><a href='#SimplesetupforusingSSHfromacontainer-Installation'>Installation</a></li>
+<li><a href='#SimplesetupforusingSSHfromacontainer-SSHfromaDockercontainer'>SSH from a Docker container</a></li>
+<li><a href='#SimplesetupforusingSSHfromacontainer-Usefultools'>Useful tools</a></li>
+</ul>
+</div></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit2" id="SimplesetupforusingSSHfromacontainer-Installation">Installation</h1><hr/><p>Download and install <a class="external-link" href="https://www.docker.com/community-edition" rel="nofollow" title="https://www.docker.com/community-edition"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176850047/176850104.png" data-image-src="attachments/176850047/176850104.png" data-unresolved-comment-count="0" data-linked-resource-id="176850104" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176850047" data-linked-resource-container-version="3" alt=""></span>Docker Community Edition</a>.</p><p>For manual install in linux:</p><p>Install docker as required at your distribution, check that everything is running with:</p><p>sudo docker run hello-world</p><p>If you want to run docker without sudo:</p><ol><li class="level1"><p>sudo groupadd docker</p></li><li class="level1"><p>sudo usermod -aG docker $USER</p></li><li class="level1"><p>logout and back in</p></li><li class="level1"><p>docker run hello-world</p></li></ol><p>Be careful - every user in the docker groups as essentially sudo rights:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: python; gutter: false; theme: Confluence" data-theme="Confluence">https://docs.docker.com/engine/installation/linux/linux-postinstall/</pre>
+</div></div></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit3" id="SimplesetupforusingSSHfromacontainer-SSHfromaDockercontainer">SSH from a Docker container</h1><hr/><p>The following one-liner starts up the extremely small Linux distribution Alpine, installs openssh on it, and connects to the IndEcol test server:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">$ docker run --rm -it alpine sh -c &quot;apk add --update openssh; ssh $USERNAME@129.241.53.201&quot;</pre>
+</div></div><p>The –rm flag means that the container is removed when you're done with it.</p><p>In this case, the Docker image that is run is raw alpine. You can also define your own, shareable and reusable Docker image, by creating a file named Dockerfile in a project directory. Here's the contents of a Dockerfile that installs openssh and leaves you with a shell prompt:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">FROM alpine 
+RUN apk add --update openssh</pre>
+</div></div><p>Once created, the Docker image has to be built. Navigate to the directory with the Dockerfile, and run:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">$ docker build -t sshtest .</pre>
+</div></div><p>To run a container using this image, run:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">$ docker run --rm -it sshtest</pre>
+</div></div><p>Type `exit` to exit the container, which will cause it to be removed.</p><p>To see all installed Docker images:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">$ docker images</pre>
+</div></div><p>To check which (or whether) containers are running, run:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">$ docker ps</pre>
+</div></div></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit4" id="SimplesetupforusingSSHfromacontainer-Usefultools">Useful tools</h1><hr/><p>cron for docker container <a class="external-link" href="https://github.com/gjcarneiro/yacron" rel="nofollow" title="https://github.com/gjcarneiro/yacron"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176850047/176850104.png" data-image-src="attachments/176850047/176850104.png" data-unresolved-comment-count="0" data-linked-resource-id="176850104" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176850047" data-linked-resource-container-version="3" alt=""></span>https://github.com/gjcarneiro/yacron</a></p></div>
+</div>
+</div>
+</div>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/176850047/176850104.png">browser-web-icon.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

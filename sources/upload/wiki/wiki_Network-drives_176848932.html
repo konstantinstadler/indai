@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : Network drives</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Miscellaneous_176850826.html">Miscellaneous</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : Network drives
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Unknown User (radekl)</span>, last modified by <span class='editor'> Peter Esmé Maxwell</span> on 01.03.2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="contentLayout2">
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<p style="margin-left: 30.0px;"><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1709817191057 {padding: 0px;}
+div.rbtoc1709817191057 ul {list-style: square !important;margin-left: 0px;}
+div.rbtoc1709817191057 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1709817191057'>
+<ul class='toc-indentation'>
+<li><a href='#Networkdrives-NetworkDrivesusedatIndustrialEcology'>Network Drives used at Industrial Ecology</a></li>
+<li><a href='#Networkdrives-BackupFrequency'>Backup Frequency</a></li>
+<li><a href='#Networkdrives-HowtomaponWindows'>How to map on Windows</a></li>
+<li><a href='#Networkdrives-MappinginLinux'>Mapping in Linux</a></li>
+<li><a href='#Networkdrives-MappinginmacOS'>Mapping in macOS</a></li>
+</ul>
+</div></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<p><br/></p><h1 class="sectionedit1" id="Networkdrives-NetworkDrivesusedatIndustrialEcology">Network Drives used at Industrial Ecology</h1><hr/><p>To map, open the file explorer in Windows. In the left panel right click on “Computer Name: xxx” (sometimes also called “This PC”) and choose “Map network drive…”. Copy paste the folder from below in the “Folder” field and choose the recommended Drive letter (if you are outside the NTNU network, you will have to enter your username as “win-ntnu-no\username” and password, then click OK). If you made a mistake or want to change the mapping, right click on the mapped network drive and choose “Disconnect”.</p><p>admin drive, mapped to <strong>T:</strong></p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Confluence" data-theme="Confluence"> \\felles.ansatt.ntnu.no\ntnu\iv\ept</pre>
+</div></div><p>data-drive, mapped to <strong>X:</strong> (for data intensive work):</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Confluence" data-theme="Confluence">\\forskning.it.ntnu.no\ntnu\iv\ept\eksperimentell</pre>
+</div></div><p><br/></p><p>home-drive, mapped to <strong>M:</strong> (personal drive, only accessible by USERNAME):</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Confluence" data-theme="Confluence"> \\home.ansatt.ntnu.no\USERNAME</pre>
+</div></div><p><code><br/>
+</code></p><p>progdist-drive, mapped to <strong>P:</strong> (read only, software you can install locally):</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Confluence" data-theme="Confluence"> \\progdist.ntnu.no\progdist</pre>
+</div></div><p><code><br/>
+</code></p><p>old felles-drive, mapped to <strong>K:</strong> (for documents, previous data drive, read only now):</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Confluence" data-theme="Confluence"> \\felles.ansatt.ntnu.no\ivt</pre>
+</div></div><p><code><br/>
+</code></p><p>We recommend that you use the full address in scripts and functions if you access data at the drive. This ensures that the script will run even if the drive is mapped to a different drive letter on another system.</p><p>The felles-drive (K) is currently set to read only will be offline some time in the future..</p><p>There is also NTNU wiki entry for for connecting to remote drives for <a class="external-link" href="https://innsida.ntnu.no/wiki/-/wiki/English/Connect+to+your+home+directory+via+Windows" rel="nofollow"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176848932/176849964.png" data-image-src="attachments/176848932/176849964.png" data-unresolved-comment-count="0" data-linked-resource-id="176849964" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176848932" data-linked-resource-container-version="50" alt=""></span>Windows</a>, <a class="external-link" href="https://innsida.ntnu.no/wiki/-/wiki/English/Connect+to+your+home+directory+via+Linux#section-Connect+to+your+home+directory+via+Linux-Connect+using+graphical+tools" rel="nofollow"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176848932/176849964.png" data-image-src="attachments/176848932/176849964.png" data-unresolved-comment-count="0" data-linked-resource-id="176849964" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176848932" data-linked-resource-container-version="50" alt=""></span>Linux</a> and <a class="external-link" href="https://innsida.ntnu.no/wiki/-/wiki/English/connect+to+your+home+directory+via+mac+os+x" rel="nofollow"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176848932/176849964.png" data-image-src="attachments/176848932/176849964.png" data-unresolved-comment-count="0" data-linked-resource-id="176849964" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176848932" data-linked-resource-container-version="50" alt=""></span></a><a class="external-link" href="https://innsida.ntnu.no/wiki/-/wiki/English/connect+to+your+home+directory+via+mac+os+x" rel="nofollow">macOS</a>.  </p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<p><br/></p><p><span class="confluence-anchor-link" id="Networkdrives-backup_freq"></span></p><h1 class="sectionedit2" id="Networkdrives-BackupFrequency">Backup Frequency</h1><hr/><p>All drives are backuped regularly (hourly for the first day and decreasing frequency for later dates, see below). To access this backups use the Windows File Explorer, right click on the directory you want to access and got to the tab “Previous Version”.</p><p>Current backup frequencies:</p><ul><li>36 hours back in time in 1 hours steps</li><li>32 days back in time in 1 day steps</li><li>32 weekly back in time in 1 weeks step</li></ul><p>These backup runs on two geographically separated locations (Gløshaugen/Dragvoll - 3km aparat) with the following specs:</p><p>Servers Netapp FAS8200:</p><ul><li>dual controller Xeon 1.7GHz 16 cores 32 threads</li><li>Capacity disk 1.8PB</li><li>2x10Gbit ethernet for clients</li><li>2x10Gbit for replication between sites</li><li>Dual input power from UPS with diesel-generator and regular electricity</li><li>Redundant cooling 2+1 (have 3 sources and need 2)</li></ul><p><br/></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit3" id="Networkdrives-HowtomaponWindows">How to map on Windows</h1><hr/><p><a class="external-link" href="https://innsida.ntnu.no/wiki/-/wiki/English/Connect+to+your+home+directory+via+Windows" rel="nofollow"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176848932/176849964.png" data-image-src="attachments/176848932/176849964.png" data-unresolved-comment-count="0" data-linked-resource-id="176849964" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176848932" data-linked-resource-container-version="50" alt=""></span>https://innsida.ntnu.no/wiki/-/wiki/English/Connect+to+your+home+directory+via+Windows</a></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit4" id="Networkdrives-MappinginLinux">Mapping in Linux</h1><hr/><p>(if you searching for mounting K and X drive on <strong>Indecol Computing Server</strong> go to</p><p><span class="wikilink1"><span><a href="https://www.ntnu.no/wiki/display/iedl/redhat+server+IndEcol+supr+computer#RedhatserverIndEcolsuprcomputer-connect" rel="nofollow"><span>Connect to felles and EPT_eksperimentel</span>l</a></span> (K-Drive/X-Drive) </span>)</p><p>Note: Everything in uppercase must be adopted to your credentials/system.</p><p>First of all, make sure you have the necessary packages installed: <code>
+<br/></code></p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">sudo apt-get install nfs-common
+sudo apt install cifs-utils
+sudo apt install smbclient</pre>
+</div></div><p><code><br class="auto-cursor-target"/>
+
+</code> You need the cifs-utils at least. And smbclient if you want to install printers.</p><p>Create the folders where the drives should map to (in the case below: /media/ntnu/DRIVENAME)</p><p>Create a folder at your home directory called .smbcredentials with the content</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: yml; gutter: false; theme: Confluence" data-theme="Confluence">username=USERNAME
+password=PASSWORD </pre>
+</div></div><p>and run</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight"> chmod 700 .smbcredentials </pre>
+</div></div><p>to restrict access to this file to only yourself.</p><p>Add the following in /etc/fstab:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: text; gutter: false; theme: Confluence" data-theme="Confluence">//forskning.it.ntnu.no/ntnu/iv/ept/eksperimentell /media/ntnu/Xdrive cifs vers=3.0,credentials=/home/konstans/.IEPT1150 smbcredentials,iocharset=utf8,gid=1000,uid=1000,file_mode=0777,dir_mode=0777 0 0 
+//home.ansatt.ntnu.no/konstans /media/ntnu/Mdrive cifs vers=3.0,credentials=/home/konstans/.IEPT1150/smbcredentials,iocharset=utf8,gid=1000,uid=1000,file_mode=0777,dir_mode=0777 0 0 
+//felles.ansatt.ntnu.no/ivt /media/ntnu/Kdrive cifs vers=3.0,credentials=/home/konstans/.IEPT1150/smbcredentials,iocharset=utf8,gid=1000,uid=1000,file_mode=0777,dir_mode=0777 0 0 
+//progdist.ntnu.no/progdist /media/ntnu/Pdrive cifs vers=3.0,credentials=/home/konstans/.IEPT1150/smbcredentials,iocharset=utf8,gid=1000,uid=1000,file_mode=0777,dir_mode=0777 0 0 
+//felles.ansatt.ntnu.no/ntnu/iv/ept /media/ntnu/Tdrive cifs vers=3.0,credentials=/home/konstans/.IEPT1150/smbcredentials,iocharset=utf8,gid=1000,uid=1000,file_mode=0777,dir_mode=0777 0 0</pre>
+</div></div><p>run (or restart)</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight"> sudo mount -a </pre>
+</div></div><p>Note: Since 2018 (and/or Linux Kernel 4.14) you have to specify the vers in the parameters. Currently, all drives run with vers 3.0. If something is not working, try to modify the version (2.0,2.1,3.1)</p><div class="table-wrap"><table class="wrapped confluenceTable"><colgroup><col/></colgroup><tbody><tr><th class="confluenceTh"><p><strong>Additional (PM 20230301): </strong>If you have an NTNU Windows computer, you can determine the supported version of CIFS/SMB in use for active connections by running Get-Smbconnection in a Powershell with local administrator privileges (Start Menu, Search &quot;Powershell&quot;, right-click and &quot;Run as Administrator&quot;).</p><p>At time of writing (March 2023), the following are all running version 3.1.1: felles.ansatt.ntnu.no, forskning.it.ntnu.no, home.ansatt.ntnu.no, sambaad.stud.ntnu.no, as well as the domain controller(s) win-dc1.win.ntnu.no.</p></th></tr></tbody></table></div><p>Generally, the samba protocol version must match the windows server version running the disk:</p><ul><li class="level1"><p>CIFS – The ancient version of SMB that was part of Microsoft Windows NT 4.0 in 1996. SMB1 supersedes this version.</p></li><li class="level1"><p>SMB 1.0 (or SMB1) – The version used in Windows 2000, Windows XP, Windows Server 2003 and Windows Server 2003 R2</p></li><li class="level1"><p>SMB 2.0 (or SMB2) – The version used in Windows Vista (SP1 or later) and Windows Server 2008</p></li><li class="level1"><p>SMB 2.1 (or SMB2.1) – The version used in Windows 7 and Windows Server 2008 R2</p></li><li class="level1"><p>SMB 3.0 (or SMB3) – The version used in Windows 8 and Windows Server 2012</p></li><li class="level1"><p>SMB 3.02 (or SMB3) – The version used in Windows 8.1 and Windows Server 2012 R2</p></li></ul><p>see also <a class="external-link" href="https://blogs.technet.microsoft.com/josebda/2013/10/02/windows-server-2012-r2-which-version-of-the-smb-protocol-smb-1-0-smb-2-0-smb-2-1-smb-3-0-or-smb-3-02-are-you-using/" rel="nofollow" title="https://blogs.technet.microsoft.com/josebda/2013/10/02/windows-server-2012-r2-which-version-of-the-smb-protocol-smb-1-0-smb-2-0-smb-2-1-smb-3-0-or-smb-3-02-are-you-using/"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176848932/176849964.png" data-image-src="attachments/176848932/176849964.png" data-unresolved-comment-count="0" data-linked-resource-id="176849964" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176848932" data-linked-resource-container-version="50" alt=""></span>https://blogs.technet.microsoft.com/josebda/2013/10/02/windows-server-2012-r2-which-version-of-the-smb-protocol-smb-1-0-smb-2-0-smb-2-1-smb-3-0-or-smb-3-02-are-you-using/</a></p><p>Previously, you could use the command below to get the Windows Server Version running a specific disk:</p><p><code>
+/usr/bin/smbclient -L <em>SERVERNAME<br/> <code>
+e.g.<br/></code></em></code></p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Confluence" data-theme="Confluence"> /usr/bin/smbclient -L winfil.it.ntnu.no</pre>
+</div></div><p><code><br class="auto-cursor-target"/>
+
+</code></p><p>However, the security settings have changed and this is no longer possible. Try and Error (or asking Oracle)…</p><p>A wrong samba version will still allow to mount the drive, but the disk will freeze from time to time.</p><p>For more information see: <a class="external-link" href="https://wiki.archlinux.org/index.php/samba" rel="nofollow" title="https://wiki.archlinux.org/index.php/samba"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176848932/176849964.png" data-image-src="attachments/176848932/176849964.png" data-unresolved-comment-count="0" data-linked-resource-id="176849964" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176848932" data-linked-resource-container-version="50" alt=""></span>https://wiki.archlinux.org/index.php/samba</a></p><h1 id="Networkdrives-MappinginmacOS">Mapping in macOS</h1><p><span style="color: rgb(32,33,34);"><a class="external-link" href="https://innsida.ntnu.no/wiki/-/wiki/English/connect+to+your+home+directory+via+mac+os+x" rel="nofollow">This guidance</a> will assist with mapping the network drives on Mac OS X, </span><span style="letter-spacing: 0.0px;">OS X and </span><span style="letter-spacing: 0.0px;">macOS.</span></p><p><span style="letter-spacing: 0.0px;">Note the use of a prefix</span></p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Confluence" data-theme="Confluence">smb://</pre>
+</div></div><p><span style="letter-spacing: 0.0px;">and the forward slash / instead of a backslash \ in your mapping address.</span></p></div>
+</div>
+</div>
+</div>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/176848932/176849964.png">browser-web-icon.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

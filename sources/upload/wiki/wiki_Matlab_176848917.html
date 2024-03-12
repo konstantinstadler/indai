@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : Matlab</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="174491614.html">Digital Tools for IndEcol Research/Teaching</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : Matlab
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Unknown User (radekl)</span>, last modified on 11.11.2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="contentLayout2">
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<p>MATLAB (matrix laboratory) is a multi-paradigm numerical computing environment.</p><p>You can find courses and tutorials at <a class="external-link" href="https://www.mathworks.com/products/matlab.html" rel="nofollow" title="https://www.mathworks.com/products/matlab.html"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176848917/176850036.png" data-image-src="attachments/176848917/176850036.png" data-unresolved-comment-count="0" data-linked-resource-id="176850036" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176848917" data-linked-resource-container-version="8" alt=""></span>https://www.mathworks.com/products/matlab.html</a> .</p><p>We propose to follow the coding style  <a href="attachments/128681672/176849253.pdf" data-linked-resource-id="176849253" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="matlabstyle.pdf" data-nice-type="PDF Document" data-linked-resource-content-type="application/pdf" data-linked-resource-container-id="128681672" data-linked-resource-container-version="35"><span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image" draggable="false" src="attachments/176848917/176848919.png" data-image-src="attachments/176848917/176848919.png" data-unresolved-comment-count="0" data-linked-resource-id="176848919" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="PDF_icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176848917" data-linked-resource-container-version="8" alt=""></span></a><a href="attachments/128681672/176849253.pdf" data-linked-resource-id="176849253" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="matlabstyle.pdf" data-nice-type="PDF Document" data-linked-resource-content-type="application/pdf" data-linked-resource-container-id="128681672" data-linked-resource-container-version="35">matlabstyle.pdf</a> works with <a href="GAMS_176848922.html"><span class="wikilink1">GAMS</span></a> .</p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit2" id="Matlab-Commentingstylesuggestion(Numpydoc-like)">Commenting style suggestion (Numpydoc-like)</h1><hr/><p><a class="external-link" href="https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt" rel="nofollow" title="https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176848917/176850036.png" data-image-src="attachments/176848917/176850036.png" data-unresolved-comment-count="0" data-linked-resource-id="176850036" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176848917" data-linked-resource-container-version="8" alt=""></span>Numpydoc</a> is an excellent commenting standard for Python. Ideally, this should be emulated in Matlab scripts as well. Here's a quick guide for how to do that for Matlab functions:</p><p>Numpydoc-like comments are divided into sections. The first line is a short summary of the function. The rest of the sections are optional, and have headers when included. Here are headers applicable for Matlab: Deprecation, Extended Summary, Arguments, Output, Errors Thrown, See Also, Notes, Examples.</p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit3" id="Matlab-Example">Example</h1><hr/><hr/><p>If you prefer, you could use multiline comments instead of one percentage sign for every line:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: vb; gutter: false; theme: Confluence" data-theme="Confluence">function d = distance(point1, point2)
+%{
+Calculates Euclidian distance in any number of dimensions
+
+Arguments
+---------
+point1 : vector of numerics
+point2 : vector of numerics
+%}</pre>
+</div></div></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit4" id="Matlab-Headerdescriptions">Header descriptions</h1><hr/><h4 id="Matlab-Summary">Summary</h4><p>A one-line summary that does not use variable names or the function name.</p><h4 id="Matlab-Deprecation">Deprecation</h4><p>A section (use if applicable) to warn users that the object is deprecated. Contents should include information about when it will be removed, and the new recommended way of obtaining the same functionality.</p><h4 id="Matlab-ExtendedSummary">Extended Summary</h4><p>A few sentences giving an extended description. This section should be used to clarify functionality, not to discuss implementation detail or background theory, which should rather be explored in the Notes section below. You may refer to the arguments and the function name, but argument descriptions still belong in the Arguments section.</p><h4 id="Matlab-Arguments">Arguments</h4><p>Description of the function arguments, keywords and their respective types. List each argument on its own line with the argument name and the argument type, separated by a colon, and, optionally, a description on an indented line below. Here's an example:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: css; gutter: false; theme: Confluence" data-theme="Confluence">Arguments
+---------
+argument_name : argument_type
+    Description of argument `argument_name`
+x : double
+y : cell array
+z : char</pre>
+</div></div><p><br/></p><h4 id="Matlab-Output">Output</h4><p>Explanation of the output values and their types. Similar to the Arguments section, except the name of each output value is optional. The type of each output value is always required:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: Confluence" data-theme="Confluence">Returns
+-------
+int16
+    Description of anonymous integer output value.</pre>
+</div></div><p>If both the name and type are specified, the Output section takes the same form as the Arguments section.</p><h4 id="Matlab-ErrorsThrown">Errors Thrown</h4><p>An optional section detailing which errors get raised and under what conditions:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: cpp; gutter: false; theme: Confluence" data-theme="Confluence">Errors Thrown
+-------------
+MyComponent:noSuchVariable
+    Variable not found in workspace</pre>
+</div></div><p><br/></p><p>This section should be used judiciously, i.e., only for errors that are non-obvious or have a large chance of getting raised.</p><h4 id="Matlab-SeeAlso">See Also</h4><p>An optional section used to refer to related code. This section can be very useful, but should be used judiciously.</p><h4 id="Matlab-Notes">Notes</h4><p>An optional section that provides additional information about the code, possibly including a discussion of the algorithm.</p><h4 id="Matlab-Examples">Examples</h4><p>An optional section for usage examples.</p></div>
+</div>
+</div>
+</div>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/176848917/176848918.png">32px-PDF_file_icon.svg.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/176848917/176848919.png">PDF_icon.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/176848917/176850036.png">browser-web-icon.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : matlab on linux server (installation guide)</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab_174491605.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Infrastructure_267029429.html">Infrastructure</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : matlab on linux server (installation guide)
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Ruslan Zhuravchak</span>, last modified on 07.02.2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h4 id="matlabonlinuxserver(installationguide)-Thisguideexplainshowtoinstall/setupanduseMatlabontheIEDL-maintainedLinuxservers">This guide explains how to install/setup and use Matlab on the IEDL- maintained Linux servers</h4><h2 id="matlabonlinuxserver(installationguide)-Prerequisites:">Prerequisites:</h2><ol><li>an active Matlab license</li><li>a Linux-based client computer (may not work if on Windows, use <a class="external-link" href="https://learn.microsoft.com/en-us/windows/wsl/install" rel="nofollow">WSL</a> in such case)</li></ol><h2 id="matlabonlinuxserver(installationguide)-Installationprocedure">Installation procedure</h2><blockquote><p><strong>NB:</strong> Do not use <code>-i path_to_key</code> option if the server login does not need an ssh key</p></blockquote><ol><li>download the latest Matlab for Linux from <a class="external-link" href="https://se.mathworks.com/downloads/web_downloads/" rel="nofollow">Mathworks</a> to your client machine (a zipped file shows up in the Downloads)</li><li>create a temporary directory on the server, e.g: <code>ssh my_username@server_ip -i path_to_key mkdir /home/my_username/tempdir</code></li><li>copy the zipped file to the temporary directory at the server: <code>scp -i path_to_key path_to_matlab/matlab_&lt;VERSION&gt;_glnxa64.zip my_username@server_ip:/home/my_username/tempdir</code></li><li>ssh to the server with x-forwarding: <code>ssh my_username@server_ip -i path_to_key -X</code></li><li>change the permissions of the temporary directory: <code>chmod -R 777 /home/my_username/tempdir</code></li><li>navigate to the temporary directory: <code>cd /home/my_username/tempdir</code></li><li>unzip the archive: <code>unzip matlab_&lt;VERSION&gt;_glnxa64.zip</code></li><li>run the installer: <code>./install</code> The window with the installation wizard shows up. Follow the instructions:<ol><li>enter the email and the password associated with your mathworks account</li><li>agree with term and conditions</li><li>select the appropriate license and confirm the user</li><li>select the destination in your <strong>home directory</strong>, e.g. <code>/home/my_username/mlab</code></li><li>select the bare bones MATLAB and the necessary toolboxes, then proceed</li><li><strong>do not</strong> create the symbolic link</li><li>confirm and finalize the installation</li></ol></li><li>you can now run Matlab by executing the command <code>/home/my_username/mlab/bin/matlab</code> 🎉 Optionally, create an intuitive alias in your Bourne-compatible shell:<ol><li>open the configuration file with nano: <code>nano /home/my_username/.profile</code></li><li>at the end of the file, append the line that points to Matlab binaries: <code>alias matlab='/home/my_username/mlab/bin/matlab'</code></li><li>write the file (Ctrl+o) and close (Ctrl+x)</li><li>source the config file : <code>source /home/my_username/.profile</code> or logout/login to the server.</li><li>a shell-command <code>matlab</code> now starts Matlab</li></ol></li><li>remove the temporary directory from the server: <code>rm rf /home/my_username/tempdir</code></li></ol><p><br/></p><p>To uninstall Matlab, remove the directory where Matlab was installed earlier, e.g: <code>rm -rf /home/my_username/mlab</code> and remove the alias from <code>/home/my_username/.profile</code></p><p><br/></p><h4 id="matlabonlinuxserver(installationguide)-Torequestassistance/askquestions-emailIEDL.">To request assistance/ask questions - <a href="https://www.ntnu.no/wiki/contact@iedl.no" rel="nofollow">email IEDL</a>.</h4>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

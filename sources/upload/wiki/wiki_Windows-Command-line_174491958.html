@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : Windows Command-line</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="174491614.html">Digital Tools for IndEcol Research/Teaching</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : Windows Command-line
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Unknown User (radekl)</span>, last modified by <span class='editor'> Konstantin Stadler</span> on 15.11.2022
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="contentLayout2">
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<p><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1709817190236 {padding: 0px;}
+div.rbtoc1709817190236 ul {list-style: square !important;margin-left: 0px;}
+div.rbtoc1709817190236 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1709817190236'>
+<ul class='toc-indentation'>
+<li><a href='#WindowsCommandline-Opentheshell'>Open the shell</a></li>
+<li><a href='#WindowsCommandline-Changingtheappearance'>Changing the appearance</a></li>
+<li><a href='#WindowsCommandline-Basiccommands'>Basic commands</a></li>
+<li><a href='#WindowsCommandline-Otherusefulcommands'>Other useful commands</a></li>
+<li><a href='#WindowsCommandline-EffectiveUse'>Effective Use</a></li>
+<li><a href='#WindowsCommandline-Batchfiles'>Batch files</a></li>
+<li><a href='#WindowsCommandline-Redirections'>Redirections</a></li>
+<li><a href='#WindowsCommandline-Furtherinformation'>Further information</a></li>
+</ul>
+</div></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<p>First, don't be scared! Until not so long ago, <a class="external-link" href="https://en.wikipedia.org/wiki/Command-line_interface" rel="nofollow" title="https://en.wikipedia.org/wiki/Command-line_interface"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/174491958/176849998.png" data-image-src="attachments/174491958/176849998.png" data-unresolved-comment-count="0" data-linked-resource-id="176849998" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="174491958" data-linked-resource-container-version="13" alt=""></span>the command line interface (CLI) was the only way to interact with a computer.</a> Think of it like the interactive interpreter in Matlab - it is just a program that interprets text commands that you enter in the window.</p><p>If you are on MS Windows, you don't need to get proficient with the command line use. You should know, however, how to open it and some simple commands. If you are on Linux, you also might find the intro here useful in case you end up on a Windows machine - the commands are quite different to the <a href="Linux-Command-line_174491960.html"><span class="wikilink1">Linux terminal</span></a>.</p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit2" id="WindowsCommandline-Opentheshell">Open the shell</h1><hr/><p>To open the shell in Windows 10, click on the Windows symbol and type “cmd” or “command prompt”. You should than see an icon showing a little terminal window with C:\ in it. Click on it or press enter.</p><p>To open the shell at a specific location, navigate to the location in the File Explorer, press CTRL-l (or click on the adress bar) and type cmd. After pressing Enter the command shell opens at the location of the explorer. You can also go back to the File Explorer from the command line - just enter “explorer .” and a new File Explorer Window pointing to the location of the shell.</p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit3" id="WindowsCommandline-Changingtheappearance">Changing the appearance</h1><hr/><p>When the shell is open, click on the small icon on the upper left corner. This will open a menu with a entry “Properties”. You can change the font size, colour, opacity of the shell here.</p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit4" id="WindowsCommandline-Basiccommands">Basic commands</h1><hr/><p>After opening the shell it probably points to your user directory, thus showing something like</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">C:\Users\USERNAME&gt;_</pre>
+</div></div><p>The C: indicates the drive you are on, the other parts the folders on this drive.</p><p>You can get a list of files in this directory by entering</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">dir</pre>
+</div></div><p>You will probably see a list of files (with a filesize) and folders (the latter indicated by &lt;DIR&gt;). If there are more files than fitting on one page, you can use</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">dir /p</pre>
+</div></div><p>which pauses when one screen is full.</p><p>On the top of the list you will find two entries: '.' and '..'. The single point represents the current directory, the '..' the underlying parent directory. To change to the parent directory, you use the change directory (cd) command:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">cd ..</pre>
+</div></div><p>Again, you can have a look with 'dir'.</p><p>To go back, you use the directory name (which should be your username)</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">cd DIRNAME</pre>
+</div></div><p>You can also just enter the first couple of letters and use the &lt;TAB&gt; key to auto complete the rest.</p><p>You can create a new directory with</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">mkdir DIRNAME</pre>
+</div></div><p>and remove it again with</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">rmdir DIRNAME</pre>
+</div></div><p>You can only remove the directory if it is empty. Lets try that:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">mkdir test 
+cd test dir &gt; content.txt 
+cd .. 
+rmdir test</pre>
+</div></div><p>You will get a message like “The directory is not empty”. So you have to first remove the file in there:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">cd test 
+del content.txt 
+cd .. 
+rmdir test</pre>
+</div></div><p>Alternatively, you can remove directory and files recursively with</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">rmdir test /S</pre>
+</div></div><p>Be careful with this command!</p><p>In the code example above, we use 'dir &gt; content.txt' to write the output of the dir command to the file content.txt. You can do this with every command which prints to the shell using the '&gt;' symbol. To copy the output to your clipboard, use the symbol '|', e.g. 'dir | clip'.</p><p>To change to a different drive, use the drive letter with ':'</p><p>x:</p><p>That's it for the beginning. There are, of course, many more commands. You can show them with help</p><p>and to get help to a specific command you can do either</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">help COMMAND</pre>
+</div></div><p>or</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">COMMAND /?</pre>
+</div></div><p>e.g.</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">dir /?</pre>
+</div></div><p>To exit the shell, do</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">exit</pre>
+</div></div></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit5" id="WindowsCommandline-Otherusefulcommands">Other useful commands</h1><hr/><p>cls … clears your screen</p><p>ipconfig … shows your ip address and other network infos</p><p>ping … test your internet connection, e.g. ping <a class="external-link" href="http://www.google.com" rel="nofollow" title="http://www.google.com"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/174491958/176849998.png" data-image-src="attachments/174491958/176849998.png" data-unresolved-comment-count="0" data-linked-resource-id="176849998" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="174491958" data-linked-resource-container-version="13" alt=""></span>www.google.com</a></p><p>fc … compare two (text)files</p><p><br/></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 id="WindowsCommandline-EffectiveUse">Effective Use</h1><p>- Use the explorer to navigate to the directory you want to work in<br/>- Open the command line in that directory (cml in the address bar)<br/>- Start the script<br/>- Change directory structure - use the explorer: explorer.exe .<br/>- Small edits: start notepad with notepad.exe filename</p><p><br/></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 id="WindowsCommandline-Batchfiles">Batch files</h1><p>- Small scripts to automate tasks<br/>- Usually python is more useful<br/>- But sometimes you need to do something quickly<br/>- Just txt files with .bat ending<br/>- notepad example.bat</p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 id="WindowsCommandline-Redirections">Redirections</h1><p><br/></p><p>- `&gt;`: redirect output to file<br/>- `&gt;&gt;`: append output to file<br/>- `&lt;`: redirect input from file<br/>- `|`: redirect output to input of another command</p><p>- Examples <br/>    - `dir &gt; file.txt` <br/>    - `dir &gt;&gt; file.txt`<br/>    - `dir | clip`</p><p><br/></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit6" id="WindowsCommandline-Furtherinformation">Further information</h1><hr/><p><a class="external-link" href="https://www.computerhope.com/issues/chusedos.htm" rel="nofollow" title="https://www.computerhope.com/issues/chusedos.htm"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/174491958/176849998.png" data-image-src="attachments/174491958/176849998.png" data-unresolved-comment-count="0" data-linked-resource-id="176849998" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="174491958" data-linked-resource-container-version="13" alt=""></span>https://www.computerhope.com/issues/chusedos.htm</a></p><p><a class="external-link" href="https://www.bleepingcomputer.com/tutorials/windows-command-prompt-introduction/" rel="nofollow" title="https://www.bleepingcomputer.com/tutorials/windows-command-prompt-introduction/"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/174491958/176849998.png" data-image-src="attachments/174491958/176849998.png" data-unresolved-comment-count="0" data-linked-resource-id="176849998" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="174491958" data-linked-resource-container-version="13" alt=""></span>https://www.bleepingcomputer.com/tutorials/windows-command-prompt-introduction/</a></p><p><a class="external-link" href="https://www.cs.princeton.edu/courses/archive/spr05/cos126/cmd-prompt.html" rel="nofollow" title="https://www.cs.princeton.edu/courses/archive/spr05/cos126/cmd-prompt.html"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/174491958/176849998.png" data-image-src="attachments/174491958/176849998.png" data-unresolved-comment-count="0" data-linked-resource-id="176849998" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="174491958" data-linked-resource-container-version="13" alt=""></span>https://www.cs.princeton.edu/courses/archive/spr05/cos126/cmd-prompt.html</a></p></div>
+</div>
+</div>
+</div>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/174491958/176849998.png">browser-web-icon.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

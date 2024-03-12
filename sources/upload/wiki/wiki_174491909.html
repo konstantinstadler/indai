@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : Indecol Server (ieserver)</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="174491614.html">Digital Tools for IndEcol Research/Teaching</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : Indecol Server (ieserver)
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Unknown User (radekl)</span>, last modified by <span class='editor'> Ruslan Zhuravchak</span> on 30.09.2021
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="contentLayout2">
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<p><br/></p><p><br/></p><h1 class="sectionedit1" id="IndecolServer(ieserver)-IndecolcomputingserverICS">Indecol computing server ICS</h1><hr/><p><br/></p><p><span><a href="attachments/174491909/174491910.jpg" data-linked-resource-id="174491910" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="dell-poweredge-r630.jpg" data-nice-type="Image" data-linked-resource-content-type="image/jpeg" data-linked-resource-container-id="174491909" data-linked-resource-container-version="30"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="217" src="attachments/174491909/174491910.jpg" data-image-src="attachments/174491909/174491910.jpg" data-unresolved-comment-count="0" data-linked-resource-id="174491910" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="dell-poweredge-r630.jpg" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/jpeg" data-linked-resource-container-id="174491909" data-linked-resource-container-version="30" alt=""></span></a><br/></span></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit2" id="IndecolServer(ieserver)-Spec">Spec</h1><hr/><p><a class="external-link" href="http://www.dell.com/us/business/p/poweredge-r630/pd" rel="nofollow" title="http://www.dell.com/us/business/p/poweredge-r630/pd">PowerEdge R630 Rack Server</a></p><ul><li class="level1 node"><p>configuration:</p><ul><li class="level2"><p>40cpu</p></li><li class="level2"><p>1.05TB RAM</p></li><li class="level2"><p>1.5TB SSD /shared (mountable as samba drive)</p></li><li class="level2"><p>2.7TB SATA /home</p></li><li class="level2"><p>Operation System: Ubuntu Server 16.04</p></li><li class="level2"><p>IP: 129.241.62.30</p></li></ul></li></ul><h5 id="IndecolServer(ieserver)-Backup">Backup</h5><p>/home</p><p>/shared</p><p>Full backup every 28 day, Incremental every day</p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit3" id="IndecolServer(ieserver)-Changingpassword">Changing password</h1><hr/><p>Once in while it is good to change your password. To do so open terminal (which is done by ssh to server) and type</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">passwd</pre>
+</div></div></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<p><br/></p><h1 class="sectionedit4" id="IndecolServer(ieserver)-Accessing">Accessing</h1><hr/><h5 id="IndecolServer(ieserver)-FromLinux">From Linux</h5><ul><li class="level1"><p>ssh username@IP</p></li><li class="level1"><p>ssh -X username@IP (to use x window forwarding)</p></li></ul><h5 id="IndecolServer(ieserver)-FromWindows">From Windows</h5><ul><li class="level1">Windows Terminal (recommended)  <a class="external-link" href="https://devblogs.microsoft.com/commandline/introducing-windows-terminal/" rel="nofollow">https://devblogs.microsoft.com/commandline/introducing-windows-terminal/</a></li><li class="level1"><p>xming [recommended] (install from progdist/campus/X-Win32, read Readme.txt on how to install it)</p></li><li class="level1"><p>putty (for ssh)</p></li></ul><h5 id="IndecolServer(ieserver)-SSHkey-basedauthentication">SSH key-based authentication</h5><p>For Ubuntu Server <a class="external-link" href="https://help.ubuntu.com/community/SSH/OpenSSH/Keys" rel="nofollow" title="https://help.ubuntu.com/community/SSH/OpenSSH/Keys"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/174491909/176849980.png" data-image-src="attachments/174491909/176849980.png" data-unresolved-comment-count="0" data-linked-resource-id="176849980" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="174491909" data-linked-resource-container-version="30" alt=""></span>https://help.ubuntu.com/community/SSH/OpenSSH/Keys</a></p><p>in short (if you have already ssh pub/private keys from other servers/old redhat): in your .ssh dir type:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">ssh-copy-id &lt;username&gt;@129.241.62.30</pre>
+</div></div><h4 id="IndecolServer(ieserver)-Openapplication">Open application</h4><p>After you connect to server(using Xming f.e.) type in the console name of application. f.e.: matlab</p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit5" id="IndecolServer(ieserver)-Connecttosambasharedfolder">Connect to samba shared folder</h1><hr/><p>The local folders on the server are also accessible from your local computer.</p><p>This is similar to the ntnu network drives (internally we use the samba protocol to provide the folder).</p><p>Thus you can copy file in/from server using your file explorer on your local computer. Connect to it like this:</p><h5 id="IndecolServer(ieserver)-FromWindows.1">From Windows</h5><p>Open Windows Explorer → right click on Network → select Map network drive Choose Drive → in folder box add \\129.241.62.30\share</p><p>You will probably need to Connect using different credentials if yours are not same. In the dialog popup set:</p><ul><li class="level1"><p>username: indecol\your_user_name</p></li><li class="level1"><p>password: your_pasword</p></li></ul><p>Enjoy!</p><h5 id="IndecolServer(ieserver)-FromLinux.1">From Linux</h5><p>Either use nautilus, dolphin or any other file manager and in network use the url:</p><ul><li class="level1"><p><a href="smb://129.241.62.30/share/" rel="nofollow">smb://129.241.62.30/share/</a></p></li></ul><p>In you pop up window use:</p><ul><li>username: your_user_name</li></ul><ul><li class="level1"><p>workgroup: indecol</p></li><li class="level1"><p>password: your_pasword</p></li></ul></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit6" id="IndecolServer(ieserver)-connectConnecttofellesandEPT_eksperimentell(K-Drive/X-Drive)"><span class="confluence-anchor-link" id="IndecolServer(ieserver)-connect"></span>Connect to felles and <span class="search_hit">EPT</span>_eksperimentell (K-Drive/X-Drive)</h1><hr/><p>You can connect from server to the NTNU network drives (e.g. X drive). This steps are done on the server (after you connect to server suing X-ming f.e.) There is 3 ways to connect to the felles and EPT_eksperimentell</p><blockquote><ol><li class="level1 node"><p><strong>Most secure</strong> way as you do not expose your password. The downside is that the mounting will be lost after system rebooting and you will have to proceed step <em>d</em> again. Rebooting of system should be very rare and you will be informed ahead. (Except incidental power short cut of course)</p><ol><li class="level2"><p>Open shell(terminal, console, Xming).</p></li><li class="level2">Make sure you are at your home directory. Use command <em>pwd</em> Example:<p>The shell output</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">[your_user_name@iept1275 ~]$ pwd [your_user_name@iept1275 ~]$ /home/your_user_name  </pre>
+</div></div></li><li class="level2">Create mounting point. Lets call it eptex for example (choose whatever you like)<p>The shell output</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">[your_user_name@iept1275 ~]$ mkdir eptex</pre>
+</div></div></li><li class="level2"><p class="auto-cursor-target">Mount the X-drive to the eptex directory you just created. Use command</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">sudo mount -t cifs -o uid=$USER -o gid=$USER -o user=$USER -o vers=2.0 //forskning.it.ntnu.no/ntnu/iv/ept/eksperimentell /home/$USER/eptex</pre>
+</div></div><p>It will ask you for your NTNU password.</p></li><li class="level2"><p>Optional: You can copy-paste the line from d) in a text file in your home directory. Name the script something with '.sh', e.g. mount_x.sh . Then make the script executable with</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>make exec</b></div><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Confluence" data-theme="Confluence">chmod +x mount_x.sh</pre>
+</div></div><p>When you then call the script with ./mount_x_sh it will first ask you for the your sudo password, and then for your ntnu password (which might be the same).</p></li></ol></li></ol></blockquote><blockquote><ol><li class="level1"><p class="auto-cursor-target">Same as first option but in step <em>1d</em> you can specify password directly. Replace PASSWORD with your NTNU password. (Not recommended - it stores your password to .bash-history, you need to manually remove your password from there)</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">sudo mount -t cifs -o uid=$USER -o gid=$USER -o user=$USER -o vers=2.0,passwd=PASSWORD //forskning.it.ntnu.no/ntnu/iv/ept/eksperimentell /home/$USER/eptex</pre>
+</div></div></li><li class="level1"><p class="auto-cursor-target">In last option you will store your credentials in plain text. It will allow you to have automate connection even after system rebooting. Please consider this option carefully as the password is your NTNU password and in case the super admin (root) account will be exploited the password can be known to the hacker. If you still want to use this run commands</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">printf &quot;if grep -qs &#39;/home/$USER/felles&#39; /proc/mounts; then\n\t echo \&quot;X-Drive is mounted.\&quot; \n else\n\t sudo mount -t cifs -o uid=$USER -o gid=$USER -o user=$USER -o vers=2.0,passwd=PASSWORD //forskning.it.ntnu.no/ntnu/iv/ept/eksperimentell /home/$USER/eptex \nfi\n&quot; &gt;&gt; ~/.bash_profile</pre>
+</div></div><p>Replace PASSWORD with your NTNU passwordThis command will create entry in .bash_profile. The .bash_profile is run every time the system is boot or you can run it by typing 'bash' in terminal.</p></li></ol></blockquote><p>Note that if your password contains any of the characters</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Confluence" data-theme="Confluence">&quot; &#39; ~ ! $ # &amp; * ( ) | \</pre>
+</div></div><p>You will need to prefix those characters with “\” in the above command.</p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit7" id="IndecolServer(ieserver)-InstalledSoftware">Installed Software</h1><hr/><ul><li class="level1"><p>anaconda 4.2.0 64bits with Python 3.5.2 (with anaconda you can find spyder, ipython, etc…)</p></li><li class="level1"><p>Matlab R2017a</p></li><li class="level1"><p>GAMS 24.8 full license</p></li><li class="level1"><p>Julia</p></li><li class="level1"><p>R</p></li><li class="level1"><p>docker</p></li><li class="level1"><p>GDAL</p></li><li class="level1"><p>nodejs</p></li><li class="level1"><p>qgis</p></li><li class="level1"><p>ImageMagic</p></li><li class="level1"><p>npm</p></li><li class="level1"><p>webpackage</p></li><li class="level1"><p>python3-netcdf</p></li><li class="level1"><p>JupyterHub</p></li></ul><p>If there is anything you need contact <a class="external-link" href="mailto:admin@indecol.no" rel="nofollow">admin@indecol.no</a></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 id="IndecolServer(ieserver)-RunningtheJupyternotebook">Running the Jupyter notebook</h1><p>Launch the notebook from the server's terminal:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">jupyter notebook --no-browser</pre>
+</div></div><p><span style="letter-spacing: 0.0px;">From the local shell - set up the SSH tunnel:</span></p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">ssh -L &lt;PORT&gt;:localhost:&lt;PORT&gt; &lt;USER&gt;@129.241.62.30</pre>
+</div></div><p><br/></p><p>Follow the given url and token to access the server.</p><p><br/></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit8" id="IndecolServer(ieserver)-Ordering/Warrantydetails">Ordering/Warranty details</h1><hr/><p>Servicemerke BHNRF82 Forsendelsesdato 14 OKT 2015 Land Norway SERVICE STARTDATO UTLØPSDATO 4 Hour ProSupport Mission Critical 14 OKT 2015 14 OKT 2018 Onsite Service After Remote Diagnosis 14 OKT 2015 14 OKT 2018 4 Hour ProSupport 16 OKT 2018 15 OKT 2020</p></div>
+</div>
+</div>
+</div>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/174491909/174491910.jpg">dell-poweredge-r630.jpg</a> (image/jpeg)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/174491909/176849980.png">browser-web-icon.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="comments" class="pageSectionTitle">Comments:</h2>
+                        </div>
+
+                        <table border="0" width="100%">
+                                                        <tr>
+                                <td >
+                                    <a name="comment-204964425"></a>
+                                    <font class="smallfont"><p>Awesome! The indecol server is a very effective solution for running message_ix (an integrated assessment modelling framework using python and Gams). No headaches during installation... just pip install <img class="emoticon emoticon-wink" src="images/icons/emoticons/wink.svg" data-emoticon-name="wink" alt="(wink)" data-emoji-short-name=":wink:"/></p></font>
+                                    <div align="left" class="smallfont" style="color: #666666; width: 98%; margin-bottom: 10px;">
+                                        <img src="images/icons/contenttypes/comment_16.png" height="16" width="16" border="0" align="absmiddle"/>
+                                        Posted by maikbu at 03.12.2020 10:59 CET
+                                    </div>
+                                </td>
+                            </tr>
+                                                    </table>
+                    </div>
+                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

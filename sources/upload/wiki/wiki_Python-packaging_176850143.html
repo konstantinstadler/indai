@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : Python packaging</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Development-tools_176849952.html">Development tools</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : Python packaging
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Unknown User (radekl)</span>, last modified on 11.11.2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="contentLayout2">
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<p style="margin-left: 30.0px;"><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1709817187630 {padding: 0px;}
+div.rbtoc1709817187630 ul {list-style: square !important;margin-left: 0px;}
+div.rbtoc1709817187630 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1709817187630'>
+<ul class='toc-indentation'>
+<li><a href='#Pythonpackaging-Requirements'>Requirements</a></li>
+<li><a href='#Pythonpackaging-Packageandprojectstructure'>Package and project structure</a>
+<ul class='toc-indentation'>
+<li><a href='#Pythonpackaging-Therootfolder'>The root folder</a>
+<ul class='toc-indentation'>
+<li><a href='#Pythonpackaging-setup.py'>setup.py</a></li>
+<li><a href='#Pythonpackaging-README'>README</a></li>
+<li><a href='#Pythonpackaging-LICENCE'>LICENCE</a></li>
+<li><a href='#Pythonpackaging-MANIFEST.in'>MANIFEST.in</a></li>
+<li><a href='#Pythonpackaging-requirements.txt'>requirements.txt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href='#Pythonpackaging-Thesourcecodefolder'>The source code folder</a></li>
+<li><a href='#Pythonpackaging-Thedocfolder'>The doc folder</a></li>
+<li><a href='#Pythonpackaging-Thetestsfolder'>The tests folder</a></li>
+<li><a href='#Pythonpackaging-Packaging'>Packaging</a></li>
+<li><a href='#Pythonpackaging-Distributing'>Distributing</a></li>
+<li><a href='#Pythonpackaging-DistributingtoAnaconda'>Distributing to Anaconda</a></li>
+<li><a href='#Pythonpackaging-Automatictesting'>Automatic testing</a></li>
+</ul>
+</div></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<p>Note: if this is updated, update also the description on the IndEcol wiki.</p><p>Providing a package is the preferred way to distribute <a href="Python_174491827.html">Python</a> code. Installing a Python package (through “pip install”) makes the code system-wide available; no need to fiddle around with path variables at the begin of script to get all modules importable.</p><p>This is a small tutorial which guides you through the steps necessary to provide your code as a python package. We use the country_converter (<a class="external-link" href="https://github.com/konstantinstadler/country_converter" rel="nofollow" title="https://github.com/konstantinstadler/country_converter"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176850143/176850145.png" data-image-src="attachments/176850143/176850145.png" data-unresolved-comment-count="0" data-linked-resource-id="176850145" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176850143" data-linked-resource-container-version="11" alt=""></span>https://github.com/konstantinstadler/country_converter</a>) as a minimal example.</p><p>You can find more detailed guides to python packaging here:</p><ul><li class="level1"><p><a class="external-link" href="https://packaging.python.org/" rel="nofollow" title="https://packaging.python.org/"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176850143/176850145.png" data-image-src="attachments/176850143/176850145.png" data-unresolved-comment-count="0" data-linked-resource-id="176850145" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176850143" data-linked-resource-container-version="11" alt=""></span>https://packaging.python.org/</a></p></li><li class="level1"><p><a class="external-link" href="https://the-hitchhikers-guide-to-packaging.readthedocs.io/en/latest/" rel="nofollow" title="https://the-hitchhikers-guide-to-packaging.readthedocs.io/en/latest/"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176850143/176850145.png" data-image-src="attachments/176850143/176850145.png" data-unresolved-comment-count="0" data-linked-resource-id="176850145" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176850143" data-linked-resource-container-version="11" alt=""></span>https://the-hitchhikers-guide-to-packaging.readthedocs.io/en/latest/</a></p></li></ul></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit2" id="Pythonpackaging-Requirements">Requirements</h1><hr/><p>Minimal prerequisite:</p><ul><li class="level1"><p>A running Python installation, including pip - see Anaconda</p></li></ul><p>Additional requirements for version control and code sharing</p><ul><li class="level1"><p>Git</p></li></ul><ul><li class="level1"><p>A github or gitlab account</p></li></ul><p>For an official python package</p><ul><li class="level1"><p>A pypi account (<a class="external-link" href="https://pypi.python.org/pypi?%3Aaction=register_form" rel="nofollow"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176850143/176850145.png" data-image-src="attachments/176850143/176850145.png" data-unresolved-comment-count="0" data-linked-resource-id="176850145" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176850143" data-linked-resource-container-version="11" alt=""></span>https://pypi.python.org/pypi?%3Aaction=register_form</a>)</p></li></ul><ul><li class="level1"><p>Twine (<a class="external-link" href="https://pypi.python.org/pypi/twine" rel="nofollow" title="https://pypi.python.org/pypi/twine"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176850143/176850145.png" data-image-src="attachments/176850143/176850145.png" data-unresolved-comment-count="0" data-linked-resource-id="176850145" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176850143" data-linked-resource-container-version="11" alt=""></span>https://pypi.python.org/pypi/twine</a>)</p></li></ul></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit3" id="Pythonpackaging-Packageandprojectstructure">Package and project structure</h1><hr/><p>Under the root folder of your package (some_folder/package_name) you need the folders</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: python; gutter: false; theme: Confluence" data-theme="Confluence">some_folder/package_name/package_name
+some_folder/package_name/doc
+some_folder/package_name/tests</pre>
+</div></div></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h3 class="sectionedit4" id="Pythonpackaging-Therootfolder">The root folder</h3><p>some_folder/package_name</p><p>The files in this folder describe your package and include all files necessary to install it:</p><ol><li class="level1"><p>setup.py</p></li><li class="level1"><p>README (or README.rst / .md)</p></li><li class="level1"><p>LICENCE</p></li><li class="level1"><p>MANIFEST.in (the file MANIFEST is made automatically)</p></li><li class="level1"><p>requirements.txt</p></li></ol><h4 id="Pythonpackaging-setup.py">setup.py</h4><p>This file describes your package and its requirements.</p><p>A minimal example would be:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">from setuptools import setup</pre>
+</div></div><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">setup(
+name=&#39;package_name&#39;,
+description=(
+&#39;Some one line - &#39;
+&#39;a short description of the package. &#39;),
+long_description=open(&#39;README.rst&#39;).read(),
+url=&#39;path to github or gitlab&#39;,
+author=&#39;your name&#39;,
+author_email=&#39;your email&#39;,
+version=&#39;0.0.1&#39;,
+packages=[&#39;package_name&#39;, ],
+license=&#39;GPLv3&#39;,
+)</pre>
+</div></div><p>For a more complete example with console scripts and some additional data files see the setup.py of the country_converter.</p><h4 id="Pythonpackaging-README">README</h4><p>A description of your project, in the best case with some snippets highlighting the functionality. This can be pure text or markdown/restructuredText format. For the later use README.rst as filename.</p><h4 id="Pythonpackaging-LICENCE">LICENCE</h4><p>The licence of your package, you can download these from the internet after you decided on one. see <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176850143/176850145.png" data-image-src="attachments/176850143/176850145.png" data-unresolved-comment-count="0" data-linked-resource-id="176850145" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176850143" data-linked-resource-container-version="11" alt=""></span><a class="external-link" href="https://choosealicense.com/" rel="nofollow" title="https://choosealicense.com/">https://choosealicense.com/</a> or the SI of Pauliuk, S., et al 2015 (10.1111/jiec.12316)</p><h4 id="Pythonpackaging-MANIFEST.in"><a class="external-link" href="http://MANIFEST.in" rel="nofollow">MANIFEST.in</a></h4><p>These includes additional files you want to distribute with your package besides the source code. This should at least include</p><p>README.rst</p><p>if you use a specific file ending for your readme file.</p><h4 id="Pythonpackaging-requirements.txt">requirements.txt</h4><p>Any packages your package relies on with a version number, e.g: <br/> <code>
+pandas &gt;= 0.17.0</code></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit5" id="Pythonpackaging-Thesourcecodefolder">The source code folder</h1><hr/><p>some_folder/package_name/package_name</p><p>This includes your source code and must include a <code><em class="u">init</em>.py</code></p><p>In the <code><em class="u">init</em>.py</code> you should have:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: py; gutter: false; theme: Midnight" data-theme="Midnight">from package_name.package_name import *
+
+author = &#39;your name&#39;
+version = &#39;0.0.1&#39;</pre>
+</div></div><p>You can specify which fucntionality should be visible to the user by modifiying the import statement. If you don't want to bother with the sync of the version number in here and in the setup.py, include as <code>version.py</code> and read the version number in <em class="u">init</em>.py and setup.py (see country_converter for a working example).</p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit6" id="Pythonpackaging-Thedocfolder">The doc folder</h1><hr/><p>For all additional documentation of your project, including tutorials, ipython notebooks, or a full sphinx documentation. See country_converter for a minimal example, a full documentation based on sphinx is used in pymrio.</p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit7" id="Pythonpackaging-Thetestsfolder">The tests folder</h1><hr/><p>All tests which should run to ensure the functionality of your project.</p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit8" id="Pythonpackaging-Packaging">Packaging</h1><hr/><p>Once you have everything in place run go to the root folder of your project and run</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">pip install .</pre>
+</div></div><p>This will install the package on your local computer. If it is already installed and you want to update run</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">pip install . -U</pre>
+</div></div><p>and if you want to remove it run</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">pip uninstall package_name</pre>
+</div></div></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit9" id="Pythonpackaging-Distributing">Distributing</h1><hr/><p>You should have your package under version control and on a central repository. Push regularly to the central repo. Everyone cloning/downloading from there should be able to install in the same way as described above.</p><p>If you want to make a official package, go to the root folder of your package and run</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">python setup.py sdist</pre>
+</div></div><p>This will produce a folder dist at your projects (you should add this folder to your .gitignore). In this folder you will find your packaged project as a gz file. You can send this file around and other users can install it with</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">pip install package_name-version.tar.gz
+
+</pre>
+</div></div><p>To upload the package file to pypi (the official python package repository) use</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">twine upload package_name-version.tar.gz </pre>
+</div></div><p>This requires a .pypirc in your root with the following content</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">[distutils]
+index-servers=pypi
+
+[pypi]
+repository = https://upload.pypi.org/legacy/
+username = YOUR_NAME
+password = YOUR_PW</pre>
+</div></div><p>Than your package should be available in pypi at<br/> <code>
+<a class="external-link" href="https://pypi.python.org/pypi/PACKAGE_NAME/VERSION" rel="nofollow" title="https://pypi.python.org/pypi/PACKAGE_NAME/VERSION"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176850143/176850145.png" data-image-src="attachments/176850143/176850145.png" data-unresolved-comment-count="0" data-linked-resource-id="176850145" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176850143" data-linked-resource-container-version="11" alt=""></span>https://pypi.python.org/pypi/PACKAGE_NAME/VERSION</a><br/>
+
+</code></p><p>Note: The parsing of the readme at pypi is quite brittle, in particular for rst files. Any error in your readme will result in no parsing, in most cases I encountered so far, one of the internal links were not working.</p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit10" id="Pythonpackaging-DistributingtoAnaconda">Distributing to Anaconda</h1><hr/><p>This guide assumes that you have a package already available on pypi and that you want to make it also availabe through the conda installer. If you want any other option (not make it open source but still want to install it through conda, check the conda user guide on <a class="external-link" href="https://conda.io/docs/user-guide/tutorials/index.html" rel="nofollow" title="https://conda.io/docs/user-guide/tutorials/index.html"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176850143/176850145.png" data-image-src="attachments/176850143/176850145.png" data-unresolved-comment-count="0" data-linked-resource-id="176850145" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176850143" data-linked-resource-container-version="11" alt=""></span>https://conda.io/docs/user-guide/tutorials/index.html</a> )</p><p>Steps</p><ol><li class="level1"><p>Have a open pypi package (see pypi package guide above)</p></li><li class="level1 node"><p>setup Anaconda for uploading packages:</p><ol><li class="level2"><p>get an anaconda account here <a class="external-link" href="https://anaconda.org" rel="nofollow" title="https://anaconda.org"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176850143/176850145.png" data-image-src="attachments/176850143/176850145.png" data-unresolved-comment-count="0" data-linked-resource-id="176850145" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176850143" data-linked-resource-container-version="11" alt=""></span>https://anaconda.org</a></p></li><li class="level2"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">conda install conda-build</pre>
+</div></div></li><li class="level2"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">conda install conda-client</pre>
+</div></div></li><li class="level2"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">anaconda login</pre>
+</div></div></li></ol></li><li class="level1 node"><p>make a tmp directory and run</p><ol><li class="level2"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">conda skeleton pypi PACKAGENAME</pre>
+</div></div></li><li class="level2"><p>move to this directory and download build.sh and bld.bat to this directory (from <a class="external-link" href="https://conda.io/docs/user-guide/tutorials/build-pkgs-skeleton.html" rel="nofollow" title="https://conda.io/docs/user-guide/tutorials/build-pkgs-skeleton.html"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176850143/176850145.png" data-image-src="attachments/176850143/176850145.png" data-unresolved-comment-count="0" data-linked-resource-id="176850145" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176850143" data-linked-resource-container-version="11" alt=""></span>https://conda.io/docs/user-guide/tutorials/build-pkgs-skeleton.html</a>)</p></li><li class="level2"><p>if your package is platform / python version agnostic, add</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">noarch: python</pre>
+</div></div><p>to the section</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">build:</pre>
+</div></div></li><li class="level2"><p>build the package for this directory by moving up one folder and run:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">conda-build PACKAGENAME</pre>
+</div></div><p>at the end of the screen output you get the location of this file. You could upload to anaconda with the command given, e.g.</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">anaconda upload /home/konstans/bin/anaconda3/conda-bld/linux-64/country_converter-0.5.4-py35hcc4c13d_0.tar.bz2</pre>
+</div></div><p>or you set</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">conda config -set anaconda_upload yes</pre>
+</div></div><p>before</p></li><li class="level2"><p>If you need to specify architectures convert the package with</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">conda convert -f -platform all DIR_FROM_BEFORE -o TMPFOLDER</pre>
+</div></div><p>e.g.</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">conda convert -f -platform all /home/konstans/bin/anaconda3/conda-bld/linux-64/country_converter-0.5.4-py35hcc4c13d_0.tar.bz2 -o ~/tmp/coco_all</pre>
+</div></div><p>You have to manually upload these by switching to each folder and upload with anaconda upload FILENAME):</p></li></ol></li><li class="level1"><p>check your upload on your anaconda dashboard</p></li><li class="level1"><p>install with</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">conda install -c ACOUNTNAME PACKAGENAME</pre>
+</div></div></li></ol></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h1 class="sectionedit11" id="Pythonpackaging-Automatictesting">Automatic testing</h1><hr/><p>If you have a tests directory, you can link your github account to travis and provide a</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">.travis.yml</pre>
+</div></div><p><code>
+</code> file.</p><p>See also:<span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176850143/176850145.png" data-image-src="attachments/176850143/176850145.png" data-unresolved-comment-count="0" data-linked-resource-id="176850145" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176850143" data-linked-resource-container-version="11" alt=""></span> <a class="external-link" href="https://travis-ci.org/getting_started" rel="nofollow" title="https://travis-ci.org/getting_started">https://travis-ci.org/getting_started</a></p><p>This will run automatic tests if you upload to github.</p><p>Similar things exist for gitlab, we are working on that.</p></div>
+</div>
+</div>
+</div>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/176850143/176850145.png">browser-web-icon.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

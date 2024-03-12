@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : SSH</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="174491614.html">Digital Tools for IndEcol Research/Teaching</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : SSH
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Konstantin Stadler</span>, last modified by <span class='editor'> Peter Esmé Maxwell</span> on 15.03.2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="contentLayout2">
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h2 id="SSH-Background">Background</h2><p><span style="letter-spacing: 0.0px;">In the olde days of the internet, there were standard software utilities on *nix systems that allowed the user to open connections to other hosts to run a terminal, transfer files, so on and so forth. These operated over TCP (</span><a class="external-link" href="https://www.netburner.com/learn/tcp-vs-udp-battle-of-the-protocols/" rel="nofollow" style="letter-spacing: 0.0px;">here some short summary between TCP and UDP</a><span style="letter-spacing: 0.0px;"> but not needed here) but were not protected cryptographically: with access to the network, anyone could not only see all the traffic including passwords but also modify it. This was perhaps ok within a small university lab but it was certainly not suitable for the type of internet that was developing in the late 90s.</span></p><p>So, a replacement was developed: the <a class="external-link" href="https://en.wikipedia.org/wiki/Secure_Shell" rel="nofollow"> Secure SHell (SSH) Protocol. </a>In simple terms, SSH provides encrypted connections to remote computers, over TCP. Actually, it's a little more involved as it layers three components:</p><ul><li>a transport layer, which provides authentication of hosts, confidentiality (secrecy of the traffic), and integrity (assurance that the traffic has not been modified by an attacker);</li><li>various user authentication protocols (so think passwords, public key, etc); and,</li><li>connection multiplexing, so that several logical connections can be piped over the same encrypted transport layer.</li></ul><p>What does this mean for you? Well, you can open remote terminals, transfer files, mount entire filesystems, run Git, and a whole range of other activities with remote hosts, all securely.</p><p><a class="external-link" href="https://i.ntnu.no/wiki/-/wiki/English/SSH" rel="nofollow">The NTNU wiki has a good top-level summary on how to use SSH - use this to get started</a>.  <strong>However, note that most versions of Windows 10 now come with its own version of OpenSSH, which is typically much preferred to PuTTY.</strong></p><p><br/></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<p><span style="letter-spacing: -0.008em;color: rgb(0,153,255);font-size: 20.0px;">Basic Usage</span></p><p><span style="letter-spacing: 0.0px;">A very simple 'getting-started' type example is described here. Although, you are strongly encouraged to read the other guidance pages in this section.</span></p><p><br/></p><p><span style="color: rgb(0,153,255);font-size: 16.0px;font-weight: bold;letter-spacing: -0.006em;">Note</span></p><ul><li><span style="letter-spacing: 0.0px;">If using Windows then you run these commands in either Powershell (favoured these days) or cmd. Whilst both of these CLIs (Command Line Interfaces) are very difference from Linux systems, the ssh tools included in recent versions of Windows 10 is almost exactly the same, which is nice.</span></li><li><span style="letter-spacing: 0.0px;">If you're using a Linux system then your CLI will be something like bash.</span></li></ul><h3 id="SSH-SSHtologin.ansatt.ntnu.no"><span style="color: rgb(0,153,255);font-size: 16.0px;font-weight: bold;letter-spacing: -0.006em;">SSH to </span><a class="external-link" href="http://login.ansatt.ntnu.no" rel="nofollow" style="font-size: 16.0px;font-weight: bold;letter-spacing: -0.006em;">login.ansatt.ntnu.no</a></h3><p>In short, the command to login into a ssh enabled server is:</p><blockquote><p><code>ssh USERNAME@ADDRESS</code></p></blockquote><p>So, for example, one can login using password authentication to NTNU's employee server:</p><blockquote><p><code>ssh ntnu-username@login.ansatt.ntnu.no</code></p></blockquote><p>If this is the first time you are connecting, then it'll ask you if the remote host's &quot;fingerprint&quot; is correct; you can typically confirm with &quot;yes&quot; and SSH will then save the remote server's fingerprint (and it checks this at the start of every connection).</p><p>It will then ask you for a password. In this case, it is your usual NTNU login password.</p><p>The <code>login.ansatt.ntnu.no</code> host points to the content of your personal M drive and is reachable globally, i.e. you do not need a VPN connection. <span style="letter-spacing: 0.0px;">Most other hosts at NTNU, and generally everything provided by the Digital Lab (Openstack servers etc.), are only reachable within the NTNU VPN.</span></p><p>However, you can use the <code>login.ansatt.ntnu.no</code> as entry point to reach the other servers which are behind the VPN, which will be described in the page <a href="279380222.html">about using various ssh tools</a>.</p><h3 id="SSH-Endingtheconnection">Ending the connection</h3><p>There are various ways to end the session, depending on context.</p><ul><li>If you still have a working shell prompt then typing <code>exit</code> or hitting the shortcut keys <code>Ctrl-d</code> will end your session.</li><li>If you're session is unresponsive then you can enter <code>~.</code>  This has to be done with a but of gusto: the dot must follow immediately after the tilde. This is wha'ts called an escape sequence and is not an instruction to the host at the other end but rather your local terminal (ssh in this instance). There are other escape sequences.</li><li>Again, if unresponsive then closing the CLI window will work but sometimes it involves more typing if you need to setup your ssh-agent again.</li></ul><p><br/></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h2 id="SSH-MoreInformationandAdvancedUsage">More Information and Advanced Usage</h2><p>SSH can do a LOT more than this, e.g. you can move files about, you can forward connections through other hosts, you can run X-Windows programs on other hosts over SSH (think Matlab on Cloudio or such like), and can use other authentication methods.</p><ul><li>You can learn about <a href="279380176.html">using public key authentication here</a>.</li><li>You can learn more about the <a href="279380222.html">various ssh tools and how to do more fancy things here</a>.</li></ul><p><br/></p><p><br/></p></div>
+</div>
+</div>
+</div>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/267029689/267029705.png">image2022-10-26_11-15-57.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

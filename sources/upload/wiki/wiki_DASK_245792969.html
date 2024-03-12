@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : DASK</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Development-tools_176849952.html">Development tools</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : DASK
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Unknown User (radekl)</span>, last modified on 08.08.2022
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="DASK-Materials">Materials</h3><p>Jupyter notebook from the workshop ither at GilLab:</p><p><a class="external-link" href="https://gitlab.com/dlab-indecol/dask-workshop-coiled" rel="nofollow">https://gitlab.com/dlab-indecol/dask-workshop-coiled</a></p><p>or downloaded as zip file:</p><p><span class="confluence-embedded-file-wrapper"><a class="confluence-embedded-file" href="/wiki/download/attachments/245792969/dask-workshop-coiled.zip?version=1&amp;modificationDate=1649404388434&amp;api=v2" data-nice-type="Zip Archive" data-file-src="/wiki/download/attachments/245792969/dask-workshop-coiled.zip?version=1&amp;modificationDate=1649404388434&amp;api=v2" data-linked-resource-id="245792973" data-linked-resource-type="attachment" data-linked-resource-container-id="245792969" data-linked-resource-default-alias="dask-workshop-coiled.zip" data-mime-type="application/zip" data-has-thumbnail="false" data-linked-resource-version="1" data-can-edit="true" aria-label="dask-workshop-coiled.zip" draggable="false"><img src="download/resources/com.atlassian.confluence.plugins.confluence-view-file-macro:view-file-macro-resources/images/placeholder-medium-zip.png" height="250" alt="" draggable="false"/><span class="title">dask-workshop-coiled.zip</span></a><span class="companion-edit-button-placeholder edit-button-overlay" data-linked-resource-container-id="245792969" data-linked-resource-id="245792973" data-template-name="companionEditIcon" data-source-location="embedded-attachment"></span></span></p><p><br/></p><h3 id="DASK-RunningDASKonHPC">Running DASK on HPC</h3><p><u><em>NOTE: Tested on IDUN. Conda had some issue so I was using Python environment.</em></u></p><p><br/></p><p>There is great youtube tutorial and this  is based on this:<br/><a class="external-link" href="https://www.youtube.com/watch?v=FXsgmwpRExM&amp;ab_channel=MatthewRocklin" rel="nofollow">https://www.youtube.com/watch?v=FXsgmwpRExM&amp;ab_channel=MatthewRocklin</a></p><h4 id="DASK-Prerequisites">Prerequisites</h4><p>ssh to IDUN and install new environment.In this tutorial I use name <u><strong>dask-venv </strong></u></p><p><em>IIn this tutorial  am using python since conda does not work properly for me. </em></p><p>SIgma2 has good documentation for installing Python packages on HPC</p><p><a class="external-link" href="https://documentation.sigma2.no/software/userinstallsw/python.html" rel="nofollow">https://documentation.sigma2.no/software/userinstallsw/python.html</a></p><h4 id="DASK-Installingmodules">Installing modules</h4><p> <strong><em>ssh</em></strong> to HPC and <em><strong>cd</strong></em> to work environment  (on IDUN it is <em>/cluster/work/&lt;username&gt;</em>)</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">module purge
+module load Anaconda3/2020.07
+python -m venv dask-venv
+source dask-venv/bin/activate
+pip install dask dask_jobqueue ipython bokeh jupyterlab</pre>
+</div></div><h4 class="auto-cursor-target" id="DASK-Daskexampleusingipython">Dask example using ipython</h4><p>NOTE: if you do not have PBS use SLURM</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: py; gutter: false; theme: Midnight" data-theme="Midnight">In [1]: from dask_jobqueue import PBSCluster, SLURMCluster  # use either PBS or SLURM scheduler
+
+In [2]: cluster = PBSCluster(cores=32, memory=&#39;24GB&#39;, project=&#39;share-iv-ept&#39;)
+In [3]: print(cluster.job_script())  # this is how the scheduler config script looks like
+#!/usr/bin/env bash
+
+#PBS -N dask-worker
+#PBS -q CPUQ
+#PBS -A share-iv-ept
+#PBS -l select=1:ncpus=32:mem=23GB
+#PBS -l walltime=00:30:00  
+
+In [3]: cluster.scale(3)  # scale to as many nodes as you need
+
+In [4]: from dask.distributed import Client, progress
+
+In [5]: client = Client(cluster)
+
+In [6]: client
+Out[6]: &lt;Client: &#39;tcp://10.3.1.41:35211&#39; processes=3 threads=96, memory=67.05 GiB&gt;
+
+In [7]: import time
+
+In [8]: def slow_increment(x):
+   ...:     time.sleep(1)
+   ...:     return x + 1
+
+In [11]: futures = client.map(slow_increment, range(2000))
+
+In [12]: progress(futures)
+[########################################] | 100% Completed | 24.0s</pre>
+</div></div><p><br/></p><p><u><span style="color: rgb(0,51,102);"><strong>NOTE</strong></span></u></p><p>PBS is nto installed on Fram and Betzy.</p><p>Slurm on Dask reguires memmory to specify and to do this on Fram or Betzy you have to specify job queue which accepts the memory specification</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight"># BETZY example
+cluster = SLURMCluster(cores=2, memory=&#39;2GB&#39;, project=&#39;nnXXXXk&#39;, job_extra=[&quot;--qos preproc&quot;])
+
+# FRAM example
+cluster = SLURMCluster(cores=2, memory=&#39;2GB&#39;, project=&#39;nnXXXXk&#39;, job_extra=[&quot;--partition bigmem&quot;])
+
+</pre>
+</div></div><p><br/></p><p><br/></p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/245792969/245792973.zip">dask-workshop-coiled.zip</a> (application/zip)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

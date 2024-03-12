@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : BEST</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Projects_176849778.html">Projects</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : BEST
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Ruslan Zhuravchak</span>, last modified on 05.05.2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p><strong>This page is for documenting and guiding the access, <strong>development </strong>and use of the infrastructure, data and the research code related to <span style="color: rgb(48,48,48);">FNR INTER project <a class="external-link" href="https://www.ntnu.edu/ept/best#/view/about" rel="nofollow">BEST</a>.</span></strong></p><p><span><span style="color: rgb(48,48,48);">Collaborative work on the project assignments is facilitated by </span><span><span style="color: rgb(48,48,48);"><a class="external-link" href="https://jupyter.org" rel="nofollow">JupyterLab </a>installation at the <a href="https://www.ntnu.no/wiki/display/skyhigh" rel="nofollow">NTNU's OpenStack</a>. It has both private and shared space for users, </span><span style="color: rgb(48,48,48);"><span>python</span>,</span><span style="color: rgb(48,48,48);"> conda, docker git and </span></span></span><span style="color: rgb(48,48,48);"><span>other instruments installed.</span></span></p><h1 id="BEST-Howtoaccess?"><span style="letter-spacing: -0.01em;color: rgb(0,153,255);font-size: 24.0px;">How to access?</span></h1><p><strong>Infrastructure</strong></p><p>Accessible at <a class="external-link" href="https://best-hub.indecol.no/" rel="nofollow">https://best-hub.indecol.no/</a>. <span style="letter-spacing: 0.0px;">Users can be added upon request sent to </span><a class="external-link" href="mailto:contact@iedl.no" rel="nofollow" style="letter-spacing: 0.0px;">contact@iedl.no</a><span style="letter-spacing: 0.0px;">.</span></p><p><strong>Source files</strong></p><p>The workflow is version controlled using git (<a class="external-link" href="https://git.list.lu/" rel="nofollow">https://git.list.lu</a>) and accessible at <a class="external-link" href="https://git.list.lu/best" rel="nofollow">https://git.list.lu/best</a>. The access is managed by Tomas Navarrete <a class="external-link" href="mailto:tomas.navarrete@list.lu" rel="nofollow">(</a><a class="external-link" href="mailto:tomas.navarrete@list.lu" rel="nofollow">tomas.navarrete@list.lu</a>).</p><p><strong>Documentation</strong></p><p>Hosted at <a class="external-link" href="https://erp-best.private.list.lu/" rel="nofollow">https://erp-best.private.list.lu/</a>. The access requires a VPN client (a preconfigured Checkpoint VPN (MS Windows only) available at <a class="external-link" href="https://cloud.list.lu/index.php/s/nTGn8zg2CRRcZnD" rel="nofollow">https://cloud.list.lu/index.php/s/nTGn8zg2CRRcZnD</a>). VPN user management by Moïse Nganmo Sinkam<strong><span> </span></strong>(<a class="external-link" href="mailto:moise.nganmo@list.lu" rel="nofollow">moise.nganmo@list.lu</a>).</p><h1 id="BEST-Howtonavigate?">How to navigate?</h1><p>The web-interface contains an intuitive file system that supports uploading local and remote files/directories so as navigation, file manipulation, management and search. Alternatively, a linux shell (bash) is also available for these tasks.</p><p>The space under the home (~/) directory is a private user's space except for two directories used for file sharing:</p><ul><li><code>~/scratch/</code> - all users have the permissions to create/manage/permanently delete all the files in this directory;</li><li><code>~/shared/</code> - a read-only directory, ordinary users do not have the permission to manipulate the files here. </li></ul><h1 id="BEST-Howtosetthingsup?">How to set things up?</h1><ol><li>Open a new terminal window (File - New - Terminal).</li><li><span style="letter-spacing: 0.0px;">Create virtual environment, e.g:</span><br/><span style="font-family: SFMono-Medium , &quot;SF Mono&quot; , &quot;Segoe UI Mono&quot; , &quot;Roboto Mono&quot; , &quot;Ubuntu Mono&quot; , Menlo , Courier , monospace;letter-spacing: 0.0px;">conda create --name best_env python=3.9.7 ipython pandas mamba<br/></span></li><li><span style="letter-spacing: 0.0px;">Make <code>bash</code> </span>recognise<span style="letter-spacing: 0.0px;"> <code>conda</code> commands:</span><br/><span style="font-family: SFMono-Medium , &quot;SF Mono&quot; , &quot;Segoe UI Mono&quot; , &quot;Roboto Mono&quot; , &quot;Ubuntu Mono&quot; , Menlo , Courier , monospace;letter-spacing: 0.0px;">conda init bash</span></li><li><span style="letter-spacing: 0.0px;">Restart the terminal, as prompted</span></li><li><span style="letter-spacing: 0.0px;">Activate the environment created </span>earlier:<br/><span style="font-family: SFMono-Medium , &quot;SF Mono&quot; , &quot;Segoe UI Mono&quot; , &quot;Roboto Mono&quot; , &quot;Ubuntu Mono&quot; , Menlo , Courier , monospace;letter-spacing: 0.0px;">conda activate best_env</span></li><li><span style="letter-spacing: 0.0px;">Add conda environment to the ipykernel</span><br/><span style="font-family: SFMono-Medium , &quot;SF Mono&quot; , &quot;Segoe UI Mono&quot; , &quot;Roboto Mono&quot; , &quot;Ubuntu Mono&quot; , Menlo , Courier , monospace;letter-spacing: 0.0px;">pip install ipykernel</span><br/><span style="font-family: SFMono-Medium , &quot;SF Mono&quot; , &quot;Segoe UI Mono&quot; , &quot;Roboto Mono&quot; , &quot;Ubuntu Mono&quot; , Menlo , Courier , monospace;letter-spacing: 0.0px;">python -m ipykernel install --user --name best_env --display-name &quot;best_env&quot;</span></li><li>Install the project-specific requirements. For packages available on conda or pip you can just do a<br/><code>mamba install PACKAGENAME -c conda-forge<br/>conda install PACKAGENAME -c conda-forge</code><br/>(mamba is faster then conda and we installed it in point 2, conda-forge for a larger package selection)<br/>If the package is not available on conda or coda-forge, do<br/><code>pip install PACKAGENAME</code></li><li>For private packages, e.g. for <a class="external-link" href="https://git.list.lu/best/best-foreground.git" rel="nofollow">https://git.list.lu/best/best-foreground.git</a>:<br/><code>mkdir best_packages</code><br/><code>cd best_packages</code><br/>Clone the repository, e.g (you probably need to give your username and password for each):<br/><code>git clone <a class="external-link" href="https://git.list.lu/best/best-foreground.git" rel="nofollow">https://git.list.lu/best/best-foreground.git</a></code><br/>Navigate to the newly-cloned directory:<br/><code>cd best-foreground/</code><br/>Install the dependencies:<br/><code>pip install .</code></li></ol><p>More information about <a href="https://www.ntnu.no/wiki/display/iedl/git" rel="nofollow">git</a>, <a href="https://www.ntnu.no/wiki/display/iedl/JupyterHub" rel="nofollow">jupyterhub</a>, <a href="https://www.ntnu.no/wiki/display/iedl/anaconda+open+data+science+platform+powered+by+python" rel="nofollow">anaconda</a> is available at the IEDL wiki pages.</p><h1 id="BEST-OpenStacksetup">OpenStack setup</h1><p>Created a bas group for the project, it_stackit-iv-ept-best which can be administered at : <a class="external-link" href="https://bas.ntnu.no/editgroup/?id=1548998" rel="nofollow">https://bas.ntnu.no/editgroup/?id=1548998</a><br/><br/>Creating the project IV-EPT-BEST<br/>+-------------+-----------------------------------------------------------------------------------------------------------------------------------+<br/>| Field       | Value                                                                                                                             |<br/>+-------------+-----------------------------------------------------------------------------------------------------------------------------------+<br/>| description | <a class="external-link" href="https://hjelp.ntnu.no/tas/public/ssp/content/search?q=NTNU0276603" rel="nofollow">NTNU0276603</a> : Carry out global land use management and energy scenario modelling, using the integrated assessment model framework |<br/>| domain_id   | d3f99bcdaf974685ad0c74c2e5d259db                                                                                                  |<br/>| enabled     | True                                                                                                                              |<br/>| id          | ff026dc423c04fadb20013f7a7fad209                                                                                                  |<br/>| is_domain   | False                                                                                                                             |<br/>| name        | IV-EPT-BEST                                                                                                                       |<br/>| options     | {}                                                                                                                                |<br/>| parent_id   | d3f99bcdaf974685ad0c74c2e5d259db                                                                                                  |<br/>| tags        | []                                                                                                                                |<br/>+-------------+-----------------------------------------------------------------------------------------------------------------------------------+<br/>Setting project expiry to 15.05.2023<br/>Setting quotas (4 instances, 8 cores, 32 GB RAM<br/>4 volumes with 100 gigabytes totally)<br/>Project created<br/>Adding it_stackit-iv-ept-best to the project</p><h1 id="BEST-SetupusingDocker">Setup using Docker</h1><ul><li>Acquire LIST docker registry's login credentials (or ask the Digital Lab)</li><li class="auto-cursor-target">Login to the registry with username and password:</li></ul><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Confluence" data-theme="Confluence">docker login -u username artefacts.list.lu</pre>
+</div></div><ul><li class="auto-cursor-target">Pull the image with the inventories:</li></ul><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Confluence" data-theme="Confluence">docker pull artefacts.list.lu/docker-best/best-inventories:test1</pre>
+</div></div><ul><li class="auto-cursor-target">Take a note on the IMAGE ID of the image just-pulled:</li></ul><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Confluence" data-theme="Confluence">docker images</pre>
+</div></div><ul><li class="auto-cursor-target">Run the container interactively with local port forwarding</li></ul><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Confluence" data-theme="Confluence">docker run -it -p 8888:8888 IMAGE_ID bash</pre>
+</div></div><ul><li>Install Jupyter in the conda's base (default) environment</li></ul><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Confluence" data-theme="Confluence">conda install jupyter</pre>
+</div></div><ul><li>Run the JupyterLab server from there</li></ul><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Confluence" data-theme="Confluence">jupyter lab --no-browser --ip=0.0.0.0 --allow-root</pre>
+</div></div><ul><li>Follow the URL shown in the terminal, e.g. <a class="external-link" href="http://127.0.0.1:8888/lab?token=" rel="nofollow">http://127.0.0.1:8888/lab?token=</a>.., to access JupyterLab in the browser</li></ul>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

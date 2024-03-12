@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : Matlab with Conda Python</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="174491614.html">Digital Tools for IndEcol Research/Teaching</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="174491824.html">Anaconda (conda)</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : Matlab with Conda Python
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Peter Esmé Maxwell</span>, last modified on 31.01.2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h1 class="sectionedit2" id="MatlabwithCondaPython-CallingcondaPythonfromMatlab(Windows)">Calling conda Python from Matlab (Windows)</h1><ol><li class="level1"><p>Firstly, be aware that the version of Python and Matlab have to be matched: see the list of possible matches <a class="external-link" href="https://se.mathworks.com/support/requirements/python-compatibility.html" rel="nofollow">here</a>. So you may need to either change the version of Python in the conda environment you want to use and/or upgrade Matlab.</p></li><li class="level1">Matlab will usually not find the correct Python binary without some help. You'll need to supply the path manually at the start of your Matlab script. You can find location of your Python as follows.<ol><li class="level1">If using <code>cmd.exe</code> then run <code>where python.</code>You'll likely see more than one entry: there's a Windows default Python (&quot;...\Microsoft\WindowsApps\python.exe&quot;), and there'll also be one or more entries due to your conda installation. Note the path for the appropriate conda Python.</li><li class="level1">If using Powershall then run <code>where.exe python</code> (yes, the .exe has to be there). Then select in the same way as in a. above.</li></ol></li><li class="level1">Before you can use Python in Matlab, you'll have to run <code>pyenv('Version', 'C:\path\to\your\python.exe').</code> Make sure to correctly replace the path in that command with what you obtained from step 2. If successful then you should see something like <pre><code>ans = 
+  PythonEnvironment with properties:
+
+          Version: &quot;3.10&quot;
+       Executable: &quot;C:\Users\peterma\miniconda3\python.exe&quot;
+          Library: &quot;C:\Users\peterma\miniconda3\python310.dll&quot;
+             Home: &quot;C:\Users\peterma\miniconda3&quot;
+           Status: Loaded
+    ExecutionMode: InProcess
+        ProcessID: &quot;17672&quot;
+      ProcessName: &quot;MATLAB&quot;
+</code></pre><p>The <code>pyenv()</code> command has to be run at the start of every command window session, or at the start of your script. More information can be found <a class="external-link" href="https://se.mathworks.com/help/matlab/matlab_external/install-supported-python-implementation.html" rel="nofollow">here</a>.</p></li><li class="level1">Other Matlab introductory docs can be found <a class="external-link" href="https://se.mathworks.com/help/matlab/matlab_external/create-object-from-python-class.html" rel="nofollow">here</a>.</li></ol><p><br/></p>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

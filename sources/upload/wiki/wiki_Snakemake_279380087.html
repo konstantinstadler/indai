@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : Snakemake</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="174491614.html">Digital Tools for IndEcol Research/Teaching</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : Snakemake
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Peter Esmé Maxwell</span>, last modified on 31.01.2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="contentLayout2">
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h2 id="Snakemake-Background">Background</h2><p><a class="external-link" href="https://snakemake.readthedocs.io/en/stable/" rel="nofollow">Snakemake</a> is a workflow management system. It allows you to setup a potentially very complicated series of computation or data processing tasks, with automatic dependency handling and subsequent recalculation of only stale files. This can potentially be scaled-up to cloud or cluster installations without having to change your configuration.</p><p><br/></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h2 id="Snakemake-Installation">Installation</h2><p>There are <a class="external-link" href="https://snakemake.readthedocs.io/en/stable/getting_started/installation.html" rel="nofollow">installation instructions in Snakemake's documentation</a>, which is the canonical resource. You also will almost certainly want to install Snakemake into it's own conda environment. As their documentation suggests, it's wise to use Mamba for this; if you're unsure of this, see <a href="275909648.html">our wiki page with instructions on how to setup Mamba.</a>.</p><p>As per the official Snakemake docs, the following will setup a conda environment with Snakemake installed in it and then activate it, using Mamba (this is assuming you have setup Mamba properly).</p><pre><code>mamba activate base
+mamba create -c conda-forge -c bioconda -n snakemake snakemake
+mamba activate snakemake
+</code></pre><p>Notably, the full installation cannot be performed on Windows; only a minimal install can be performed in Windows. You could setup a <a href="WSL_176850126.html">WSL (Windows Subsystem Linux)</a> host to accommodate this, or perform your development on a remote server. Always ensure that you either work against a <a href="Git-Version-Control_174491954.html">Git repository</a> or keep a suitable backup of your work.</p><p>There is an <a class="external-link" href="https://marketplace.visualstudio.com/items?itemName=Snakemake.snakemake-lang" rel="nofollow">extension for VSCode to properly highlight Snakemake's extension to the YAML syntax</a>.</p><p>Reminder! You'll need to ensure the conda Snakemake environment has the <a href="Using-conda_275909858.html">all the packages you require installed in it</a>.</p><p><br/></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h2 id="Snakemake-GettingStartedQuickly">Getting Started Quickly</h2><p><em>(PM 20230127 currently editing...)</em></p><p>The <a class="external-link" href="https://snakemake.readthedocs.io/en/stable/" rel="nofollow">official Snakemake docs</a> should always be your main port-of-call but a very quick tutorial XXXXXXXXXXXX has been prepared that should get you started quickly.</p></div>
+</div>
+</div>
+</div>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : Using ssh, ssh-agent, scp &amp; sftp, etc.</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="174491614.html">Digital Tools for IndEcol Research/Teaching</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="SSH_267029689.html">SSH</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : Using ssh, ssh-agent, scp &amp; sftp, etc.
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Peter Esmé Maxwell</span>, last modified on 16.03.2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="contentLayout2">
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h2 id="Usingssh,sshagent,scp&amp;sftp,etc.-UsingSSH">Using SSH</h2><h3 id="Usingssh,sshagent,scp&amp;sftp,etc.-BasicUsage">Basic Usage</h3><p>The standard use of ssh to start an interactive terminal on the remote host is simply:</p><pre><code>ssh username@hostname
+</code></pre><p>If public key authentication is used then ssh will by default use your private key at <code>~/.ssh/id_rsa</code>  or <code>~/.ssh/id_ed25519</code> (or variations for the other possible key types). If public key authentication isn't available, it'll ask if password authentication is possible; if this is setup on the remote server, you'll be prompted for a password.</p><p>You can specify a different private key as:</p><pre><code>ssh -i /path/to/privatekey username@hostname
+</code></pre><p>You can tell ssh to login to the remote ho<span style="letter-spacing: 0.0px;">st and issue a simple command (you can do a LOT more with this sort of thing). For example, listing the contents of the remote home directory:</span></p><pre><code>ssh username@hostname &quot;ls -l&quot;
+</code></pre><p>As usual, you can read the documentation by looking-up the man pages: <code>man ssh</code>.</p><h3 id="Usingssh,sshagent,scp&amp;sftp,etc.-RemoteHostFingerprintsandknown_hosts">Remote Host Fingerprints and <code>known_hosts</code> </h3><p>When you connect to a new host for the first time, you'll be asked to verify its fingerprint. Strictly speaking, one should do this properly but it's usually ok to just accept. What this does is save a record of the remote server's cryptographic fingerprint. Each time you connect to that remote host from then on, ssh will actually authenticate the remote server, i.e. to ensure that no miscreant is spoofing the remote server. If the remote server is replaced or the operating system is reinstalled, you'll get a big warning when you try to connect.</p><p>These fingerprints are stored in <code>~/.ssh/known_hosts.</code></p><p><br/></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h2 id="Usingssh,sshagent,scp&amp;sftp,etc.-TheSSHSuperSecretAgent:ssh-agent">The SSH Super Secret Agent: ssh-agent</h2><p>Unless you want extra typing practice, it soon becomes bothersome to type in the passphrase for your private key(s) every time you connect to a remote host. OpenSSH comes with a tool to alleviate this problem: <code>ssh-agent</code> .</p><p>The agent can hold your private keys securely decrypted in memory in such a way that it cannot be stolen, but it allows you to use the key without having to repeatedly enter your passphrase. This is particularly useful when using software like Git. Starting the agent is different on Linux compared to Windows but after that, the usage is much the same.</p><h3 id="Usingssh,sshagent,scp&amp;sftp,etc.-Startingssh-agentonLinux">Starting ssh-agent on Linux</h3><p>There are two main ways to run the agent. One is appropriate if you're using X Windows on your local computer (if you are, read the man page for ssh-agent). If not, then what follows is typically what you're interested in.</p><p>If you run</p><pre><code>eval `ssh-agent`
+</code></pre><p>in your terminal then it'll start the agent. N.B. those are backticks!</p><p>You can then add your keys by simply typing (assuming your private key is in the standard location): <code>ssh-add</code>. An example looks like:</p><pre><code>(base) peterma@NTNU17558:~$ ssh-add<br/>Enter passphrase for /home/peterma/.ssh/id_rsa:<br/>Identity added: /home/peterma/.ssh/id_rsa (/home/peterma/.ssh/id_rsa) </code></pre><p>If your key is elsewhere then you can run <code>ssh-add /path/to/your/private/key</code>.</p><p>You'll be prompted for your passphrase so that ssh-agent can decrypt your private key.</p><p>You can list all the keys loaded into the agent with <code>ssh-add -l</code>. The output has one line for each loaded private key. For example,</p><pre><code>(base) peterma@NTNU17558:~$ ssh-add -l<br/>2048 SHA256:jw+vRjDYSKTo+IY5bUAVzvX3OgsYFEbuBPPFPRLwwII /home/peterma/.ssh/id_rsa (RSA)
+</code></pre><p>With this method, the agent won't be available to other shell sessions, so you'd have to start the agent on those separately. An alternative, is if you are running X Windows then you can have it start the agent on startup and therefore all its child processes will inherit the corresonding environment variables.</p><h3 id="Usingssh,sshagent,scp&amp;sftp,etc.-Startingssh-agentonWindows">Starting ssh-agent on Windows</h3><p>The ssh-agent can be run on startup and will be available to all programs you run. To set it up, open a Powershell with Administrator permissions then run</p><pre><code>Set-Service ssh-agent -StartupType Automatic
+Start-Service ssh-agent
+Get-Service ssh-agent
+start-ssh-agent.cmd
+</code></pre><p>It'll start immediately but you'll need to restart any programs you want to use the agent. Useful info in the <a class="external-link" href="https://code.visualstudio.com/docs/remote/troubleshooting" rel="nofollow">VSCode docs here</a> (under &quot;Setting up the SSH Agent&quot;.</p><p>You'll still need to run <code>ssh-add</code> to load your private key into the agent, as per the Linux instructions above. You can do this, for example, in the terminal in VSCode or in a normal Windows Powershell.</p><p><br/></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h2 id="Usingssh,sshagent,scp&amp;sftp,etc.-UsingSCPandSFTP">Using SCP and SFTP</h2><p><em>(PM 20230127: currently editing...)</em></p><p><br/></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h2 id="Usingssh,sshagent,scp&amp;sftp,etc.-sshconfigfile">ssh config file</h2><p>A file called config in the .ssh directory.</p><p>To add some shortcuts and specfications.</p><p>To add the connection to the server open/make a config file in a text editor.</p><ul><li>go to .ssh</li><li>notepad.exe config</li><li>adapt and add the following:</li></ul><p><br/></p><pre>Host ntnu_login<br/>    User usern_name<br/>    HostName <a class="external-link" href="http://login.ansatt.ntnu.no" rel="nofollow">login.ansatt.ntnu.no</a><br/>    IdentityFile ~/.ssh/ntnu_login</pre><p><br/></p><p>Gotcha: sometime notepad automatically adds .txt to the file. Remove the ending on the command line with</p><pre> move config.txt config</pre><p><br/></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h2 id="Usingssh,sshagent,scp&amp;sftp,etc.-X-Forwarding">X-Forwarding</h2><p>Server graphical / GUI over the ssh connection. Not recommended but sometimes necessary. </p><p>See <a class="external-link" href="https://i.ntnu.no/wiki/-/wiki/English/SSH" rel="nofollow">https://i.ntnu.no/wiki/-/wiki/English/SSH</a> and check for X-forwarding on google</p><p><br/></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h2 id="Usingssh,sshagent,scp&amp;sftp,etc.-PortForwarding">Port Forwarding</h2><p><a class="external-link" href="https://linuxize.com/post/how-to-setup-ssh-tunneling/" rel="nofollow">https://linuxize.com/post/how-to-setup-ssh-tunneling/</a></p></div>
+</div>
+</div>
+</div>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

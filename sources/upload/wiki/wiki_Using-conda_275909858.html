@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : Using conda</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="174491614.html">Digital Tools for IndEcol Research/Teaching</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="174491824.html">Anaconda (conda)</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : Using conda
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Peter Esmé Maxwell</span>, last modified on 28.03.2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="contentLayout2">
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<p><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1709817188228 {padding: 0px;}
+div.rbtoc1709817188228 ul {margin-left: 0px;}
+div.rbtoc1709817188228 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1709817188228'>
+<ul class='toc-indentation'>
+<li><a href='#Usingconda-General'>General</a></li>
+<li><a href='#Usingconda-CreatingandAlteringanEnvironmentInteractively'>Creating and Altering an Environment Interactively</a>
+<ul class='toc-indentation'>
+<li><a href='#Usingconda-CreatinganEnvironment'>Creating an Environment</a></li>
+<li><a href='#Usingconda-ViewingtheAvailableEnvironments'>Viewing the Available Environments</a></li>
+<li><a href='#Usingconda-InstallingAdditionalPackages'>Installing Additional Packages</a></li>
+<li><a href='#Usingconda-ViewingthePackagesInstalledinanEnvironment'>Viewing the Packages Installed in an Environment</a></li>
+<li><a href='#Usingconda-RemovingPackages'>Removing Packages</a></li>
+<li><a href='#Usingconda-ImportingandExportingEnvironmentConfigurations'>Importing and Exporting Environment Configurations</a></li>
+</ul>
+</li>
+<li><a href='#Usingconda-CondaChannels'>Conda Channels</a></li>
+</ul>
+</div></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h2 id="Usingconda-General">General</h2><p>The <a class="external-link" href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#sharing-an-environment" rel="nofollow">conda documentation</a> is the primary resource for this. However, a short summary of tips-and-tricks are included in this page.</p><p>Some things to remember about conda.</p><ul><li>Conda allows the creation of separate, mainly Python-centric, environments so that you can run software with different package setups (including different versions).</li><li>Conda allows you to import and export the package specification for your environment(s) as YAML files. This means you can include a YAML file with your software to specify the conda environment needed to run it.</li><li>Conda has a <code>base</code> environment that conda uses for managing itself. Avoid using <code>base</code> for your own programs or altering it too much: it's much better to create new environments.</li><li>Conda has a shared package cache so that if one of your environments downloads a package then it'll be saved in the cache (version specific) so other environments don't need to download it.</li><li>When changing packages within an environment, conda has to solve a problem to ensure the packages are compatible. This gets (much) more time-consuming as the number of packages increase, so using Mamba can help. It also means that if you are installing packages into an environment, it's best to specify them in one command (otherwise conda has to solve the problem several times).</li><li>Conda can integrate into Linux shells and also Windows cmd or Powershell, which allows you to specify what environment other software runs with. This is done by &quot;activating&quot; an environment.</li></ul><p><br/></p><p>There instructions assume you're using conda via the command line. You can start this on Windows, for example, by &quot;Start&quot; → &quot;Anacconda&quot; / &quot;Miniconda&quot; → &quot;Anaconda Powershell Prompt&quot;.</p><p><br/></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h2 id="Usingconda-CreatingandAlteringanEnvironmentInteractively">Creating and Altering an Environment Interactively</h2><p>Also see the <a class="external-link" href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands" rel="nofollow">relevant section in the conda docs</a> for a more complete description. Below, we create a new environment called <code>mynewenv</code> with Python 3.9 and the packages <code>scipy</code>, <code>pandas</code>, and <code>numpy</code>:</p><h3 id="Usingconda-CreatinganEnvironment">Creating an Environment</h3><pre><code>conda create -n mynewenv python=3.9 scipy pandas numpy
+</code></pre><p>If you're using Mamba then simply replace <code>conda</code> with <code>mamba</code>:</p><p><code>mamba create -n mynewenv python=3.9 scipy pandas numpy</code></p><p>Note that conda will automatically install any dependencies required, so you'll end up with quite a bit more than three packages. As noted in the documentation, you can also specify a version for the packages but this isn't necessary too often. The <code>-n</code> flag specifies the environment name and can be used with other commands.</p><p>You can get help by simply typing <code>conda</code> (or <code>mamba</code>) and you'll see a list of available commands. You can get specific help for each command by appending <code>--help</code>, e.g.</p><p><code>conda create --help</code></p><p><code>or</code></p><p><code>mamba create --help</code></p><p><br/></p><p><strong>From now on, just replace <code>conda</code>  with <code>mamba</code>  if you're using Mamba (it takes too much space to write out).</strong></p><h3 id="Usingconda-ViewingtheAvailableEnvironments">Viewing the Available Environments</h3><p>The command</p><p><code>conda info --envs</code></p><p>will display the available environments with the current activated environment denoted with an asterisk.</p><pre><code>(testenv1) peterma@NTNU17558:~$ conda info --envs
+# conda environments:
+#
+base                     /home/peterma/miniconda3
+snakemake                /home/peterma/miniconda3/envs/snakemake
+testenv1              *  /home/peterma/miniconda3/envs/testenv1
+</code></pre><p>This shows three environments available, including base. It also shows the path where the environment is stored. Finally, you can see the active environment is <code>testenv1</code> by the asterisk, and also that it's indicated in the command prompt.</p><h3 id="Usingconda-InstallingAdditionalPackages"><br/><span style="color: rgb(0,153,255);font-size: 16.0px;font-weight: bold;letter-spacing: -0.006em;">Installing Additional Packages</span></h3><p>You can install additional packages with the <code>conda install</code>  command, e.g.</p><pre><code>conda install -n mynewenv matplotlib
+</code></pre><p>The environment was specified explicitly there with the <code>-n</code> flag but we can instead activate the new environment and then we don't need to specify what environment we mean, i.e.</p><p><code>conda activate mynewenv</code></p><p><span style="font-family: SFMono-Medium , &quot;SF Mono&quot; , &quot;Segoe UI Mono&quot; , &quot;Roboto Mono&quot; , &quot;Ubuntu Mono&quot; , Menlo , Courier , monospace;letter-spacing: 0.0px;">conda install matplotlib</span></p><p><br/></p><h3 id="Usingconda-ViewingthePackagesInstalledinanEnvironment"><span style="color: rgb(0,153,255);font-size: 16.0px;font-weight: bold;letter-spacing: -0.006em;">Viewing the Packages Installed in an Environment</span></h3><p>The packages installed in an envronment can be shown with the command</p><p><code>conda list</code></p><p>You can check if a specific package is installed, e.g. <code>scipi</code> </p><p><code>conda list</code> scipy</p><p><br/></p><h3 id="Usingconda-RemovingPackages"><span style="color: rgb(0,153,255);font-size: 16.0px;font-weight: bold;letter-spacing: -0.006em;">Removing Packages</span></h3><p>Packages can be removed in much the same way, i.e.</p><pre><code>conda remove matplotlib
+</code></pre><p><br/></p><h3 id="Usingconda-ImportingandExportingEnvironmentConfigurations"><span style="color: rgb(0,153,255);font-size: 16.0px;font-weight: bold;letter-spacing: -0.006em;">Importing and Exporting Environment Configurations</span></h3><p>If you wish to use conda more systematically then you'll need to be aware of how to import and export configurations and be aware of some potential pitfalls.</p><p>Lets say that you have developed some software, such as a Python package, in a conda environment and that you want others to be able to setup the same environment quickly. You can export this configuration as a YAML file. However, if you export your exact environment configuration then that combination of package versions might not work on a different system, e.g. on a different operating system. So it's best to export only the packages you actually specified as necessary; when someone else imports that configuration, conda will solve the dependency problem anew. The command to export in this way is</p><p><code>conda env export --from-history</code></p><p>On the <code>testenv1</code> environment from above, this looks like</p><pre><code>(testenv1) peterma@NTNU17558:~$ conda env export --from-history
+name: testenv1
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - pandas
+  - numpy
+  - scipy
+prefix: /home/peterma/miniconda3/envs/testenv1
+</code></pre><p>Again, also see the relevant <a class="external-link" href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#sharing-an-environment" rel="nofollow">part form the documentation</a>. Also, these YAML files can be edited or created manually, which might be more convenient if you are not specifying too many packages.</p><p>To <a class="external-link" href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file" rel="nofollow">import (create a new environment with the specified configuration)</a> is simple,</p><pre><code>conda env create -f environment.yml
+</code></pre><p>where <code>environment.yml</code> is the configuration file.</p><p><br/></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h2 id="Usingconda-CondaChannels">Conda Channels</h2><p>There are several channels where you can obtain packages. The standard is the <code>default</code> channel, which is perhaps better for stability and standardisation, but it may not have all the packages you seek (and may be subject to commercial use licensing restrictions). The other very popular channel is <code>conda-forge</code> which contains a wider range of packages and can be more up-to-date. There is also <code>bioforge</code> and such like.</p><p>You can specify which channel to obtain a package from on the command line, e.g.</p><pre><code>conda install scipy -c conda-forge
+</code></pre><p>Channel default preference can also be set in <code>.condarc</code> . Also, if importing an environment from a <a class="external-link" href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html" rel="nofollow">YAML file then it'll be specified</a>.</p><p><strong>A word of warning: avoid mixing-and-matching across channels too much, i.e. avoid mixing-and-matching if at all possible. If installing from conda-forge, ensure you're consistent and don't accidentally install from default as it can cause unexpected package downgrades, etc.</strong></p><p>There are precedence rules for channels, <a class="external-link" href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-channels.html" rel="nofollow">specified here</a>.</p><p><br/></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<p><br/></p></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<p><s style="color: rgb(0,153,255);font-size: 24.0px;letter-spacing: -0.01em;">Using anaconda (Windows) </s><span style="color: rgb(0,153,255);font-size: 24.0px;letter-spacing: -0.01em;"> (under revision...)</span></p><hr/><ul><li class="level1"><p><s>In Start menu search for 'Anaconda prompt'. If you are connected to NTNU programfarm you can see 2 anaconda prompts, with and without NTNU text in it, use your local prompt not the NTNU unless you want to work on remote desktop.</s></p></li><li class="level1"><p><s>Open the prompt and black screen will appear.</s></p></li><li class="level1"><p><s>Type 'python' and you will get into python interpreter. Here you can enjoy the fun with python coding.</s></p></li><li class="level1"><p><s>If you want to quit the interpreter type quite() or use 'Ctrl-Z plus Return'.</s></p></li><li class="level1"><p><s><strong>IPython</strong> is also available by typing ipython in prompt, read more about <a class="external-link" href="https://ipython.org/ipython-doc/3/interactive/tutorial.html" rel="nofollow" title="https://ipython.org/ipython-doc/3/interactive/tutorial.html"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/275909858/275909859.png" data-image-src="attachments/275909858/275909859.png" data-unresolved-comment-count="0" data-linked-resource-id="275909859" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="275909858" data-linked-resource-container-version="14" alt=""></span>ipython</a></s></p></li><li class="level1"><p><s>Anaconda also comes with IDE Spyder, which will look familiar to Matlab users. In addition, it includes the JupyterQt Console and Jupyter notebook</s></p></li></ul></div>
+</div>
+</div>
+</div>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/275909858/275909859.png">browser-web-icon.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

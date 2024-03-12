@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : HOWTO set up Amazon CDN</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Development-tools_176849952.html">Development tools</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : HOWTO set up Amazon CDN
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Unknown User (radekl)</span>, last modified on 11.11.2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>This is a walkthrough of how I used Amazon S3+CloudFront to serve website content for <a class="external-link" href="http://f20.indecol.no" rel="nofollow"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176850480/176850481.png" data-image-src="attachments/176850480/176850481.png" data-unresolved-comment-count="0" data-linked-resource-id="176850481" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176850480" data-linked-resource-container-version="6" alt=""></span>f20.indecol.no</a> from the CDN. The CDN makes local copies of large files at “edge node” servers in major cities around the world, so the files reach the browser faster. Note that if you change the file at the S3 source you'll need to send out an Invalidate Request to all edge nodes telling them to clear their cache and refresh from the source. This tutorial doesn't cover that yet so it's good to only activate CDN once you have the content finalized.</p><p>Create S3 Bucket</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">static.f20.indecol.no</pre>
+</div></div><p>Set permissions so Everyone can read</p><p>Create folder and upload files to</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">site/images/</pre>
+</div></div><p>(set file permissions Reduced Redundancy and Everyone can Read)</p><p>Back at the Bucket homepage, I clicked on Properties for the new bucket to Enable Static Website Hosting</p><p><a class="external-link" href="http://static.f20.indecol.no.s3-website-us-east-1.amazonaws.com" rel="nofollow" title="http://static.f20.indecol.no.s3-website-us-east-1.amazonaws.com"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176850480/176850481.png" data-image-src="attachments/176850480/176850481.png" data-unresolved-comment-count="0" data-linked-resource-id="176850481" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176850480" data-linked-resource-container-version="6" alt=""></span>http://static.f20.indecol.no.s3-website-us-east-1.amazonaws.com</a></p><p>I set “ Use this bucket to host a website” and set the Index Document to index.html</p><p>Back to the AWS homepage Create CloudFront Distribution for Web</p><p>Origin domain name:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">static.f20.indecol.no.s3.amazonaws.com</pre>
+</div></div><p>Origin path is blank, so we use the root directory in the bucket</p><p>Price Class - I left this at All (default) Just note that Australia is expensive: <a class="external-link" href="https://aws.amazon.com/cloudfront/pricing/" rel="nofollow" title="https://aws.amazon.com/cloudfront/pricing/"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176850480/176850481.png" data-image-src="attachments/176850480/176850481.png" data-unresolved-comment-count="0" data-linked-resource-id="176850481" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176850480" data-linked-resource-container-version="6" alt=""></span>https://aws.amazon.com/cloudfront/pricing/</a></p><p>For Alternate Domain Name (CNAMEs) I entered</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">static.f20.indecol.no</pre>
+</div></div><p>In the Default Cache Behavior I think (I could be wrong…) that it is good to change this away from the default of “Use origin cache headers” to “ Customize”. The cache headers seem to control how long the things stay at the edge nodes before expiring. If we use Origin Headers then CloudFront expects the origin (in this case S3) to tell it how long objects should live. However S3 does not, by default, provide such headers. So I have set this at Customize and changed the Default TTL from its default value of 1 day to 1 year (31536000 seconds).</p><p>Finally, at the <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176850480/176850481.png" data-image-src="attachments/176850480/176850481.png" data-unresolved-comment-count="0" data-linked-resource-id="176850481" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176850480" data-linked-resource-container-version="6" alt=""></span><a class="external-link" href="http://indecol.no" rel="nofollow">indecol.no</a> DNS server we will need to create a new CNAME entry to redirect</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">static.f20.indecol.no</pre>
+</div></div><p>to</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Midnight" data-theme="Midnight">d142cx12n6jtiz.cloudfront.net (the Domain Name of this cloudfront distribution)</pre>
+</div></div><p>Ask the digital lab to do this for you.</p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/176850480/176850481.png">browser-web-icon.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

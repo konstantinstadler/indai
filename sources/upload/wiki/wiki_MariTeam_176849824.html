@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : MariTeam</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Projects_176849778.html">Projects</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : MariTeam
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Unknown User (radekl)</span>, last modified on 11.11.2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="MariTeam-Data">Data</h3><p>Data comes form multiple sources and are stored in MongoDB database running on Indecol Server at maridata db name.</p><p>The maridata schema:</p><ul><li class="level1 node"><p><strong><em>messagges</em></strong> - collection of row dynamic part of AIS data. (source: <a class="external-link" href="http://www.kystverket.no/AIS" rel="nofollow" title="http://www.kystverket.no/AIS"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176849824/176849825.png" data-image-src="attachments/176849824/176849825.png" data-unresolved-comment-count="0" data-linked-resource-id="176849825" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176849824" data-linked-resource-container-version="4" alt=""></span>http://www.kystverket.no/AIS</a> via Sintef) Multiple data cleaning procesessed:</p><ol><li class="level2"><p>drop messages without mmsi or x or y or timestamp</p></li><li class="level2"><p>remove duplicates (same mmsi and x and y and timestamp)</p></li><li class="level2"><p>removing messages where -180 &gt; x &gt; 180 and -90 &gt; y &gt; 90</p></li><li class="level2"><p>add loc to use mongodb geoindex 2dsphere</p></li></ol></li><li class="level1"><p><strong><em>messages_completed</em></strong> - Result of completer script which completes missing routes of origin AIS messages. the messages are then updated with weather and eca data.</p></li><li class="level1"><p><strong><em>specs</em></strong> - collection of static part of AIS data. (source: <a class="external-link" href="http://www.kystverket.no/AIS" rel="nofollow" title="http://www.kystverket.no/AIS"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176849824/176849825.png" data-image-src="attachments/176849824/176849825.png" data-unresolved-comment-count="0" data-linked-resource-id="176849825" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176849824" data-linked-resource-container-version="4" alt=""></span>http://www.kystverket.no/AIS</a> via Sintef)</p></li><li class="level1"><p><strong><em>specs_log</em></strong> - log information during parsing of AIS data per each line of data file.</p></li><li class="level1"><p><strong><em>logs</em></strong> - log information during parsing of AIS data per one data file.</p></li><li class="level1"><p><strong><em>sea_web</em></strong> - collection of processed <strong><em>seaweb data</em></strong> with All documents with <em>mmsi</em>=null or missing <em>mmsi</em> field are removed. (source: <a class="external-link" href="http://maritime.ihs.com/" rel="nofollow" title="http://maritime.ihs.com/"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176849824/176849825.png" data-image-src="attachments/176849824/176849825.png" data-unresolved-comment-count="0" data-linked-resource-id="176849825" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176849824" data-linked-resource-container-version="4" alt=""></span>http://maritime.ihs.com/</a>)</p></li><li class="level1"><p><strong><em>ports</em></strong> - collection of all ports. (source: <a class="external-link" href="https://msi.nga.mil/NGAPortal/MSI.portal?_nfpb=true&amp;_pageLabel=msi_portal_page_62&amp;pubCode=0015" rel="nofollow"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176849824/176849825.png" data-image-src="attachments/176849824/176849825.png" data-unresolved-comment-count="0" data-linked-resource-id="176849825" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176849824" data-linked-resource-container-version="4" alt=""></span>https://msi.nga.mil/NGAPortal/MSI.portal?_nfpb=true&amp;_pageLabel=msi_portal_page_62&amp;pubCode=0015</a>)</p></li><li class="level1 node"><p><strong><em>weather</em></strong> - weather historical data based on <a class="external-link" href="http://apps.ecmwf.int/datasets/data/interim-full-daily/levtype=sfc/" rel="nofollow"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176849824/176849825.png" data-image-src="attachments/176849824/176849825.png" data-unresolved-comment-count="0" data-linked-resource-id="176849825" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176849824" data-linked-resource-container-version="4" alt=""></span>http://apps.ecmwf.int/datasets/data/interim-full-daily/levtype=sfc/</a>. The weather collection fields are:</p><ul><li class="level2"><p>time: hours since 1.1.1900</p></li><li class="level2"><p>unxtimestamp : unit: <a class="external-link" href="https://en.wikipedia.org/wiki/Unix_time" rel="nofollow" title="https://en.wikipedia.org/wiki/Unix_time"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/176849824/176849825.png" data-image-src="attachments/176849824/176849825.png" data-unresolved-comment-count="0" data-linked-resource-id="176849825" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176849824" data-linked-resource-container-version="4" alt=""></span>unix time</a></p></li><li class="level2"><p>timestamp : string in format: '%Y%m%d %H:%M:%S'</p></li><li class="level2"><p>lat : unit: degrees north, range [-90,90]</p></li><li class="level2"><p>lon : unit: degrees east, range [0,359.25]</p></li><li class="level2"><p>v10 : units: <span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image mathpublish confluence-external-resource" draggable="false" src="https://wiki.indecol.no/lib/plugins/mathpublish/img.php?img=7442e9b61c744ad669f10502dd3e2f6c" data-image-src="https://wiki.indecol.no/lib/plugins/mathpublish/img.php?img=7442e9b61c744ad669f10502dd3e2f6c"></span>, long_name: 10 metre V wind component</p></li><li class="level2"><p>u10 : units: <span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image mathpublish confluence-external-resource" draggable="false" src="https://wiki.indecol.no/lib/plugins/mathpublish/img.php?img=7442e9b61c744ad669f10502dd3e2f6c" data-image-src="https://wiki.indecol.no/lib/plugins/mathpublish/img.php?img=7442e9b61c744ad669f10502dd3e2f6c"></span>, long_name: 10 metre U wind component</p></li><li class="level2"><p>wind_speed : units <span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image mathpublish confluence-external-resource" draggable="false" src="https://wiki.indecol.no/lib/plugins/mathpublish/img.php?img=7442e9b61c744ad669f10502dd3e2f6c" data-image-src="https://wiki.indecol.no/lib/plugins/mathpublish/img.php?img=7442e9b61c744ad669f10502dd3e2f6c"></span>, formula: <span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image mathpublish confluence-external-resource" draggable="false" src="https://wiki.indecol.no/lib/plugins/mathpublish/img.php?img=de49896da8a0d47f2c55a5d00a112585" data-image-src="https://wiki.indecol.no/lib/plugins/mathpublish/img.php?img=de49896da8a0d47f2c55a5d00a112585"></span></p></li><li class="level2"><p>wind_direction: degree true, formula: 270 - (math.atan2(x['u10'] / x['wind_speed'], x['v10'] / x['wind_speed']) * 180 / math.pi) % 360</p></li><li class="level2"><p>wave_height : units: m, long_name: Significant height of combined wind waves and swell</p></li><li class="level2"><p>wave_direction : units: Degree true, long_name: Mean wave direction</p></li></ul></li><li class="level1"><p><strong><em>eca</em></strong> - Emission Control Areas. Each filed is one restricted area with name and loc: 2dsphere indexed geolocation</p></li></ul><h3 id="MariTeam-Softwaretools">Software tools</h3><p><a href="maridata_174491893.html">maridata</a></p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/176849824/176849825.png">browser-web-icon.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

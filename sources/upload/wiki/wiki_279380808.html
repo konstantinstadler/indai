@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : IndEcol1(2) windows server</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab_174491605.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Infrastructure_267029429.html">Infrastructure</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : IndEcol1(2) windows server
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Ruslan Zhuravchak</span>, last modified on 31.01.2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>The Windows server for ArcGIS and other Windows GUI programs.<br/><br/>The main purpose of this server is for ArcGIS tasks which are too big for local desktops and which benefit from a GPU. Python/Matlab scripts should still mostly run on our Linux servers (there will also be a new one with GPU available soon).</p><h2 id="IndEcol1(2)windowsserver-Access"><strong>Access</strong></h2><p>Go to <a class="external-link" href="https://desktop.ntnu.no" rel="nofollow">https://desktop.ntnu.no</a> .<br/>There you have the choice to use the server within the browser or to install a VMware client locally. Login credentials for both are your NTNU username and password.<br/><br/>If you choose the within-browser option you will then find a button with &quot;IndEcol Desktop 1&quot; and 2.<br/>Both have the same specs, please use it according to your Prof group membership:<br/><br/><strong>IndEcol1:</strong></p><ul><li>FrancescA group</li><li>Edgar group</li><li>Anders group</li></ul><p><strong>IndEcol2:</strong></p><ul><li>FrancescO group</li><li>Daniel group</li><li>Johan group</li><li>Helge group</li></ul><p>There is also a general &quot;Employee&quot; desktop which you can use for smaller tasks or if you need access to some Windows software (<img class="emoticon emoticon-wink" src="images/icons/emoticons/wink.svg" data-emoticon-name="wink" alt="(wink)" data-emoji-short-name=":wink:"/> Mac and Linux users). This one is completely independent of our server and provided by NTNU centrally.</p><p>It is also possible  to access the server using the RDP client, e.g. Remmina, via server's address:</p><ul><li>NTNU-EPT-Farm01.win.ntnu.no</li><li>NTNU-EPT-Farm02.win.ntnu.no</li></ul><h2 id="IndEcol1(2)windowsserver-Usage"><strong>Usage</strong></h2><p><br/></p><p>The Windows server is managed through VMware which allows 2x5 users to be logged in simultaneously (5 on Indecol1, 5 on Indecol2).<br/><br/>There is no time-out for the sessions to allow for long-running calculations.<br/>This also means that we need some logout discipline: when you are done, logout (not just disconnect or close the browser window) from the server to allow others to use the server. Just closing the browser tab is not enough!<br/><br/>For the usual use case - login and use the server. If you have a particular heavy job you can announce it on the TEAMS channel <a class="external-link" href="https://teams.microsoft.com/l/channel/19%3acb89303fb826463f9b9868e0da9d84f1%40thread.tacv2/infra-VMwareServer?groupId=b2c89bca-e6d6-44d9-b10b-afc204bfed4d&amp;tenantId=09a10672-822f-4467-a5ba-5bb375967c05" rel="nofollow">infra-VMwareServer</a> - if you see such announcements please logout and free all resources.<br/><br/>- Network-Storage: The X-drive(forsking Eksperimentell) is mounted to X: for all users.<br/>- Local-Storage: Mapped on W:. There is no backup for this drive(!) - this should only be used for intermediate results. Please make a directory with your username or project name (if you share among users) for storing your data within your Prof Group sub directory.</p><h3 id="IndEcol1(2)windowsserver-Updates/Downtime">Updates/Downtime</h3><p><br/>Every second Thursday in a month<span> at 16:00 the server will be updated (security patches and such). IT should inform active users but plan for this on your side as well. If you are logged in and not active you will logged out.</span></p><h2 id="IndEcol1(2)windowsserver-HardwareDetails/Storage"><strong>Hardware Details/Storage</strong></h2><p><br/></p><p>PowerEdge R750 with 2x Xeon Gold 6342 (24 Cores). 512 GB RAM, NVIDIA AMPERE A40 GPU with 48 GB RAM, 6.5 TB SSD.<br/>The server is split into 2 instances, so you should see half of these resources when you login.</p><h2 id="IndEcol1(2)windowsserver-Furthercommunication,announcementsandhelp"><strong>Further communication, announcements and help</strong></h2><p><br/></p><p>TEAMS channel: <a class="external-link" href="https://teams.microsoft.com/l/channel/19%3acb89303fb826463f9b9868e0da9d84f1%40thread.tacv2/infra-VMwareServer?groupId=b2c89bca-e6d6-44d9-b10b-afc204bfed4d&amp;tenantId=09a10672-822f-4467-a5ba-5bb375967c05" rel="nofollow">infra-VMwareServer</a><br/>Please subscribe to this channel when you plan to use the server intensely (note if it is IndEcol 1 or 2). Also use this channel for any questions or announcements from your side.<br/>The Server is managed by IT centrally, but the Digital Lab and <a class="external-link" href="mailto:martin.dorber@ntnu.no" rel="nofollow">Martin Dorber</a> have some admin rights there</p>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

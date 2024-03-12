@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : Coco</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="174491614.html">Digital Tools for IndEcol Research/Teaching</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : Coco
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Unknown User (radekl)</span>, last modified on 11.11.2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h1 class="sectionedit1" id="Coco-Coco-countryconverter">Coco - country converter</h1><p>Coco used regular expression to find the best match of a specific country name to the known names. So far, it can convert all country names I encountered in the last four years. Coco provides output in several formats, including ISO2/3, EXIO, WIOD, UN numerical, FAO, …</p><p>Coco is a python package, but can also be used in MATLAB and provides a command line interface.</p><p>e.g. in MATLAB:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: py; gutter: false; theme: Midnight" data-theme="Midnight">pyversion folder/python.exe (replace folder with the directory where python.exe is located)
+coco = py.country_converter.CountryConverter()
+countries = {&#39;The Swedish Kingdom&#39;, &#39;Norway is a Kingdom too&#39;, &#39;Peoples Republic of China&#39;, &#39;Republic of China&#39;};
+ISO2_pythontype = coco.convert(countries, pyargs(&#39;to&#39;, &#39;ISO2&#39;));
+ISO2_cellarray = cellfun(@char,cell(ISO2_pythontype),&#39;UniformOutput&#39;,false);</pre>
+</div></div><p>e.g. command line (cmd in windows):</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: python; gutter: false; theme: Confluence" data-theme="Confluence">coco Norway </pre>
+</div></div><p>For further information see:<br/> <a class="external-link" href="https://github.com/konstantinstadler/country_converter" rel="nofollow" title="https://github.com/konstantinstadler/country_converter"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/174491861/176849296.png" data-image-src="attachments/174491861/176849296.png" data-unresolved-comment-count="0" data-linked-resource-id="176849296" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="174491861" data-linked-resource-container-version="13" alt=""></span>https://github.com/konstantinstadler/country_converter</a></p><p>To use coco, you need python (&gt;=3.5) and matlab (&gt;=2016a) available on your computer.</p><p>If you install with <span class="wikilink1"><a href="174491824.html">Anaconda</a></span> everything should just work.</p><p>After you have that, you can install coco through:</p><p>pip install country_converter</p><p>A basic documentation you can find here:<br/> <a class="external-link" href="https://github.com/konstantinstadler/country_converter" rel="nofollow" title="https://github.com/konstantinstadler/country_converter"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/174491861/176849296.png" data-image-src="attachments/174491861/176849296.png" data-unresolved-comment-count="0" data-linked-resource-id="176849296" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="174491861" data-linked-resource-container-version="13" alt=""></span>https://github.com/konstantinstadler/country_converter</a></p><p>For some advanced usage in python see:<br/> <a class="external-link" href="http://nbviewer.jupyter.org/github/konstantinstadler/country_converter/blob/master/doc/country_converter_examples.ipynb" rel="nofollow" title="http://nbviewer.jupyter.org/github/konstantinstadler/country_converter/blob/master/doc/country_converter_examples.ipynb"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="16" src="attachments/174491861/176849296.png" data-image-src="attachments/174491861/176849296.png" data-unresolved-comment-count="0" data-linked-resource-id="176849296" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="browser-web-icon.png" data-base-url="https://www.ntnu.no/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="174491861" data-linked-resource-container-version="13" alt=""></span>http://nbviewer.jupyter.org/github/konstantinstadler/country_converter/blob/master/doc/country_converter_examples.ipynb</a></p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/174491861/176849296.png">browser-web-icon.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

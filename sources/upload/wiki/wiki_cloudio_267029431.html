@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Industrial Ecology Digital Lab : cloudio</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab-Home_128681672.html">Industrial Ecology Digital Lab Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Industrial-Ecology-Digital-Lab_174491605.html">Industrial Ecology Digital Lab</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Infrastructure_267029429.html">Infrastructure</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Industrial Ecology Digital Lab : cloudio
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Ruslan Zhuravchak</span>, last modified by <span class='editor'> Konstantin Stadler</span> on 19.09.2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="cloudio-Summary">Summary</h2><p>Cloudio s a virtual machine (VM) made available to meet the computational needs of the researchers at the <a class="external-link" href="https://www.ntnu.edu/indecol/industrial-ecology-programme" rel="nofollow">Industrial Ecology Programme</a>. It is operated by Ubuntu Server 20.04 and has:</p><ul><li>88 vCPUs</li><li>1280 GB RAM</li><li>16.6TB SSD</li><li>1 GPU unit (NVIDIA A100, 80 GB vRAM)</li></ul><p>This guide explains how to get started: connect, use and administer the available resources and services. Prepared/maintained by <a class="external-link" href="https://iedl.no/" rel="nofollow">Industrial Ecology Digital Lab</a>. For question/ access requests <a class="external-link" href="mailto:contact@iedl.no" rel="nofollow">send us an email</a>.</p><p><strong>Important - read before first usage</strong>:</p><ul style="list-style-type: square;"><li>Talk to the digital lab staff before!</li><li>when you run on the server, make sure to not monopolize all cpus. In particular, keep at least 2 for other users to login into the server and copy/check stuff.</li><li><p style="">if you need to run a longer (more then 30min) script on the server, make a note here and inform other people. If you see someone else using resources without having it scheduled here (RAM, CPU, shared storage), wait for 30min and then remind them to close/remove them. If they do not respond, contact the digital lab team and we will kick them out.</p></li><li><p style="">Please limit the size of your home directors (/home/USERNAME) to below 10 GB. This is enough for multiple settings and conda environments.</p></li><li><p style="">As far as possible, keep data on the EPT_eksperimentell drive. There is a fast connection from the EPT_eksperimentell to the server which should be sufficient for most cases. You can find a description how to map the EPT_eksperimentell drive to you home dir on the server here: <a href="https://www.ntnu.no/wiki/pages/viewpage.action?pageId=174491909" rel="nofollow">https://www.ntnu.no/wiki/pages/viewpage.action?pageId=174491909</a> . This drive is also backuped/has data snapshots on a hourly basis and on physical independent locations (see backup frequency here: <a href="https://www.ntnu.no/wiki/pages/viewpage.action?spaceKey=iedl&amp;title=Network+drives" rel="nofollow">https://www.ntnu.no/wiki/pages/viewpage.action?spaceKey=iedl&amp;title=Network+drives</a> ). If you need a faster storage option you can use /shared/USERNAME. However, this storage is only available for you during your scheduled time and there is no backup of this drive! We do not enforce the removal of data there (yet!), but if we see that it gets full and restricts the usage of the server for the person scheduled to use it we might just delete other userdata there.</p></li></ul><hr/><p><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1709817184976 {padding: 0px;}
+div.rbtoc1709817184976 ul {margin-left: 0px;}
+div.rbtoc1709817184976 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1709817184976'>
+<ul class='toc-indentation'>
+<li><a href='#cloudio-Summary'>Summary</a></li>
+<li><a href='#cloudio-Login'>Login</a>
+<ul class='toc-indentation'>
+<li><a href='#cloudio-sshto10.212.26.242'>ssh to 10.212.26.242</a>
+<ul class='toc-indentation'>
+<li><a href='#cloudio-MSWindows'>MS Windows</a></li>
+<li><a href='#cloudio-OSX,Linux'>OSX, Linux</a></li>
+<li><a href='#cloudio-Troubleshootingguide'>Troubleshooting guide</a>
+<ul class='toc-indentation'>
+<li><a href='#cloudio-...permissionsaretooopen'>... permissions are too open</a></li>
+<li><a href='#cloudio-...permissiondenied'>... permission denied</a></li>
+<li><a href='#cloudio-Loadkey&quot;keyfilename&quot;:invalidformat...'>Load key &quot;keyfilename&quot;: invalid format ...</a></li>
+<li><a href='#cloudio-ssh:connecttohost10.212.26.242port22:Unknownerror'>ssh: connect to host 10.212.26.242 port 22: Unknown error</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href='#cloudio-Jupyter(lab)serverathttp://10.212.26.242'>Jupyter(lab) server at http://10.212.26.242</a></li>
+</ul>
+</li>
+<li><a href='#cloudio-Browsethefiles'>Browse the files</a>
+<ul class='toc-indentation'>
+<li><a href='#cloudio-Changethesambapassword'>Change the samba password</a></li>
+<li><a href='#cloudio-MaptheCloudio&#39;shomeorshareddirectorytoyourPC:'>Map the Cloudio&#39; s home or shared directory to your PC:</a>
+<ul class='toc-indentation'>
+<li><a href='#cloudio-MSWindows.1'>MS Windows</a></li>
+<li><a href='#cloudio-OSX'>OSX</a></li>
+<li><a href='#cloudio-Linux'>Linux</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href='#cloudio-Mountthenetworkdrive(s)'>Mount the network drive(s)</a></li>
+<li><a href='#cloudio-N.B:'>N.B:</a></li>
+<li><a href='#cloudio-What&#39;snext?'>What&#39;s next?</a></li>
+</ul>
+</div></p><hr/><h2 id="cloudio-Login">Login</h2><h3 id="cloudio-sshto10.212.26.242">ssh to <code>10.212.26.242</code></h3><p>The most common access option, using the username and the private ssh key. The details depend on the ssh client, and the operation system used:</p><h4 id="cloudio-MSWindows">MS Windows</h4><ol><li>save the private key as a text file locally, e.g. <code>C:\Users\my_username\.ssh\keyfilename.priv</code></li><li>test the access in command line, using OpenSSH: <code>ssh my_username@10.212.26.242 -i C:\Users\my_username\.ssh\keyfilename.priv<br/></code></li><li>adapt the OpenSSH config, PuTTY, VSCode etc. to your liking</li></ol><h4 id="cloudio-OSX,Linux">OSX, Linux</h4><ol><li>save the key locally, e.g. <code>/home/my_username/.ssh/keyfilename.priv</code></li><li>in terminal<code>: ssh my_username@10.212.26.242 -i /home/my_username/.ssh/keyfilename.priv<br/></code></li><li>adapt the ssh configs, code editors etc. to your liking</li></ol><h4 id="cloudio-Troubleshootingguide">Troubleshooting guide</h4><h5 id="cloudio-...permissionsaretooopen">... permissions are too open</h5><ul><li>set strict key permissions as follows:</li></ul><ol><li>MS Windows:<ol><li>locate the file in file explorer</li><li>right click -&gt; Properties -&gt; Security -&gt; Advanced menu</li><li>disable inheritance and remove all users except yourself (the file owner)</li><li>make sure that &quot;Full control&quot; is allowed for the only remaining user</li></ol></li><li>OSX, Linux:<ol><li>in the terminal: <code>chmod 700 keypath/keyfilename.priv</code></li></ol></li></ol><h5 id="cloudio-...permissiondenied">... permission denied</h5><ul><li>make sure the username, the ip address and the path to the key are correct</li></ul><h5 id="cloudio-Loadkey&quot;keyfilename&quot;:invalidformat...">Load key &quot;keyfilename&quot;: invalid format ...</h5><ul><li>open up the key file and add a blank line at the end of the text</li><li>the lines -----BEGIN OPENSSH PRIVATE KEY----- and -----END OPENSSH PRIVATE KEY----- are a part of the key, make sure to include them in the key file</li></ul><h5 id="cloudio-ssh:connecttohost10.212.26.242port22:Unknownerror">ssh: connect to host 10.212.26.242 port 22: Unknown error</h5><ul><li>client-side problem, e.g. no network connection</li><li>use VPN if outside the campus</li></ul><h3 id="cloudio-Jupyter(lab)serverathttp://10.212.26.242">Jupyter(lab) server at <code><a class="external-link" href="http://10.212.26.242" rel="nofollow">http://10.212.26.242</a></code></h3><ol><li>follow the url: <code>http://10.212.26.242</code> in the browser</li><li>enter the username</li><li>set up a jupyterhub login password on the first login</li></ol><h2 id="cloudio-Browsethefiles">Browse the files</h2><p>User's home (private) and shared (with the other prof. group members) directories are available for mounting as a network drive using <a class="external-link" href="https://www.samba.org/" rel="nofollow">samba</a>. The access is restricted using a system-generated password stored on the server in the user's home directory.</p><h3 id="cloudio-Changethesambapassword">Change the samba password</h3><p>Once logged in, through ssh or jupyterhub session:</p><ol><li>locate the system's password in the home directory (<code>/home/my_username/s-pass.txt</code>)</li><li>print the current password: either <code>cat ~/s-pass.txt</code> in the terminal or open the file via jupyterhub's built-in text editor. A 24-character-long string of characters shows up</li><li>copy the output</li><li>run the terminal command: <code>smbpasswd</code></li><li>paste the copied password and hit 'Enter'</li><li>type and confirm the new password</li><li>delete the file with the old password: <code>rm ~/s-pass.txt</code> or through jupyterhub interface menu</li></ol><h3 id="cloudio-MaptheCloudio&#39;shomeorshareddirectorytoyourPC:">Map the Cloudio' s home or shared directory to your PC:</h3><h4 id="cloudio-MSWindows.1">MS Windows</h4><ol><li>in the file explorer, go to Computer -&gt; Map network drive</li><li>select a character for the Drive, e.g. &quot;I&quot;</li><li>enter the Folder address: <code>\\10.212.26.242\my_username</code></li><li>check &quot;Connect using different credentials&quot;</li><li>enter the username and the (samba) password</li><li>repeat for the shared directory <code>\\10.212.26.242\scratch</code></li></ol><h4 id="cloudio-OSX">OSX</h4><ol><li>navigate to the Dock -&gt; righ-click on &quot;Finder&quot; -&gt; &quot;Connnect to server&quot;</li><li>type/paste the network address <code>smb://10.212.26.242/my_username</code> or <code>smb://10.212.26.242/scratch</code> -&gt; &quot;Connect&quot;</li><li>enter the username and you samba password</li></ol><h4 id="cloudio-Linux">Linux</h4><ol><li>in the file manager (e.g. Nautilus), click 'Other locations' -&gt; 'Connect to Server' <code>smb://10.212.26.242/my_username</code> or <code>smb://10.212.26.242/scratch</code></li><li>enter the username, the domain - <code>SAMBA</code> (default) and the (samba) password</li><li>alternatively, run the terminal command, e.g: <code>smbclient -U my_username //10.212.26.242/my_username</code> to connect</li></ol><h2 id="cloudio-Mountthenetworkdrive(s)">Mount the network drive(s)</h2><p>You can map and reach the other network drives from Cloudio. To do so, once logged in:</p><ol><li>create a directory to mount the drive at, e.g: <code>mkdir /home/my_username/Mdrive</code> in the terminal or 'New folder' -&gt; 'Mdrive' in jupyterhub interface</li><li><p class="auto-cursor-target">in the ssh sesssion terminal or jupyterhub terminal, run, e.g:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Confluence" data-theme="Confluence">sudo mount //home.ansatt.ntnu.no/my_username /home/my_username/Mdrive -o uid=my_username -t cifs -o username=my_username,workgroup=win-ntnu-no,dir_mode=0700,file_mode=0700</pre>
+</div></div></li><li><p class="auto-cursor-target">entrer the NTNU-system's password</p></li><li>similarly, map the Xdrive:<br/><ol><li><code>mkdir /home/my_username/Xdrive</code></li><li class="auto-cursor-target"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Confluence" data-theme="Confluence">sudo mount //forskning.it.ntnu.no/ntnu/iv/ept/eksperimentell /home/my_username/Xdrive -o uid=my_username -t cifs -o username=my_username,workgroup=win-ntnu-no,dir_mode=0700,file_mode=0700</pre>
+</div></div></li></ol></li><li>repeat the procedure for <a href="https://www.ntnu.no/wiki/display/iedl/Network+drives" rel="nofollow">the other drives</a>, if needed</li></ol><p>Unmount the drive as follows <code>sudo umount /home/my_username/Mdrive<br/></code></p><h2 id="cloudio-N.B:">N.B:</h2><p>The estimated storage capacity is:</p><ul><li>200GB per user in home directory</li><li>1TB per prof. group</li></ul><p>There are no reserve copies (backups) of the data from user home and shared directories. Use with caution.</p><h2 id="cloudio-What&#39;snext?">What's next?</h2><ul><li>make sure to attend the <a class="external-link" href="https://hackmd.io/5xQB9B2KQmebo8v0JtMpwg#IndEcol-Command-Line-Lunch-%F0%9F%90%B1%E2%80%8D%F0%9F%92%BB" rel="nofollow">IndEcol Command Line Lunch</a> to learn more 😉</li><li>comment the article, fix typos and add meaningful information for the others to follow</li></ul>
+                    </div>
+
+                                        
+                                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="comments" class="pageSectionTitle">Comments:</h2>
+                        </div>
+
+                        <table border="0" width="100%">
+                                                        <tr>
+                                <td >
+                                    <a name="comment-275908500"></a>
+                                    <font class="smallfont"><p>After saving the ssh key I received from DigiLab in &quot;C:\Users\my_username\.ssh&quot; I saw the ssh key to be in a file format like .priv, <em>e.g.</em> I had &quot;cloudioKey.priv&quot; and I received the following error code (I here replace my username with 'my_username'):</p><p><br/>(base) C:\Users\my_username&gt;ssh <a class="external-link" href="mailto:philipgj@10.212.26.242" rel="nofollow">my_username@10.212.26.242</a> -i .ssh<br/>Load key &quot;.ssh&quot;: Operation not supported on socket<br/><a class="external-link" href="mailto:philipgj@10.212.26.242" rel="nofollow">my_username@10.212.26.242</a>: Permission denied (publickey).</p><p><br/></p><p>I fixed it by deleting the file format so that the ssh key was called &quot;cloudioKey&quot;, so deleting the &quot;.priv&quot; and not replacing by anything.</p></font>
+                                    <div align="left" class="smallfont" style="color: #666666; width: 98%; margin-bottom: 10px;">
+                                        <img src="images/icons/contenttypes/comment_16.png" height="16" width="16" border="0" align="absmiddle"/>
+                                        Posted by philipgj at 12.01.2023 13:11 CET
+                                    </div>
+                                </td>
+                            </tr>
+                                                        <tr>
+                                <td  style="border-top: 1px dashed #666666">
+                                    <a name="comment-275908501"></a>
+                                    <font class="smallfont"><p><a class="confluence-userlink user-mention" data-username="ruslanz" href="https://www.ntnu.no/wiki/display/~ruslanz" data-linked-resource-id="114296560" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://www.ntnu.no/wiki">Ruslan Zhuravchak</a> The JupyterLab server is http, not http<u>s</u>, is this okay?</p></font>
+                                    <div align="left" class="smallfont" style="color: #666666; width: 98%; margin-bottom: 10px;">
+                                        <img src="images/icons/contenttypes/comment_16.png" height="16" width="16" border="0" align="absmiddle"/>
+                                        Posted by philipgj at 12.01.2023 13:13 CET
+                                    </div>
+                                </td>
+                            </tr>
+                                                        <tr>
+                                <td  style="border-top: 1px dashed #666666">
+                                    <a name="comment-275908529"></a>
+                                    <font class="smallfont"><p>Thank you for the observation, <a class="confluence-userlink user-mention" data-username="philipgj" href="https://www.ntnu.no/wiki/display/~philipgj" data-linked-resource-id="195537111" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://www.ntnu.no/wiki">Philip</a>  <img class="emoticon emoticon-smile" src="images/icons/emoticons/smile.svg" data-emoticon-name="smile" alt="(smile)" data-emoji-short-name=":smile:"/><br/>For the (Open)ssh, the key file extension does not matter, it could be either .priv or .txt or no extension at all.<br/>But the ssh command needs the entire path to the key, including the key file name as follows:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: RDark" data-theme="RDark">ssh my_username@10.212.26.242 -i .ssh\cloudioKey.priv</pre>
+</div></div></font>
+                                    <div align="left" class="smallfont" style="color: #666666; width: 98%; margin-bottom: 10px;">
+                                        <img src="images/icons/contenttypes/comment_16.png" height="16" width="16" border="0" align="absmiddle"/>
+                                        Posted by ruslanz at 12.01.2023 13:50 CET
+                                    </div>
+                                </td>
+                            </tr>
+                                                        <tr>
+                                <td  style="border-top: 1px dashed #666666">
+                                    <a name="comment-275908530"></a>
+                                    <font class="smallfont"><p>yes, <a class="confluence-userlink user-mention" data-username="philipgj" href="https://www.ntnu.no/wiki/display/~philipgj" data-linked-resource-id="195537111" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://www.ntnu.no/wiki">Philip</a> our JupyterLab server is hosted at <code><a class="external-link" href="http://10.212.26.242" rel="nofollow">http://10.212.26.242</a></code></p></font>
+                                    <div align="left" class="smallfont" style="color: #666666; width: 98%; margin-bottom: 10px;">
+                                        <img src="images/icons/contenttypes/comment_16.png" height="16" width="16" border="0" align="absmiddle"/>
+                                        Posted by ruslanz at 12.01.2023 13:55 CET
+                                    </div>
+                                </td>
+                            </tr>
+                                                    </table>
+                    </div>
+                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 07.03.2024 14:13 CET</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>
